@@ -1,0 +1,51 @@
+/* LoginNotification.css */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    z-index: 999; /* Ensure the overlay is above other content */
+  }
+  
+.login-notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    z-index: 999; /* Ensure the overlay is above other content */
+  }
+  
+  .login-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    padding: 150px;
+    text-align: center;
+    z-index: 1000;
+    width: 400px; /* Adjust the width as needed */
+  }
+  
+  .login-notification p {
+    margin-bottom: 20px;
+    font-size: 250%;
+  }
+  
+  .login-notification a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .login-notification a:hover {
+    text-decoration: solid;
+  }
+  

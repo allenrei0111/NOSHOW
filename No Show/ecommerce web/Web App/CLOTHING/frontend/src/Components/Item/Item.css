@@ -1,0 +1,47 @@
+/* Item.css */
+
+.item {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 0; /* Added margin-bottom: 0 */
+}
+
+.item img {
+  width: 100%; /* Ensure the image fills its container */
+  max-height: 300px; /* Increase maximum height for larger images */
+  object-fit: cover; /* Preserve aspect ratio while covering the area */
+  border-radius: 8px;
+  cursor: pointer; /* Add cursor pointer for clickable behavior */
+  transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
+}
+
+/* Apply hover effect */
+.item img:hover {
+  transform: scale(1.2); /* Scale up the image on hover */
+  z-index: 1; /* Ensure image is above other content */
+  position: relative; /* Enable positioning */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+}
+
+.item p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.item-prices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.item-price-new,
+.item-price-old {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.item-price-old {
+  color: #888; /* Color for the old price */
+  text-decoration: line-through; /* Strikethrough for old price */
+}

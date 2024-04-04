@@ -1,0 +1,48 @@
+/* Soon.css */
+
+.coming-soon {
+  text-align: center;
+  margin: 200px auto;
+  height: 60vh;
+}
+
+.coming-soon h2 {
+  font-size: 60px; 
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 0 10px 10px 10px;
+  width: 300px;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  width: 100%;
+  filter: blur(5px);
+}
+
+.product h3 {
+  display: none;
+}
+
+.price {
+  display: none;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .product {
+    width: calc(50% - 20px); /* Adjust width for smaller screens */
+  }
+}

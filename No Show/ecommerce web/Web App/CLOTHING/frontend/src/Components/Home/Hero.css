@@ -1,0 +1,230 @@
+/* Common styles for the hero component */
+.hero {
+  height: 100vh;
+  background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
+  display: flex;
+  margin-bottom: 0;
+}
+
+.hero:hover {
+  background: linear-gradient(180deg, #f0f0f0, #e0e0e0);
+}
+
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 180px;
+  line-height: 1.1;
+}
+
+.hero-left h2 {
+  color: #090909;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.hero-left p {
+  color: #171717;
+  font-size: 100px;
+  font-weight: 700;
+}
+
+.hero-hand-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-hand-icon img {
+  width: 105px;
+}
+
+.hero-latest-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 310px;
+  height: 70px;
+  border-radius: 75px;
+  margin-top: 30px;
+  background: #ff4141;
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-right img {
+  max-width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero-right img:hover {
+  transform: scale(1.05); /* Scale up image on hover */
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+  z-index: 999; /* Ensure the overlay is above other content */
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 20px; /* Increased border radius */
+  padding: 100px; /* Increased padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 80%; /* Adjust as needed */
+  text-align: center;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn 0.5s forwards; /* Fade-in animation */
+  z-index: 1000; /* Ensure the popup is above the overlay */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup p {
+  margin: 0;
+  color: #000000; /* Text color changed to white */
+  font-size: 60px;
+  font-family:  "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.popup button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.popup button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Adjustments for smaller screens */
+@media (max-width: 1280px) {
+  .hero-left {
+      padding-left: 100px;
+  }
+  .hero-left h2 {
+      font-size: 22px;
+  }
+  .hero-left p {
+      font-size: 60px;
+  }
+  .hero-hand-icon img {
+      width: 80px;
+  }
+  .hero-latest-btn {
+      gap: 10px;
+      width: 250px;
+      height: 60px;
+      margin-top: 20px;
+      font-size: 18px;
+  }
+  .hero-right img {
+      width: 500px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-left {
+      padding-left: 80px;
+  }
+  .hero-left h2 {
+      font-size: 20px;
+  }
+  .hero-left p {
+      font-size: 50px;
+  }
+  .hero-hand-icon img {
+      width: 65px;
+  }
+  .hero-latest-btn {
+      width: 220px;
+      height: 50px;
+      font-size: 16px;
+  }
+  .hero-right img {
+      width: 400px;
+  }
+}
+
+@media (max-width: 800px) {
+  .hero-left {
+      padding-left: 30px;
+  }
+  .hero-left h2 {
+      font-size: 16px;
+  }
+  .hero-left p {
+      font-size: 40px;
+  }
+  .hero-hand-icon img {
+      width: 50px;
+  }
+  .hero-latest-btn {
+      width: 175px;
+      height: 40px;
+      font-size: 12px;
+  }
+  .hero-right img {
+      width: 300px;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero {
+      flex-direction: column;
+  }
+  .hero-left h2 {
+      font-size: 18px;
+  }
+  .hero-left p {
+      font-size: 50px;
+  }
+  .hero-hand-icon img {
+      width: 55px;
+  }
+  .hero-latest-btn {
+      width: 200px;
+      height: 45px;
+      font-size: 13px;
+  }
+  .hero-right {
+      display: none;
+  }
+}

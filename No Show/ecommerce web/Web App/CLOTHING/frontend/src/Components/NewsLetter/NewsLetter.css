@@ -1,0 +1,40 @@
+.newsletter {
+    background-color: #f4f4f4; /* Light background color */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%; /* Making it big */
+    margin: auto; /* Centering the component */
+  }
+  
+  .newsletter h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .newsletter p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .newsletter input[type="email"] {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .newsletter button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .newsletter button:hover {
+    background-color: #0056b3;
+  }
+  

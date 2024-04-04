@@ -1,0 +1,79 @@
+.addproduct {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 100px;
+  border: 20px solid #ccc;
+  border-radius: 60px;
+  background-color: #fff;
+  
+}
+
+.addproduct p {
+  margin: 35px 0;
+  font-size: 16px;
+}
+
+.addproduct input[type="text"],
+.addproduct select {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.addproduct .addproduct-price {
+  display: flex;
+}
+
+.addproduct .addproduct-itemfield {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.addproduct .addproduct-thumbnail-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.addproduct .addproduct-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addproduct .addproduct-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Custom styling for file input */
+.addproduct input[type="file"] {
+  display: none;
+}
+
+.addproduct .addproduct-itemfield label {
+  cursor: pointer;
+}
+
+/* Styling for upload area */
+.addproduct .addproduct-itemfield::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #333;
+}
+
+.addproduct .addproduct-itemfield:hover::after {
+  text-decoration: underline;
+}
