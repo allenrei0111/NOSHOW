@@ -123,7 +123,7 @@ const CartItems = () => {
           </div>
         </div>
         <div className="cartitems-promocode">
-          <p>enter promo code</p>
+          <p>If you have promo code , Enter it here.</p>
           <div className="cartitems-promobox">
             <input type="text" placeholder="promo code" />
             <button>Submit</button>
