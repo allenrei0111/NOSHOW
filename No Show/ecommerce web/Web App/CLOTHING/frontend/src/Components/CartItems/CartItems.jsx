@@ -3,7 +3,6 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
 
-//card example: Visa Debit Card	4701322211111234	12/2026	837 32075
 const CartItems = () => {
   const { products, cartItems, removeFromCart, getTotalCartAmount, selectedSize } = useContext(ShopContext);
   const stripe = useStripe();
@@ -17,9 +16,10 @@ const CartItems = () => {
     lastName: "",
     country: "",
     address: "",
-
     email: ""
   });
+  const [promoCode, setPromoCode] = useState(""); // State to store the promo code value
+  const [promoCodeApplied, setPromoCodeApplied] = useState(false); // State to track if a promo code is applied
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -69,6 +69,36 @@ const CartItems = () => {
   const handleShippingChange = (e) => {
     const { name, value } = e.target;
     setShippingInfo({ ...shippingInfo, [name]: value });
+  };
+
+  // Function to handle submission of promo code
+  const handlePromoCodeSubmit = async () => {
+    try {
+      const response = await fetch("/applypromo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ promoCode }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setPromoCodeApplied(true); // Update state to indicate promo code applied
+        // You may want to update the cart based on the promo code response
+      } else {
+        // Handle invalid promo code or other errors
+        setError(data.message);
+      }
+    } catch (error) {
+      setError("Failed to apply promo code");
+    }
+  };
+
+  // Function to handle change in promo code input
+  const handlePromoCodeChange = (e) => {
+    setPromoCode(e.target.value);
   };
 
   return (
@@ -123,11 +153,12 @@ const CartItems = () => {
           </div>
         </div>
         <div className="cartitems-promocode">
-          <p>If you have promo code , Enter it here.</p>
+          <p>If you have a promo code, enter it here:</p>
           <div className="cartitems-promobox">
-            <input type="text" placeholder="promo code" />
-            <button>Submit</button>
+            <input type="text" placeholder="Enter promo code" value={promoCode} onChange={handlePromoCodeChange} />
+            <button onClick={handlePromoCodeSubmit}>Apply</button>
           </div>
+          {promoCodeApplied && <p className="promo-applied-message">Promo code applied successfully!</p>}
         </div>
       </div>
       <div className="cartitems-shipping-info">
