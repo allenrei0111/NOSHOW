@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
+import 'animate.css';
 
 const CartItems = () => {
   const { products, cartItems, removeFromCart, getTotalCartAmount, selectedSize } = useContext(ShopContext);
