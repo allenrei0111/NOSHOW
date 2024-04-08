@@ -1,123 +1,139 @@
-/* General Styles */
+/* CartItems Component Styles */
 .cartitems {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  margin-bottom: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff; /* Change background color to white */
 }
 
-.cartitems-format-main,
-.cartitems-format {
+.cartitems-format-main, .cartitems-format {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr auto;
   align-items: center;
-  font-size: 16px;
+  padding: 10px 0;
 }
 
-.cartitems-format img,
+.cartitems-format-main p, .cartitems-format p {
+  text-align: center;
+  margin: 0; /* Remove default margin */
+}
+
 .cartitems-product-icon {
   width: 50px;
-  border-radius: 5px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-.cartitems-product-title {
-  font-weight: bold;
-}
-
-/* Specific Styles */
-.cartitems-format-main p {
-  text-align: center;
-  margin: 0;
+.cartitems-remove-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .cartitems-down {
-  margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
 }
 
-.cartitems-input-container,
+.cartitems-total h1 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.2rem;
+}
+
+.cartitems-total-item h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.1rem;
+}
+
+.cartitems-promocode p {
+  margin: 0; /* Remove default margin */
+  font-size: 0.9rem;
+}
+
 .cartitems-promobox {
-  margin-top: 30px;
-  margin-bottom: 40px;
+  display: flex;
+  align-items: center; /* Align items vertically */
 }
 
-.cartitems-input-container input,
 .cartitems-promobox input {
-  width: 100%;
-  padding: 10px;
+  flex: 1;
+  padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-}
-
-.cartitems-input-container input[type="text"],
-.cartitems-input-container input[type="email"] {
-  height: 40px;
-}
-
-.cartitems-input-container input::placeholder,
-.cartitems-promobox input::placeholder {
-  color: #999;
-}
-
-.cartitems-input-container input:focus,
-.cartitems-promobox input:focus {
-  border-color: #555;
-}
-
-.cartitems-promobox button,
-.cartitems-payment-btn {
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
+  border-radius: 4px;
+  margin-right: 10px;
 }
 
 .cartitems-promobox button {
+  padding: 8px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.cartitems-payment-btn {
+.cartitems-promobox button:hover {
+  background-color: #0056b3; /* Darken hover color */
+}
+
+.cartitems-payment {
   margin-top: 20px;
-  padding: 15px;
-  background-color: #28a745;
+}
+
+.cartitems-payment button {
+  padding: 10px 20px;
+  background-color: #4caf50; /* Change payment button color */
   color: #fff;
   border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.cartitems-payment-btn:hover {
-  background-color: #218838;
+.cartitems-payment button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
+/* Popup container */
 .payment-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 150px;
-  border-radius: 10px;
-  box-shadow: 5px 20px 25px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Success message */
+.payment-success {
+  color: green;
+  font-weight: bold;
+}
+
+/* Error message */
+.payment-error {
+  color: red;
+  font-weight: bold;
+}
+
+/* Close button */
 .payment-popup-close {
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 10px;
-  font-size: 24px;
   cursor: pointer;
-}
-
-.payment-success {
-  color: #28a745;
-  font-weight: bold;
-}
-
-.payment-error {
-  color: #dc3545;
-  font-weight: bold;
+  font-size: 24px;
 }
