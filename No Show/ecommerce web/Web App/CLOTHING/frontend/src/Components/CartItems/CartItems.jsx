@@ -20,6 +20,7 @@ const CartItems = () => {
   });
   const [promoCode, setPromoCode] = useState(""); // State to store the promo code value
   const [promoCodeApplied, setPromoCodeApplied] = useState(false); // State to track if a promo code is applied
+  const [totalSaved, setTotalSaved] = useState(0); // State to store the total saved amount
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -73,27 +74,17 @@ const CartItems = () => {
 
   // Function to handle submission of promo code
   const handlePromoCodeSubmit = async () => {
-    try {
-      const response = await fetch("/applypromo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ promoCode }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setPromoCodeApplied(true); // Update state to indicate promo code applied
-        // You may want to update the cart based on the promo code response
-      } else {
-        // Handle invalid promo code or other errors
-        setError(data.message);
-      }
-    } catch (error) {
-      setError("Failed to apply promo code");
+    // Simulate promo code application and calculate the total saved amount
+    if (promoCode === "CODE1") {
+      setTotalSaved(10); // Set the total saved amount based on the promo code
+    } else if (promoCode === "CODE2") {
+      setTotalSaved(20);
+    } else if (promoCode === "CODE3") {
+      setTotalSaved(30);
+    } else {
+      setError("Invalid promo code");
     }
+    setPromoCodeApplied(true);
   };
 
   // Function to handle change in promo code input
@@ -148,7 +139,8 @@ const CartItems = () => {
             <hr />
             <div className="cartitems-total-item">
               <h3>Total</h3>
-              <h3>${getTotalCartAmount()}</h3>
+              <h3>${getTotalCartAmount() - totalSaved}</h3>
+              {promoCodeApplied && <p>Total saved: ${totalSaved}</p>}
             </div>
           </div>
         </div>
