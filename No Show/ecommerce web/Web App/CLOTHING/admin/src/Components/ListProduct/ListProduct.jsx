@@ -16,19 +16,21 @@ const ListProduct = () => {
     }, [])
 
     const removeProduct = async (id) => {
+      const confirmDelete = window.confirm("Are you sure you want to remove this product?");
+      if (!confirmDelete) return; // If user cancels, do nothing
+
       await fetch('http://localhost:4000/removeproduct', {
-      method: 'POST',
-      headers: {
-        Accept:'application/json',
-        'Content-Type':'application/json',
-      },
-      body: JSON.stringify({id:id}),
-    })
+        method: 'POST',
+        headers: {
+          Accept:'application/json',
+          'Content-Type':'application/json',
+        },
+        body: JSON.stringify({id:id}),
+      });
 
-    fetch('http://localhost:4000/allproducts') 
-    .then((res) => res.json()) 
-    .then((data) => setAllProducts(data))
-
+      fetch('http://localhost:4000/allproducts') 
+        .then((res) => res.json()) 
+        .then((data) => setAllProducts(data));
     }
 
   return (
