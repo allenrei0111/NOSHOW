@@ -63,11 +63,11 @@
     document.addEventListener("DOMContentLoaded", function() {
       // Add 'loading' class to body when page starts loading
       document.body.classList.add('loading');
-    });
 
-    window.addEventListener("load", function() {
-      // Remove 'loading' class from body when page has fully loaded
-      document.body.classList.remove('loading');
+      // Remove 'loading' class after 5 seconds
+      setTimeout(function() {
+        document.body.classList.remove('loading');
+      }, 5000); // 5000 milliseconds = 5 seconds
     });
   </script>
 </body>
