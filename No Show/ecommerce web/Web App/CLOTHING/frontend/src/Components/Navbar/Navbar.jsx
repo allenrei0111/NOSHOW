@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('auth-token');
-    // Show alert for successful logout
+    
     alert('Successfully logged out');
 
     // Redirect to homepage

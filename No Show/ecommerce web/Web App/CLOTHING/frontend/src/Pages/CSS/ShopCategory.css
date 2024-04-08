@@ -27,21 +27,6 @@
 
 .shopcategory-sort-list:hover {
   background-color: rgb(252, 186, 243);
-<<<<<<< HEAD
-=======
-  background-color: #e9ecef;
-}
-
-.shopcategory-sort select {
-  border: none;
-  background: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  color: #333;
-  cursor: pointer;
-  outline: none;
->>>>>>> 8d2c8699efb33c793ed7b9e448cef2374f445fa4
 }
 
 .shopcategory-indexSort p span {

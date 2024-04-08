@@ -1,0 +1,25 @@
+.about-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-container h2 {
+    color: #333;
+  }
+  
+  .about-container p {
+    color: #050505;
+    line-height: 1.6;
+  }
+  
+  h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; 
+  }
+  

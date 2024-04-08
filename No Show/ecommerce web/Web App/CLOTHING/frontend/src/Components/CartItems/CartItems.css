@@ -1,127 +1,77 @@
 .cartitems {
+  font-family: Arial, sans-serif;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  margin-bottom: 300px;
 }
 
 .cartitems-format-main {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
-  align-items: center;
+  display: flex;
+  justify-content: space-between;
   font-weight: bold;
-  font-size: 16px;
-  border-bottom: 2px solid #ddd;
+  margin-bottom: 10px;
 }
 
 .cartitems-format-main p {
+  flex: 1;
   text-align: center;
-  margin: 0;
 }
 
 .cartitems-format {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  font-size: 14px;
-}
-
-.cartitems-format img {
-  width: 50px;
+  margin-bottom: 5px;
 }
 
 .cartitems-product-icon {
   width: 50px;
-  border-radius: 5px;
+  height: 50px;
 }
-
-.cartitems-product-title {
-  font-weight: bold;
-}
-
 
 .cartitems-down {
-  margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .cartitems-total {
-  flex-basis: 60%;
-  margin-bottom: 50px;
+  flex: 2;
+  margin-right: 20px;
 }
 
 .cartitems-promocode {
-  flex-basis: 35%;
+  flex: 1;
+}
+
+.cartitems-total-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .cartitems-input-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 30px;
-  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 .cartitems-input-container input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
+  margin-bottom: 10px;
 }
 
-.cartitems-input-container input[type="text"],
-.cartitems-input-container input[type="email"] {
-  height: 40px;
-}
-
-.cartitems-input-container input[type="text"]::placeholder,
-.cartitems-input-container input[type="email"]::placeholder {
-  color: #999;
-}
-
-.cartitems-input-container input[type="text"]:focus,
-.cartitems-input-container input[type="email"]:focus {
-  border-color: #555;
-}
-
-.cartitems-promobox {
-  display: flex;
-}
-
-.cartitems-promobox input {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-}
-
-.cartitems-promobox button {
-  padding: 10px 20px;
+.cartitems-input-container input[type="submit"] {
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
 }
 
-.cartitems-payment-btn {
+.cartitems-input-container input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.payment-title {
   margin-top: 20px;
-  padding: 15px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-  transition: background-color 0.3s ease;
-}
-
-.cartitems-payment-btn:hover {
-  background-color: #218838;
 }
 
 .payment-popup {
@@ -130,25 +80,64 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  padding: 150px;
-  border-radius: 10px;
-  box-shadow: 5px 20px 25px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .payment-popup-close {
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 10px;
-  font-size: 24px;
   cursor: pointer;
 }
 
 .payment-success {
-  color: #28a745;
+  color: green;
   font-weight: bold;
 }
 
 .payment-error {
-  color: #dc3545;
+  color: red;
   font-weight: bold;
+}
+
+.promo-applied-message {
+  color: green;
+  font-weight: bold;
+}
+
+.cartitems-promobox {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.cartitems-promobox input {
+  flex: 1;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.cartitems-promobox button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.cartitems-promobox button:hover {
+  background-color: #0056b3;
+}
+
+.cartitems-remove {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.cartitems-remove:hover {
+  background-color: darkred;
 }
