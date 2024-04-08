@@ -1,7 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
+import Shop from "./Pages/Shop";
+import Cart from "./Pages/Cart";
+import Product from "./Pages/Product";
+import ShopCategory from "./Pages/ShopCategory";
+import LoginSignup from "./Pages/LoginSignup";
+import Contact from "./Pages/Contact";
+import About from "./Pages/About";
 
 
 const stripePromise = loadStripe("pk_test_51OvSq1HjQsfCN3ihPmxsbkss0yEvWXDK0JSx6w9okn38UmB5l0OdRUWopK2KhigoBqGWy7w94HXiybMj6ywC3GI300Cl3WNXk7");
