@@ -16,8 +16,8 @@
     .loader {
       --r1: 154%;
       --r2: 68.5%;
-      width: 100px; /* Increased width */
-      height: 100px; /* Increased height */
+      width: 120px; /* Increased width */
+      height: 120px; /* Increased height */
       aspect-ratio: 1;
       border-radius: 50%; 
       background:
@@ -40,6 +40,10 @@
         66%  {background-position: -100%  66%,0%   66% ,100% 66% }
         100% {background-position:    0% 100%,100% 100%,200% 100%}
     }
+    /* Initially hide the content */
+    #root {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -48,17 +52,23 @@
   <!-- Loading animation -->
   <div class="loader"></div>
 
-  <div id="root"></div>
+  <!-- Website content -->
+  <div id="root">
+    <!-- Your website content goes here -->
+    <h1>Welcome to My Website</h1>
+    <p>This is some content of my website.</p>
+  </div>
 
-  <!-- JavaScript for adding/removing loading class -->
+  <!-- JavaScript for adding/removing loading class and showing content -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Show loader when page starts loading
       document.querySelector('.loader').style.display = 'block';
 
-      // Hide loader after 2 seconds
+      // Hide loader and show content after 2 seconds
       setTimeout(function() {
         document.querySelector('.loader').style.display = 'none';
+        document.getElementById('root').style.display = 'block';
       }, 2000); // 2000 milliseconds = 2 seconds
     });
   </script>
