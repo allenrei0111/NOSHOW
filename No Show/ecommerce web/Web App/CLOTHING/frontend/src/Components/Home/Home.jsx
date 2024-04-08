@@ -43,7 +43,7 @@ const Hero = () => {
         </>
       )}
       <div className="hero-left">
-        <h2>Fresh and trending collections</h2>
+        <h1>Fresh and trending collections</h1>
         <div>
           <div>
             <p class="animate__animated animate__bounceInDown"> designed</p>

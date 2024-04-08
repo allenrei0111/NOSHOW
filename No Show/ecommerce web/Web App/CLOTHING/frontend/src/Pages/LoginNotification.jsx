@@ -9,7 +9,7 @@ const LoginNotification = ({ isAuthenticated }) => {
   }
 
   return (
-    <div className="overlay"> {/* Apply overlay class here */}
+    <div className="overlay"> {}
       <div className="login-notification">
         <p>You need to login first to access this feature.</p>
         <Link to="/login">Login</Link>

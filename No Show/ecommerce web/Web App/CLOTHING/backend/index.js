@@ -125,7 +125,7 @@ app.post('/applypromo', (req, res) => {
             message = "Invalid promo code";
         }
 
-        // You can perform further operations here like updating the cart with the discount, etc.
+
 
         // Send response
         res.status(200).json({ success: true, message, discount: discountPercentage });
@@ -146,11 +146,9 @@ app.post('/removepromo', (req, res) => {
     }
 });
 
-// Remaining endpoints and server setup...
-
 //Create an endpoint at ip/login for login the user and giving auth-token
 app.post('/login', async (req, res) => {
-    console.log("Login");
+    console.login("Login");
     let success = false;
     let user = await Users.findOne({ email: req.body.email });
     if (user) {
