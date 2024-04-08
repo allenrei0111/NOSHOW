@@ -1,7 +1,7 @@
-import p1_img from './product_1.png'
-import p2_img from './product_2.png'
-import p3_img from './product_13.png'
-import p4_img from './product_26.png'
+import p1_img from './soon_1.jpeg'
+import p2_img from './soon_2.jpg'
+import p3_img from './soon_3.jpeg'
+import p4_img from './soon_4.jpeg'
 
 let soon_product = [
   {
