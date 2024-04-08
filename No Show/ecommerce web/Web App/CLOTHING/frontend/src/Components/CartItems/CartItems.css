@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .cartitems {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -21,50 +20,16 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 5px;
-=======
-/* CartItems Component Styles */
-.cartitems {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff; /* Change background color to white */
-}
-
-.cartitems-format-main, .cartitems-format {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr 1fr 1fr auto;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.cartitems-format-main p, .cartitems-format p {
-  text-align: center;
-  margin: 0; /* Remove default margin */
->>>>>>> 356827b71a7eb577c6891d3042f58080a3b19136
 }
 
 .cartitems-product-icon {
   width: 50px;
   height: 50px;
-<<<<<<< HEAD
-=======
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.cartitems-remove-icon {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
->>>>>>> 356827b71a7eb577c6891d3042f58080a3b19136
 }
 
 .cartitems-down {
   display: flex;
   justify-content: space-between;
-<<<<<<< HEAD
   margin-top: 20px;
 }
 
@@ -107,71 +72,6 @@
 
 .payment-title {
   margin-top: 20px;
-=======
-  align-items: flex-start;
-  margin-top: 20px;
-}
-
-.cartitems-total h1 {
-  margin: 0; /* Remove default margin */
-  font-size: 1.2rem;
-}
-
-.cartitems-total-item h3 {
-  margin: 0; /* Remove default margin */
-  font-size: 1.1rem;
-}
-
-.cartitems-promocode p {
-  margin: 0; /* Remove default margin */
-  font-size: 0.9rem;
-}
-
-.cartitems-promobox {
-  display: flex;
-  align-items: center; /* Align items vertically */
-}
-
-.cartitems-promobox input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
-}
-
-.cartitems-promobox button {
-  padding: 8px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cartitems-promobox button:hover {
-  background-color: #0056b3; /* Darken hover color */
-}
-
-.cartitems-payment {
-  margin-top: 20px;
-}
-
-.cartitems-payment button {
-  padding: 10px 20px;
-  background-color: #4caf50; /* Change payment button color */
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cartitems-payment button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
->>>>>>> 356827b71a7eb577c6891d3042f58080a3b19136
 }
 
 /* Popup container */
@@ -180,21 +80,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-<<<<<<< HEAD
   background-color: #fff;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-=======
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
->>>>>>> 356827b71a7eb577c6891d3042f58080a3b19136
 }
 
 /* Success message */
@@ -215,7 +104,6 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
-<<<<<<< HEAD
 }
 
 .payment-success {
@@ -226,9 +114,6 @@
 .payment-error {
   color: red;
   font-weight: bold;
-=======
-  font-size: 24px;
->>>>>>> 356827b71a7eb577c6891d3042f58080a3b19136
 }
 
 .promo-applied-message {
