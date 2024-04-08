@@ -234,16 +234,6 @@ app.post('/addtocart', fetchuser, async (req, res) => {
     res.send("Added")
 })
 
-//Create an endpoint for saving the product in cart
-app.post('/removefromcart', fetchuser, async (req, res) => {
-    console.log("Remove Cart");
-    let userData = await Users.findOne({ _id: req.user.id });
-    if (userData.cartData[req.body.itemId] != 0) {
-        userData.cartData[req.body.itemId] -= 1;
-    }
-    await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
-    res.send("Removed");
-})
 
 //Create an endpoint for saving the product in cart
 app.post('/getcart', fetchuser, async (req, res) => {
@@ -279,7 +269,11 @@ app.post("/addproduct", async (req, res) => {
     res.json({ success: true, name: req.body.name })
 });
 
-
+app.post("/removeproduct", async (req, res) => {
+    const product = await Product.findOneAndDelete({ id: req.body.id });
+    console.log("Removed");
+    res.json({ success: true, name: req.body.name })
+});
 
 const port = 4000;
 app.listen(port, (error) => {
