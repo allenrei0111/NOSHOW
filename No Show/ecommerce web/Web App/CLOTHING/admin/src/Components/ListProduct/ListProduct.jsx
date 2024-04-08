@@ -17,7 +17,7 @@ const ListProduct = () => {
 
     const removeProduct = async (id) => {
       const confirmDelete = window.confirm("Are you sure you want to remove this product?");
-      if (!confirmDelete) return; // If user cancels, do nothing
+      if (!confirmDelete) return; 
 
       await fetch('http://localhost:4000/removeproduct', {
         method: 'POST',
