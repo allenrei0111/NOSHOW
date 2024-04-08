@@ -1,77 +1,104 @@
+/* CartItems Component Styles */
 .cartitems {
-  font-family: Arial, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff; /* Change background color to white */
 }
 
-.cartitems-format-main {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.cartitems-format-main p {
-  flex: 1;
-  text-align: center;
-}
-
-.cartitems-format {
-  display: flex;
-  justify-content: space-between;
+.cartitems-format-main, .cartitems-format {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
-  margin-bottom: 5px;
+  padding: 10px 0;
+}
+
+.cartitems-format-main p, .cartitems-format p {
+  text-align: center;
+  margin: 0; /* Remove default margin */
 }
 
 .cartitems-product-icon {
   width: 50px;
   height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cartitems-remove-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .cartitems-down {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   margin-top: 20px;
 }
 
-.cartitems-total {
-  flex: 2;
-  margin-right: 20px;
+.cartitems-total h1 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.2rem;
 }
 
-.cartitems-promocode {
-  flex: 1;
+.cartitems-total-item h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.1rem;
 }
 
-.cartitems-total-item {
+.cartitems-promocode p {
+  margin: 0; /* Remove default margin */
+  font-size: 0.9rem;
+}
+
+.cartitems-promobox {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
+  align-items: center; /* Align items vertically */
 }
 
-.cartitems-input-container {
-  margin-top: 20px;
+.cartitems-promobox input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
 }
 
-.cartitems-input-container input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.cartitems-input-container input[type="submit"] {
+.cartitems-promobox button {
+  padding: 8px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.cartitems-input-container input[type="submit"]:hover {
-  background-color: #0056b3;
+.cartitems-promobox button:hover {
+  background-color: #0056b3; /* Darken hover color */
 }
 
-.payment-title {
+.cartitems-payment {
   margin-top: 20px;
+}
+
+.cartitems-payment button {
+  padding: 10px 20px;
+  background-color: #4caf50; /* Change payment button color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cartitems-payment button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 /* Popup container */
@@ -80,10 +107,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Success message */
@@ -104,54 +135,5 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
-}
-
-.payment-success {
-  color: green;
-  font-weight: bold;
-}
-
-.payment-error {
-  color: red;
-  font-weight: bold;
-}
-
-.promo-applied-message {
-  color: green;
-  font-weight: bold;
-}
-
-.cartitems-promobox {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.cartitems-promobox input {
-  flex: 1;
-  padding: 5px;
-  margin-right: 10px;
-}
-
-.cartitems-promobox button {
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.cartitems-promobox button:hover {
-  background-color: #0056b3;
-}
-
-.cartitems-remove {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.cartitems-remove:hover {
-  background-color: darkred;
+  font-size: 24px;
 }
