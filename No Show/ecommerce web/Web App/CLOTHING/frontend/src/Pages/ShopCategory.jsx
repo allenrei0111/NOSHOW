@@ -41,7 +41,7 @@ const ShopCategory = (props) => {
       <div className="shopcategory-indexSort">
         <div className="shopcategory-sort">
           Sort by{" "}
-          <select value={sortOrder} onChange={handleSortChange}>
+          <select value={sortOrder} onChange={handleSortChange} className="shopcategory-sort-list">
             <option value="asc">Price: Lowest First</option>
             <option value="desc">Price: Highest First</option>
           </select>

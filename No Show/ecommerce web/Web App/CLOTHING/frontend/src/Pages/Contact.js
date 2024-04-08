@@ -1,4 +1,5 @@
-//reference from https://www.emailjs.com/docs/examples/reactjs/ and https://www.youtube.com/watch?v=I4DKr1JLC50 
+//reference from https://www.emailjs.com/docs/examples/reactjs/
+
 import { useRef, useState } from 'react';
 import './CSS/Contact.css';
 import emailjs from '@emailjs/browser';
