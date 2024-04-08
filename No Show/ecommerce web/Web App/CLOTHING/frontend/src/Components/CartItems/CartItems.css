@@ -1,3 +1,4 @@
+/* General Styles */
 .cartitems {
   padding: 20px;
   border: 1px solid #ddd;
@@ -6,31 +7,15 @@
   margin-bottom: 300px;
 }
 
-.cartitems-format-main {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
-  align-items: center;
-  font-weight: bold;
-  font-size: 16px;
-  border-bottom: 1px solid #ddd;
-}
-
-.cartitems-format-main p {
-  text-align: center;
-  margin: 0;
-}
-
+.cartitems-format-main,
 .cartitems-format {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
-  font-size: 14px;
+  font-size: 16px;
 }
 
-.cartitems-format img {
-  width: 50px;
-}
-
+.cartitems-format img,
 .cartitems-product-icon {
   width: 50px;
   border-radius: 5px;
@@ -40,6 +25,11 @@
   font-weight: bold;
 }
 
+/* Specific Styles */
+.cartitems-format-main p {
+  text-align: center;
+  margin: 0;
+}
 
 .cartitems-down {
   margin-top: 20px;
@@ -47,24 +37,14 @@
   justify-content: space-between;
 }
 
-.cartitems-total {
-  flex-basis: 60%;
-  margin-bottom: 50px;
-}
-
-.cartitems-promocode {
-  flex-basis: 35%;
-}
-
-.cartitems-input-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+.cartitems-input-container,
+.cartitems-promobox {
   margin-top: 30px;
   margin-bottom: 40px;
 }
 
-.cartitems-input-container input {
+.cartitems-input-container input,
+.cartitems-promobox input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -77,35 +57,28 @@
   height: 40px;
 }
 
-.cartitems-input-container input[type="text"]::placeholder,
-.cartitems-input-container input[type="email"]::placeholder {
+.cartitems-input-container input::placeholder,
+.cartitems-promobox input::placeholder {
   color: #999;
 }
 
-.cartitems-input-container input[type="text"]:focus,
-.cartitems-input-container input[type="email"]:focus {
+.cartitems-input-container input:focus,
+.cartitems-promobox input:focus {
   border-color: #555;
 }
 
-.cartitems-promobox {
-  display: flex;
-}
-
-.cartitems-promobox input {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
+.cartitems-promobox button,
+.cartitems-payment-btn {
+  padding: 10px 20px;
   border-radius: 5px;
+  cursor: pointer;
   outline: none;
 }
 
 .cartitems-promobox button {
-  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 .cartitems-payment-btn {
@@ -114,10 +87,6 @@
   background-color: #28a745;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-  transition: background-color 0.3s ease;
 }
 
 .cartitems-payment-btn:hover {
