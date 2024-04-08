@@ -75,12 +75,12 @@ const CartItems = () => {
   // Function to handle submission of promo code
   const handlePromoCodeSubmit = async () => {
     // Simulate promo code application and calculate the total saved amount
-    if (promoCode === "CODE1") {
-      setTotalSaved(10); // Set the total saved amount based on the promo code
-    } else if (promoCode === "CODE2") {
-      setTotalSaved(20);
-    } else if (promoCode === "CODE3") {
-      setTotalSaved(30);
+    if (promoCode === "NOSHOW30") {
+      setTotalSaved(getTotalCartAmount() * 0.3); // 30% off discount
+    } else if (promoCode === "LANDERSTYLEZ") {
+      setTotalSaved(getTotalCartAmount() * 0.5); // 50% off discount
+    } else if (promoCode === "SAVE10") {
+      setTotalSaved(getTotalCartAmount() * 0.1); // 10% off discount
     } else {
       setError("Invalid promo code");
     }
@@ -140,7 +140,7 @@ const CartItems = () => {
             <div className="cartitems-total-item">
               <h3>Total</h3>
               <h3>${getTotalCartAmount() - totalSaved}</h3>
-              {promoCodeApplied && <p>Total saved: ${totalSaved}</p>}
+              {promoCodeApplied && <p>Total saved: ${totalSaved.toFixed(2)}</p>}
             </div>
           </div>
         </div>
