@@ -32,10 +32,10 @@ const Hero = () => {
         <h2>Fresh and trending collections</h2>
         <div>
           <div>
-            <p>designed</p>
+            <p class="animate__animated animate__bounceInDown"> designed</p>
           </div>
-          <p>for </p>
-          <p>everyone.</p>
+          <p class="animate__animated animate__bounceInLeft"> for </p>
+          <p class="animate__animated animate__bounceInRight"> everyone.</p>
         </div>
       </div>
       <div className="hero-right">
