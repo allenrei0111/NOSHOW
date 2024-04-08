@@ -146,7 +146,7 @@ const CartItems = () => {
           </div>
         </div>
         <div className="cartitems-promocode">
-          <p class="animate__animated animate__shakeY">ENTER PROMO CODE HERE:</p>
+          <p class="animate__animated animate__shakeY">ENTER PROMO CODE BELOW:</p>
           <div className="cartitems-promobox">
             <input type="text" placeholder="Enter promo code" value={promoCode} onChange={handlePromoCodeChange} />
             <button onClick={handlePromoCodeSubmit}>Apply</button>
