@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import hero_image from '../Images/hero_image.png';
+import hero_image1 from '../Images/hero_image.png';
+import hero_image2 from '../Images/hero_image2.png';
+import hero_image3 from '../Images/hero_image3.png';
 
 const Hero = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const images = [hero_image1, hero_image2, hero_image3]; // Array of image paths
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
     }, 3000); // Wait for 4 seconds before showing the popup
 
-    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+    // Set interval for changing slide every 5 seconds
+    const slideInterval = setInterval(() => {
+      setSlideIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer); // Cleanup the timer on component unmount
+      clearInterval(slideInterval); // Cleanup the slide interval on component unmount
+    };
   }, []); // Empty dependency array ensures this effect runs only once
 
   const handleClosePopup = () => {
@@ -41,7 +53,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="hero-right">
-        <img src={hero_image} alt="" width={1000} />
+        <img src={images[slideIndex]} alt="" width={1000} />
       </div>
     </div>
   );
