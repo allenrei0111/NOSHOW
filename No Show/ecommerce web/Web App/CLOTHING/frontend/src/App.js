@@ -10,6 +10,8 @@ import Product from "./Pages/Product";
 import ShopCategory from "./Pages/ShopCategory";
 import LoginSignup from "./Pages/LoginSignup";
 import Contact from "./Pages/Contact";
+import About from "./Pages/About";
+
 
 // Load your Stripe publishable key
 const stripePromise = loadStripe("pk_test_51OvSq1HjQsfCN3ihPmxsbkss0yEvWXDK0JSx6w9okn38UmB5l0OdRUWopK2KhigoBqGWy7w94HXiybMj6ywC3GI300Cl3WNXk7");
@@ -25,7 +27,7 @@ function App() {
           <Route path="/womens" element={<ShopCategory category="women" />} />
           <Route path="/kids" element={<ShopCategory category="kid" />} />
           <Route path="/product/:productId" element={<Product />} />
-          {/* Integrate Stripe in your Cart component */}
+          {}
           <Route
             path="/cart"
             element={
@@ -36,6 +38,8 @@ function App() {
           />
           <Route path="/login" element={<LoginSignup />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/about' element={<About />} />
+  
         </Routes>
         <Footer />
       </Router>

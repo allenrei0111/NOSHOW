@@ -6,13 +6,13 @@ import { ShopContext } from '../../Context/ShopContext';
  
 const ProductDisplay = (props) => {
   const { product } = props;
-  const { addToCart, selectedSize, setSelectedSize } = useContext(ShopContext); // Using context
+  const { addToCart, selectedSize, setSelectedSize } = useContext(ShopContext); 
  
   const [addedToCart, setAddedToCart] = useState(false);
   const [selectedSizeMessage, setSelectedSizeMessage] = useState('');
  
   const handleSizeSelection = (size) => {
-    setSelectedSize(size); // Set selected size in context
+    setSelectedSize(size); 
     setSelectedSizeMessage(`Size ${size} selected`);
     setAddedToCart(false); // Reset addedToCart state
   };
@@ -56,7 +56,7 @@ const ProductDisplay = (props) => {
         <div className='productdisplay-right-size'>
           <h1>Select Size</h1>
           <div className='productdisplay-right-sizes'>
-            {/* For each size option, add an onClick handler to set the selected size */}
+            {}
             <div className={selectedSize === 'S' ? 'selected-size' : ''} onClick={() => handleSizeSelection('S')}>S</div>
             <div className={selectedSize === 'M' ? 'selected-size' : ''} onClick={() => handleSizeSelection('M')}>M</div>
             <div className={selectedSize === 'L' ? 'selected-size' : ''} onClick={() => handleSizeSelection('L')}>L</div>
@@ -65,7 +65,7 @@ const ProductDisplay = (props) => {
           </div>
           <div className='selected-size-message'>{selectedSizeMessage}</div>
         </div>
-        {/* Conditional rendering based on whether product is added to cart or not */}
+        {}
         {addedToCart ? (
           <p>ADDED TO CART</p>
         ) : (
