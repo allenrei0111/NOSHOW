@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import "./CSS/LoginSignup.css";
 
 const LoginSignup = () => {
   const [state, setState] = useState("Login");
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
   const [showTerms, setShowTerms] = useState(false);
+ 
+    const [isLoading, setIsLoading] = useState(false);
+  
 
 
   const changeHandler = (e) => {
@@ -12,23 +15,30 @@ const LoginSignup = () => {
   };
 
   const login = async () => {
-    let dataObj;
-    await fetch('http://localhost:4000/login', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/form-data',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((resp) => resp.json())
-      .then((data) => { dataObj = data; });
+    setIsLoading(true);
+    try {
+      const response = await fetch('http://localhost:4000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
 
-    if (dataObj.success) {
-      localStorage.setItem('auth-token', dataObj.token);
-      window.location.replace("/");
-    } else {
-      alert(dataObj.errors);
+      if (data.success) {
+        localStorage.setItem('auth-token', data.token);
+        // Show success pop-up
+        alert("Logged in successfully, Welcome Shoppers!");
+        window.location.replace("/");
+      } else {
+        alert(data.errors);
+      }
+    } catch (error) {
+      console.error('Login failed:', error);
+      alert('Login failed. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -53,12 +63,6 @@ const LoginSignup = () => {
       alert('Account already registered.');
     }
   };
-
-  
-  if (localStorage.getItem('auth-token')) {
-    alert('You are already logged in.');
-    window.location.replace("/");
-  }
 
   return (
     <div className="loginsignup">
@@ -124,7 +128,6 @@ const LoginSignup = () => {
     </ul>
 
     <p>By using our website, you acknowledge that you have read, understood, and agree to be bound by these terms and conditions.</p>
-
           </div>
         </div>
       )}
