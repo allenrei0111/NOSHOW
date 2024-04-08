@@ -126,7 +126,7 @@ const CartItems = () => {
       })}
       <div className="cartitems-down">
         <div className="cartitems-total">
-          <h1>Cart Totals</h1>
+        <h1 class="animate__animated animate__bounce">CART TOTALS</h1>
           <div>
             <div className="cartitems-total-item">
               <p>Subtotal</p>
