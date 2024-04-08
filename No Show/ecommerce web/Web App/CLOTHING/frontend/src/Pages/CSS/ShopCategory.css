@@ -32,14 +32,12 @@
 }
 
 .shopcategory-sort:hover {
-<<<<<<< HEAD
   background-color: rgb(252, 186, 243);
   transform: scale(1.2);
 }
 
 .shopcategory-sort-list:hover {
   background-color: rgb(252, 186, 243);
-=======
   background-color: #e9ecef;
 }
 
@@ -52,7 +50,6 @@
   color: #333;
   cursor: pointer;
   outline: none;
->>>>>>> 59b7a90a4e5af0b3cb71c40a7192c7e6bb33fc5b
 }
 
 .shopcategory-indexSort p span {
