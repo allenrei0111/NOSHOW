@@ -23,7 +23,9 @@ const Hero = () => {
         <>
           <div className="overlay"></div>
           <div className="popup">
-            <p>Hurry! Everything on sale. Limited time only!</p>
+            <p>Exclusive offer! Use code</p>
+            <p class="animate__animated animate__heartBeat">'LANDERSTYLEZ'</p>
+            <p>and save 30% off your next purchase.</p>
             <button onClick={handleClosePopup}>Close</button>
           </div>
         </>
