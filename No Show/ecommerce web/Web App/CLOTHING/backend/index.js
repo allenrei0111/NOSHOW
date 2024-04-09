@@ -26,7 +26,7 @@ const storage = multer.diskStorage({
 })
 //Creating an instance of Multer middleware configured with defined storage engine.
 const upload = multer({ storage: storage })
-app.post("/upload", upload.single('product'), (req, res) => {
+app.post("/upload", upload.single('product'), (req, res) => { //Defining route to handle file uploads using Multer middleware
     res.json({
         success: 1,
         image_url: `http://localhost:4000/images/${req.file.filename}`
