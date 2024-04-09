@@ -1,54 +1,47 @@
 .nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 16px;
   box-shadow: 0 1px 3px -2px black;
+  position: relative;
 }
-.nav-search {
-  margin-right: 0px; 
-  margin-left: -10px;
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
+
+.hamburger-icon {
+  display: block;
+  font-size: 24px;
+  cursor: pointer;
+}
+
 .nav-logo {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .nav-logo p {
   color: #171717;
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 600;
 }
-.nav-menu {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  gap: 50px;
-  color: #626262;
-  font-size: 20px;
-  font-weight: 500;
-  margin-left: 250px; 
+
+.nav-search {
+  margin-right: auto; /* Adjusted margin to push it to the right */
+  margin-left: 20px; /* Added margin to separate from the hamburger icon */
 }
-.nav-menu li{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  cursor: pointer;
-}
-.nav-menu hr{
-  border: none;
-  width: 80%;
-height: 3px;
-border-radius: 10px;
-background: #FF4141;
-}
+
 .nav-login-cart {
   display: flex;
   align-items: center;
-  gap: 45px;
+  gap: 20px;
 }
+
 .nav-login-cart button {
   width: 157px;
   height: 58px;
@@ -61,126 +54,65 @@ background: #FF4141;
   cursor: pointer;
   background: white;
 }
-.nav-login-cart button:active{
+
+.nav-login-cart button:active {
   background: #f3f3f3;
 }
-.nav-cart-count{
+
+.nav-login-cart button:hover,
+.nav-cart-link:hover {
+  background-color: rgb(252, 186, 243);
+  transform: scale(1.2);
+}
+
+.nav-cart-link {
+  position: relative; /* To make the position of the indicator relative to the cart */
+}
+
+.nav-cart-count {
+  position: absolute;
+  top: -10px; /* Adjusted position */
+  right: -10px; /* Adjusted position */
   width: 22px;
   height: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -35px;
-  margin-left: -55px;
-  border-radius: 11px;
+  border-radius: 50%;
   font-size: 14px;
   background: red;
   color: white;
 }
-.nav-dropdown{
+
+.nav-menu {
   display: none;
-}
-@media(max-width:1280px){
-  .navbar{
-      padding: 12px 50px;
-  }
-  .nav-logo img{
-      width: 40px;
-  }
-  .nav-logo p{
-      font-size: 25px;
-  }
-  .nav-menu{
-      gap: 30px;
-      font-size: 16px;
-  }
-  .nav-login-cart{
-      gap: 30px;
-  }
-  .nav-login-cart button{
-      width: 120px;
-      height: 45px;
-      font-size: 16px;
-  }
-  .nav-cart-count{
-      margin-left: -40px;
-      font-size: 12px;
-  }
-}
-@media(max-width:1024px){
-  .navbar{
-      padding: 12px 30px;
-  }
-  .nav-menu{
-      gap: 25px;
-      font-size: 14px;
-  }
-  .nav-login-cart button{
-      width: 80px;
-      height: 35px;
-      font-size: 14px;
-  }
-  .nav-login-cart img{
-      width: 30px;
-  }
-  .nav-cart-count{
-      width: 18px;
-      height: 18px;
-  }
-}
-@media(max-width:800px){
-  .navbar{
-      padding: 10px 0px;
-  }
-  .nav-dropdown{
-      display: block;
-      width: 30px;
-      rotate: -90deg;
-      transition: 0.5s;
-  }
-  .nav-menu{
-      display: none;
-      height: 80px;
-      width: 100%;
-      position: absolute;
-      background-color: white;
-      justify-content: center;
-      top: 50px;
-  }
-  .nav-menu-visible{
-      display: flex;
-  }
-  .nav-dropdown.open{
-      transform: rotate(90deg);
-  }
-}
-@media(max-width:500px){
-  .navbar{
-      padding: 8px 0px;
-      gap: 0;
-  }
-  .nav-logo{
-      transform: scale(0.8);
-  }
-  .nav-menu{
-      height: 70px;
-      top: 50px;
-  }
-  .nav-login-cart{
-      transform: scale(0.8);
-  }
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.nav-login:hover{
-  background-color: rgb(252, 186, 243);
-  transform: scale(1.2);
+.nav-menu.visible {
+  display: flex;
+  flex-direction: column;
 }
 
-.nav-logout:hover{
-  background-color: rgb(252, 186, 243);
-  transform: scale(1.2);
-}
-.nav-cart:hover {
-  transform: scale(1.2);
+.nav-menu li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
+.nav-menu li:last-child {
+  border-bottom: none;
+}
+
+.nav-menu a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+}

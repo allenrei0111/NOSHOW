@@ -1,57 +1,64 @@
-import React, { useContext, useRef, useState } from 'react'
-import './Navbar.css'
-import { Link } from 'react-router-dom'
-import logo from '../Images/logo.png'
-import cart_icon from '../Images/cart_icon.png'
-import { ShopContext } from '../../Context/ShopContext'
-import SearchBar from '../../SearchButton/SearchBar'
+import React, { useContext, useState } from 'react';
+import './Navbar.css';
+import { Link } from 'react-router-dom';
+import logo from '../Images/logo.png';
+import cart_icon from '../Images/cart_icon.png';
+import { ShopContext } from '../../Context/ShopContext';
+import SearchBar from '../../SearchButton/SearchBar';
 
 const Navbar = () => {
-
-  let [menu,setMenu] = useState("shop");
-  const {getTotalCartItems, products} = useContext(ShopContext);
+  const [menuVisible, setMenuVisible] = useState(false);
+  const { getTotalCartItems, products } = useContext(ShopContext);
   const handleSearch = searchResults => {};
-  
 
-
-  const menuRef = useRef();
-
-  
+  const handleToggleMenu = () => {
+    setMenuVisible(prevMenuVisible => !prevMenuVisible);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('auth-token');
-    
     alert('Successfully logged out');
-
     // Redirect to homepage
     window.location.replace("/");
-  }
+  };
 
   return (
     <div className='nav'>
-      <Link to='/' style={{ textDecoration: 'none' }} className="nav-logo">
-        <img src={logo} alt="logo" width={300} />
-        
-
-      </Link>
-      <ul ref={menuRef} className="nav-menu">
-        <li onClick={()=>{setMenu("home")}}><Link to='/' style={{ textDecoration: 'none' }}>Home</Link>{menu==="home"?<hr/>:<></>}</li>
-        <li onClick={()=>{setMenu("mens")}}><Link to='/mens' style={{ textDecoration: 'none' }}>Men</Link>{menu==="mens"?<hr/>:<></>}</li>
-        <li onClick={()=>{setMenu("womens")}}><Link to='/womens' style={{ textDecoration: 'none' }}>Women</Link>{menu==="womens"?<hr/>:<></>}</li>
-        <li onClick={()=>{setMenu("kids")}}><Link to='/kids' style={{ textDecoration: 'none' }}>Kids</Link>{menu==="kids"?<hr/>:<></>}</li>
-      </ul>
-
-      <div  className="nav-search"><SearchBar products={products} handleSearch={handleSearch}/></div>
+      <div className="nav-left">
+        <button className="hamburger-icon" onClick={handleToggleMenu}>☰</button>
+        <Link to='/' style={{ textDecoration: 'none' }} className="nav-logo">
+          <img src={logo} alt="logo" width={300} />
+        </Link>
+      </div>
+      <div className="nav-search">
+        <SearchBar products={products} handleSearch={handleSearch}/>
+      </div>
       <div className="nav-login-cart">
         {localStorage.getItem('auth-token')
-        ?<button onClick={handleLogout} className='nav-logout'>Logout</button>
-        :<Link to='/login' style={{ textDecoration: 'none' }}><button className='nav-login'>Login</button></Link>}
-        <Link to="/cart"><img src={cart_icon} alt="cart" width={50} className='nav-cart'/></Link>
-        <div className="nav-cart-count">{getTotalCartItems()}</div>
+          ? <button onClick={handleLogout} className='nav-logout'>Logout</button>
+          : <Link to='/login' style={{ textDecoration: 'none' }}><button className='nav-login'>Login</button></Link>}
+        <Link to="/cart" className="nav-cart-link">
+          <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
+          <div className="nav-cart-count">{getTotalCartItems()}</div>
+        </Link>
       </div>
-      
+
+      <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
+        <li onClick={() => setMenuVisible(false)}>
+          <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
+        </li>
+        <li onClick={() => setMenuVisible(false)}>
+          <Link to='/mens' style={{ textDecoration: 'none' }}>Men</Link>
+        </li>
+        <li onClick={() => setMenuVisible(false)}>
+          <Link to='/womens' style={{ textDecoration: 'none' }}>Women</Link>
+        </li>
+        <li onClick={() => setMenuVisible(false)}>
+          <Link to='/kids' style={{ textDecoration: 'none' }}>Kids</Link>
+        </li>
+      </ul>
     </div>
   )
 }
 
-export default Navbar
+export default Navbar;
