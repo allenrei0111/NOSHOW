@@ -7,8 +7,8 @@ const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-app.use(express.json());
-app.use(cors());
+app.use(express.json()); //Middleware to parse JSON
+app.use(cors());//cors:security, Middleware for enabling CORS
 
 // Database Connection With MongoDB
 mongoose.connect("mongodb+srv://dvinas:password0909123@cluster0.m9z4wgu.mongodb.net/");
@@ -16,7 +16,7 @@ mongoose.connect("mongodb+srv://dvinas:password0909123@cluster0.m9z4wgu.mongodb.
 // Middleware
 app.use(bodyParser.json());
 
-//Image Storage Engine 
+//Image Storage Engine setup using multer 
 const storage = multer.diskStorage({
     destination: './upload/images',
     filename: (req, file, cb) => {
@@ -24,6 +24,7 @@ const storage = multer.diskStorage({
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
 })
+//Creating an instance of Multer middleware configured with defined storage engine.
 const upload = multer({ storage: storage })
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
