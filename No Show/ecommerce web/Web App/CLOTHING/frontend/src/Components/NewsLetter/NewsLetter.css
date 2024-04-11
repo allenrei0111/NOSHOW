@@ -9,11 +9,13 @@
   .newsletter h1 {
     font-size: 28px;
     margin-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   .newsletter p {
     font-size: 18px;
     margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   .newsletter input[type="email"] {
@@ -22,6 +24,7 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   .newsletter button {
