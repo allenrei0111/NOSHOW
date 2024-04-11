@@ -49,20 +49,25 @@
   z-index: 999; /* Ensure the overlay is above other content */
 }
 
+.popup p.promo-code {
+  color: red;
+}
+
+
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #ffffff;
-  border-radius: 20px; /* Increased border radius */
-  padding: 100px; /* Increased padding */
+  border-radius: 20px;
+  padding: 40px; /* Decreased padding */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 80%; /* Adjust as needed */
   text-align: center;
-  opacity: 0; /* Initially hidden */
-  animation: fadeIn 0.5s forwards; /* Fade-in animation */
-  z-index: 1000; /* Ensure the popup is above the overlay */
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+  z-index: 1000;
 }
 
 @keyframes fadeIn {
@@ -74,12 +79,18 @@
   }
 }
 
-.popup p {
+.popup h2 {
   margin: 0;
-  color: #000000; /* Text color changed to white */
-  font-size: 60px;
-  font-family:  "Times New Roman", Times, serif;
+  color: #000000;
+  font-size: 32px; /* Decreased font size */
+  font-family: "Arial", sans-serif; /* Changed font family */
   font-weight: bold;
+}
+
+.popup p {
+  margin: 20px 0; /* Added margin */
+  color: #333333; /* Changed text color */
+  font-size: 25px; /* Decreased font size */
 }
 
 .popup button {
@@ -90,7 +101,8 @@
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 20px;
+  transition: background-color 0.3s ease; /* Added transition effect */
 }
 
 .popup button:hover {
