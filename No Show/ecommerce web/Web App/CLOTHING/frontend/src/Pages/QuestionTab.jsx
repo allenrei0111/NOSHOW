@@ -49,8 +49,8 @@ const QuestionsTab = () => {
         {answersVisible[8] && <p>A: Yes, we are committed to sustainability and use eco-friendly materials in our products wherever possible.</p>}
       </div>
       <div className="question">
-  <h4 onClick={() => toggleAnswer(10)}>Q: Can I change my order after it has been placed?</h4>
-  {answersVisible[10] && <p>A: Unfortunately, we cannot guarantee changes to orders once they have been placed. Please contact our support team for assistance.</p>}
+  <h4 onClick={() => toggleAnswer(9)}>Q: Can I change my order after it has been placed?</h4>
+  {answersVisible[9] && <p>A: Unfortunately, we cannot guarantee changes to orders once they have been placed. Please contact our support team for assistance.</p>}
 </div>
     </div>
   );
