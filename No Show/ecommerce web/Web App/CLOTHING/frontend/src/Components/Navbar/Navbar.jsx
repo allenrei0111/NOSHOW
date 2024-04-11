@@ -8,11 +8,18 @@ import SearchBar from '../../SearchButton/SearchBar';
 
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
+  const [theme, setTheme] = useState('light'); // State for theme mode
   const { getTotalCartItems, products } = useContext(ShopContext);
   const handleSearch = searchResults => {};
 
   const handleToggleMenu = () => {
     setMenuVisible(prevMenuVisible => !prevMenuVisible);
+  };
+
+  const handleToggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light')); // Toggle theme mode
+    document.body.classList.toggle('light'); // Toggle light theme class on body
+    document.body.classList.toggle('dark'); // Toggle dark theme class on body
   };
 
   const handleLogout = () => {
@@ -25,7 +32,13 @@ const Navbar = () => {
   return (
     <div className='nav'>
       <div className="nav-left">
-        <button className="hamburger-icon" onClick={handleToggleMenu}>☰</button>
+        <button className="hamburger-icon" onClick={handleToggleMenu}>
+          ☰
+          {/* Light mode and night mode options */}
+          <span className="theme-toggle" onClick={handleToggleTheme}>
+            {theme === 'light' ? '🌞' : '🌜'}
+          </span>
+        </button>
         <Link to='/' style={{ textDecoration: 'none' }} className="nav-logo">
           <img src={logo} alt="logo" width={300} />
         </Link>
