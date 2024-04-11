@@ -32,9 +32,38 @@
 }
 
 .nav-search {
-  margin-right: auto; /* Adjusted margin to push it to the right */
-  margin-left: 20px; /* Added margin to separate from the hamburger icon */
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Move the search bar to the left */
 }
+
+.nav-search input[type="text"] {
+  width: 200px; /* Adjust width as needed */
+  height: 20px; /* Adjust height as needed */
+  padding: 5px 10px; /* Add padding for better spacing */
+  border: none; /* Remove border */
+  font-size: 14px; /* Adjust font size as needed */
+  border-bottom: 1px solid white; /* Set border color to white */
+}
+
+.nav-search button {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border-radius for rounded corners */
+  padding: 5px 10px; /* Add padding for better appearance */
+  cursor: pointer; /* Add cursor pointer on hover */
+  font-size: 14px; /* Adjust font size as needed */
+  margin-left: 10px; /* Add margin to separate from input field */
+}
+
+
+
+  
+ 
+ 
+
+
 
 .nav-login-cart {
   display: flex;
@@ -46,24 +75,25 @@
   width: 157px;
   height: 58px;
   outline: none;
-  border: 1px solid #7a7a7a;
-  border-radius: 75px;
-  color: #515151;
+  border: none; /* Remove border */
+  border-radius: 10px; /* Adjusted border radius */
+  color: white; /* Text color */
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  background: white;
+  background: linear-gradient(90deg, black, grey); /* Gradient background */
+  transition: background-color 0.3s, transform 0.3s; /* Added transition */
 }
 
 .nav-login-cart button:active {
-  background: #f3f3f3;
+  background: linear-gradient(90deg, black, grey); /* Gradient background */
 }
 
-.nav-login-cart button:hover,
-.nav-cart-link:hover {
-  background-color: rgb(252, 186, 243);
-  transform: scale(1.2);
+.nav-login-cart button:hover {
+  background-color: rgb(252, 186, 243); /* Background color on hover */
+  transform: scale(1.2); /* Scale effect on hover */
 }
+
 
 .nav-cart-link {
   position: relative; /* To make the position of the indicator relative to the cart */
@@ -145,3 +175,5 @@ body.dark .nav-login-cart button {
   background: #333;
   color: white;
 }
+
+

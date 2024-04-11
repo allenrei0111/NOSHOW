@@ -36,7 +36,7 @@ const Navbar = () => {
           ☰
           {/* Light mode and night mode options */}
           <span className="theme-toggle" onClick={handleToggleTheme}>
-            {theme === 'light' ? '🌞' : '🌜'}
+            {theme === 'light' ? '☀︎' : '☾'}
           </span>
         </button>
         <Link to='/' style={{ textDecoration: 'none' }} className="nav-logo">
@@ -71,7 +71,7 @@ const Navbar = () => {
         </li>
       </ul>
     </div>
-  )
+  );
 }
 
 export default Navbar;
