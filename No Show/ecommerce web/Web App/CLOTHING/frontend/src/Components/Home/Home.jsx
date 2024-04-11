@@ -4,7 +4,7 @@ import hero_image1 from '../Images/hero_image.png';
 import hero_image2 from '../Images/hero_image2.png';
 import hero_image3 from '../Images/hero_image3.png';
 
-const Hero = () => {
+const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const images = [hero_image1, hero_image2, hero_image3]; // Array of image paths
@@ -23,7 +23,7 @@ const Hero = () => {
       clearTimeout(timer); // Cleanup the timer on component unmount
       clearInterval(slideInterval); // Cleanup the slide interval on component unmount
     };
-  }, []); // Empty dependency array ensures this effect runs only once
+  }, []);
 
   const handleClosePopup = () => {
     setShowPopup(false);
@@ -42,16 +42,6 @@ const Hero = () => {
           </div>
         </>
       )}
-      <div className="hero-left">
-        <h1>Fresh and trending collections</h1>
-        <div>
-          <div>
-            <p class="animate__animated animate__bounceInDown"> designed</p>
-          </div>
-          <p class="animate__animated animate__bounceInLeft"> for </p>
-          <p class="animate__animated animate__bounceInRight"> everyone.</p>
-        </div>
-      </div>
       <div className="hero-right">
         <img src={images[slideIndex]} alt="" width={1000} />
       </div>
@@ -59,4 +49,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Home;
