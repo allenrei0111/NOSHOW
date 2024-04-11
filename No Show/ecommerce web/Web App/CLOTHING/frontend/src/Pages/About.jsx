@@ -15,18 +15,18 @@ const About = () => {
         <div className="team-members">
           <div className="team-member">
             <img src={teamMember1Img} alt="Team Member 1" />
-            <h3>John Doe</h3>
+            <h3>Allen Delos Trinos</h3>
             <p>Role: Designer</p>
           </div>
           <div className="team-member">
             <img src={teamMember2Img} alt="Team Member 2" />
-            <h3>Jane Smith</h3>
+            <h3>David Aturdido</h3>
             <p>Role: Developer</p>
           </div>
           <div className="team-member">
             <img src={teamMember3Img} alt="Team Member 3" />
-            <h3>Mike Johnson</h3>
-            <p>Role: Marketing Manager</p>
+            <h3>Danilo Vinas</h3>
+            <p>Role: Team Leader</p>
           </div>
         </div>
       </div>
