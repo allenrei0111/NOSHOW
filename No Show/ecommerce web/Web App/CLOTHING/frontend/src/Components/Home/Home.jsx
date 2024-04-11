@@ -42,7 +42,10 @@ const Home = () => {
           </div>
         </>
       )}
-      <div className="hero-right">
+      <div className="hero-top">
+      <h1>Discover Your Style at LanderStyle</h1>
+    </div>
+      <div className="hero-right ">
         <img src={images[slideIndex]} alt="" width={1000} />
       </div>
     </div>

@@ -1,23 +1,31 @@
-
 .hero {
   height: 100vh;
   display: flex;
-  background-image:("../Images/gif.gif");
+  background-image: url('../Images/gif.gif');
   background-size: cover;
   background-position: center;
   margin-bottom: 0;
 }
 
-
-.hero:hover {
-  background: linear-gradient(180deg, #f0f0f0, #e0e0e0);
+.hero-top {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  text-align: center;
+  text-shadow: 5px 5px 20px #000000;
+  font-size: 200%;
+  font-family: 'Times New Roman', Times, serif;
 }
 
+
 .hero-right {
-  flex: 1;
-  display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10%;
+  margin-left: 25%;
+ 
 }
 
 .hero-right img {
@@ -28,7 +36,7 @@
 }
 
 .hero-right img:hover {
-  transform: scale(1.05); /* Scale up image on hover */
+  transform: scale(1.05);
 }
 
 .overlay {
@@ -125,11 +133,4 @@ body.dark .hero-left p {
   color: #f9f9f9;
 }
 
-@keyframes changeColor {
-  0% {
-    background-color: #f3f3f3; /* Start color */
-  }
-  50% {
-    background-color: hsl(0, 0%, 0%); /* End color */
-  }
-}
+
