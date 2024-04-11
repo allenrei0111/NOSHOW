@@ -116,3 +116,32 @@
   text-decoration: none;
   font-size: 18px;
 }
+
+body.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+body.light .nav {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+body.light .nav-login-cart button {
+  background: white;
+}
+
+body.dark {
+  background-color: #333;
+  color: white;
+}
+
+body.dark .nav {
+  background-color: #333;
+  color: white;
+}
+
+body.dark .nav-login-cart button {
+  background: #333;
+  color: white;
+}
