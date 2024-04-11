@@ -36,7 +36,7 @@ const Home = () => {
           <div className="overlay"></div>
           <div className="popup">
             <p>Exclusive offer! Use Code </p>
-            <p class="promo-code animate__animated animate__heartBeat">'LANDERSTYLEZ'</p>
+            <p class="promo-code animate__animated animate__heartBeat">'NOSHOW30'</p>
             <p>and save 30% off your next purchase.</p>
             <button onClick={handleClosePopup}>Close</button>
           </div>
