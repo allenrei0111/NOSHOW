@@ -14,7 +14,7 @@ const QuestionsTab = () => {
       <h3>Frequently Asked Questions</h3>
       <div className="question">
         <h4 onClick={() => toggleAnswer(0)}>Q: How can I contact support?</h4>
-        {answersVisible[0] && <p>A: You can contact our support team at admin@gmail.com</p>}
+        {answersVisible[0] && <p>A: You can contact our support team at LanderStylez@gmail.com</p>}
       </div>
       <div className="question">
         <h4 onClick={() => toggleAnswer(1)}>Q: What are your business hours?</h4>
