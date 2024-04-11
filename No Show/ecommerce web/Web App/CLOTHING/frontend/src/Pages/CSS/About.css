@@ -23,3 +23,49 @@
     margin: 0; 
   }
   
+/* Light Mode */
+body.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+body.light .about-container {
+  background-color: #fff;
+}
+
+body.light .h2 {
+  color: #007bff; /* Adjust heading color */
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: #333;
+  color: white;
+}
+
+body.dark .about-container {
+  background-color: #444;
+}
+
+body.dark .h2 {
+  color: #007bff; /* Adjust heading color */
+}
+
+.about-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.about-container p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
