@@ -13,7 +13,7 @@ const Footer = () => {
         <img src={footer_logo} alt="" width={350} />
       </div>
       <ul className="footer-links">
-      
+       <li><Link to="/Question">Questions</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
       </ul>

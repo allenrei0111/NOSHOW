@@ -11,6 +11,7 @@ import ShopCategory from "./Pages/ShopCategory";
 import LoginSignup from "./Pages/LoginSignup";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
+import Question from "./Pages/QuestionTab";
 
 
 const stripePromise = loadStripe("pk_test_51OvSq1HjQsfCN3ihPmxsbkss0yEvWXDK0JSx6w9okn38UmB5l0OdRUWopK2KhigoBqGWy7w94HXiybMj6ywC3GI300Cl3WNXk7");
@@ -38,7 +39,7 @@ function App() {
           <Route path="/login" element={<LoginSignup />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/about' element={<About />} />
-  
+          <Route path='/question' element={<Question />} />
         </Routes>
         <Footer />
       </Router>
