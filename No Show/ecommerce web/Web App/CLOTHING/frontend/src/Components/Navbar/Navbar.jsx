@@ -32,12 +32,12 @@ const Navbar = () => {
   return (
     <div className='nav'>
       <div className="nav-left">
+        {/* Light mode button */}
+        <button className="theme-toggle" onClick={handleToggleTheme}>
+          {theme === 'light' ? '☀︎' : '☾'}
+        </button>
         <button className="hamburger-icon" onClick={handleToggleMenu}>
           ☰
-          {/* Light mode and night mode options */}
-          <span className="theme-toggle" onClick={handleToggleTheme}>
-            {theme === 'light' ? '☀︎' : '☾'}
-          </span>
         </button>
         <Link to='/' style={{ textDecoration: 'none' }} className="nav-logo">
           <img src={logo} alt="logo" width={300} />

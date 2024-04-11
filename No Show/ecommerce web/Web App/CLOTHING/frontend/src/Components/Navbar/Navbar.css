@@ -58,13 +58,6 @@
 }
 
 
-
-  
- 
- 
-
-
-
 .nav-login-cart {
   display: flex;
   align-items: center;
@@ -177,3 +170,13 @@ body.dark .nav-login-cart button {
 }
 
 
+.theme-toggle {
+  font-size: 24px; /* Same font size as the hamburger icon */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.2); /* Scale effect on hover */
+}
