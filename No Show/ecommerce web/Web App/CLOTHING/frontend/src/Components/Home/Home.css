@@ -1,8 +1,8 @@
 /* Common styles for the hero component */
 .hero {
   height: 100vh;
-  background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
   display: flex;
+  background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
   margin-bottom: 0;
 }
 
@@ -21,20 +21,14 @@
 }
 
 .hero-left h2 {
-  color: #090909;
   font-size: 26px;
   font-weight: 600;
 }
 
 .hero-left p {
-  color: #171717;
   font-size: 100px;
   font-weight: 700;
 }
-
-
-
-
 
 .hero-right {
   flex: 1;
@@ -53,6 +47,7 @@
 .hero-right img:hover {
   transform: scale(1.05); /* Scale up image on hover */
 }
+
 .overlay {
   position: fixed;
   top: 0;
@@ -111,7 +106,40 @@
   background-color: #0056b3;
 }
 
+/* Light Mode */
+body.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
 
+body.light .hero {
+  background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
+}
 
+body.light .hero-left h2 {
+  color: #454545;
+}
+
+body.light .hero-left p {
+  color: #171717;
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: #333;
+  color: white;
+}
+
+body.dark .hero {
+  background: linear-gradient(180deg, #2f2f2f, #1f1f1f22 60%);
+}
+
+body.dark .hero-left h2 {
+  color: #f9f9f9;
+}
+
+body.dark .hero-left p {
+  color: #f9f9f9;
+}
 
 
