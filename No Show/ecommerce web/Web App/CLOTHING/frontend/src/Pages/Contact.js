@@ -45,12 +45,12 @@ const Contact = () => {
 
   return (
     <section>
-      <h4 className='contact'>Contact</h4>
+      <h4 className='contact animate__animated animate__rollIn'>Contact</h4>
       <div className="container">
         
         <form ref={form} onSubmit={sendEmail} className="form-control">
           <h2 className="--center-all">We'd Love to Hear from You!</h2>
-          <p className="--center-all">Please feel free to share any concerns you have in the space provided below.</p>
+          <p className="--centerall">Please feel free to share any concerns you have in the space provided below.</p>
         
           <input type="text" placeholder='Full Name' name='user_name' required />
           <input type="email" placeholder='Email' name='user_email' required onInput={validateEmail} />

@@ -7,7 +7,7 @@ import teamMember3Img from '../Components/Images/team_member3.jpg'; // Adjusted 
 const About = () => {
   return (
     <section>
-      <h4 className='about'>About</h4>
+      <h4 className=" about animate__animated animate__rollIn" >About</h4>
       <div className="about-container">
         <h2 className='h2'>Welcome to LanderStylez</h2>
         <p>LanderStylez is a fashion-forward clothing brand committed to providing high-quality apparel for 

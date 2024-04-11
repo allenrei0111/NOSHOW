@@ -11,7 +11,7 @@ const QuestionsTab = () => {
 
   return (
     <div className="questions-tab">
-      <h3>Frequently Asked Questions</h3>
+      <h3 className='animate__animated animate__rollIn'>Frequently Asked Questions</h3>
       <div className="question">
         <h4 onClick={() => toggleAnswer(0)}>Q: How can I contact support?</h4>
         {answersVisible[0] && <p>A: You can contact our support team at LanderStylez@gmail.com</p>}
