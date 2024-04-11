@@ -9,7 +9,7 @@
 
 .about-container h2 {
   color: #333;
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
@@ -22,6 +22,12 @@
   font-size: 16px;
   line-height: 1.6;
 }
+
+.about {
+  font-size: 30px; /* Adjust the font size as needed */
+}
+
+
 
 /* Adjustments for team member images */
 .team-members {

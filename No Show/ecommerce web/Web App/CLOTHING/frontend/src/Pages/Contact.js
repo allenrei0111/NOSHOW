@@ -45,7 +45,7 @@ const Contact = () => {
 
   return (
     <section>
-      <h4>Contact</h4>
+      <h4 className='contact'>Contact</h4>
       <div className="container">
         
         <form ref={form} onSubmit={sendEmail} className="form-control">
