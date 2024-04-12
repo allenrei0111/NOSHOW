@@ -316,7 +316,7 @@ app.post('/subscribe', async (req, res) => {
             {
                service: 'gmail' ,
                auth: {
-                     user:'emiljs13@gmail.com',
+                     user:'emiljs134@gmail.com',
                      pass: 'EmailJS0101'      
                }    
 
@@ -325,7 +325,7 @@ app.post('/subscribe', async (req, res) => {
 
 const mailOptions = {
 
-    from: 'emiljs13@gmail.com',
+    from: 'emiljs134@gmail.com',
     to: email,
     subject: 'Subscription Confirmation',
     text: 'Thank you for subscribing to our newsletter'
