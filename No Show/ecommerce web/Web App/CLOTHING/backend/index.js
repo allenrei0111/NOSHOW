@@ -295,6 +295,7 @@ const NewsletterSubscription = mongoose.model("NewsletterSubscription", {
     },
 });
 
+const nodemailer = require ('nodemailer');
 // Endpoint to handle newsletter subscriptions
 app.post('/subscribe', async (req, res) => {
     try {
