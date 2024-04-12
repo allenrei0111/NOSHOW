@@ -299,8 +299,14 @@ const NewsletterSubscription = mongoose.model("NewsletterSubscription", newslett
 
 // Endpoint to handle newsletter subscriptions
 app.post('/subscribe', async (req, res) => {
+    const { email } = req.body;
+
     try {
-        const { email } = req.body;
+        // Check if email is already subscribed
+        const existingSubscription = await NewsletterSubscription.findOne({ email });
+        if (existingSubscription) {
+            return res.status(400).json({ success: false, message: "Email already subscribed" });
+        }
 
         // Create a new subscription
         const subscription = new NewsletterSubscription({ email });
