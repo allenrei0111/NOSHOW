@@ -284,7 +284,7 @@ app.post("/removeproduct", async (req, res) => {
     console.log("Removed");
     res.json({ success: true, name: req.body.name })
 });
-const NewsletterSubscription = mongoose.model("NewsletterSubscription", {
+const newsletterSchema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
@@ -295,42 +295,40 @@ const NewsletterSubscription = mongoose.model("NewsletterSubscription", {
     },
 });
 
-const nodemailer = require ('nodemailer');
+const NewsletterSubscription = mongoose.model("NewsletterSubscription", newsletterSchema);
+
 // Endpoint to handle newsletter subscriptions
 app.post('/subscribe', async (req, res) => {
     try {
         const { email } = req.body;
-        
-       
-        
+
         // Create a new subscription
-        const subscription = new NewsletterSubscription({
-            email,
-        });
+        const subscription = new NewsletterSubscription({ email });
         await subscription.save();
-        const transporter = nodemailer.createTransport(
-            {
-               service: 'gmail' ,
-               auth: {
-                     user:'emiljs134@gmail.com',
-                     pass: 'zffe mxvc uglm lzoz'      
-               } ,   
 
+        // Create transporter using nodemailer
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'emiljs134@gmail.com',
+                pass: 'zffe mxvc uglm lzoz'
+            },
             debug: true
-    });
+        });
 
-const mailOptions = {
+        const mailOptions = {
+            from: 'emiljs134@gmail.com',
+            to: email,
+            subject: 'Subscription Confirmation',
+            text: 'Thank you for subscribing to our newsletter'
+        };
 
-    from: 'emiljs134@gmail.com',
-    to: email,
-    subject: 'Subscription Confirmation',
-    text: 'Thank you for subscribing to our newsletter'
-};
-
-await transporter.sendMail(mailOptions);
+        // Send email
+        await transporter.sendMail(mailOptions);
 
         res.status(200).json({ success: true, message: "Subscription successful" });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
     }
 });
