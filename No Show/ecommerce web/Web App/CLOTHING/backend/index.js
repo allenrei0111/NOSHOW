@@ -149,7 +149,7 @@ app.post('/removepromo', (req, res) => {
 
 //Create an endpoint at ip/login for login the user and giving auth-token
 app.post('/login', async (req, res) => {
-    console.login("Login");
+    console.log("Login");
     let success = false;
     let user = await Users.findOne({ email: req.body.email });
     if (user) {
@@ -284,7 +284,39 @@ app.post("/removeproduct", async (req, res) => {
     console.log("Removed");
     res.json({ success: true, name: req.body.name })
 });
+const NewsletterSubscription = mongoose.model("NewsletterSubscription", {
+    email: {
+        type: String,
+        unique: true,
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+    },
+});
 
+// Endpoint to handle newsletter subscriptions
+app.post('/subscribe', async (req, res) => {
+    try {
+        const { email } = req.body;
+        
+        // Check if the email is already subscribed
+        const existingSubscription = await NewsletterSubscription.findOne({ email });
+        if (existingSubscription) {
+            return res.status(400).json({ success: false, message: "Email is already subscribed" });
+        }
+        
+        // Create a new subscription
+        const subscription = new NewsletterSubscription({
+            email,
+        });
+        await subscription.save();
+        
+        res.status(200).json({ success: true, message: "Subscription successful" });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
+    }
+});
 const port = 4000;
 app.listen(port, (error) => {
     if (!error) console.log("Server Running on port " + port);

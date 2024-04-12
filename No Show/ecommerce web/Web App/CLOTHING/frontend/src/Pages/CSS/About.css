@@ -1,25 +1,79 @@
+/* Base styles for .about-container */
 .about-container {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .about-container h2 {
-    color: #333;
-  }
-  
-  .about-container p {
-    color: #050505;
-    line-height: 1.6;
-  }
-  
-  h2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0; 
-  }
-  
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-container h2 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.about-container p {
+  color: #050505;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.about {
+  font-size: 30px; /* Adjust the font size as needed */
+}
+
+
+
+/* Adjustments for team member images */
+.team-members {
+  display: flex; /* Display team members horizontally */
+  justify-content: space-between; /* Distribute space between team members */
+}
+
+.team-member {
+  display: flex; /* Make each team member a flex container */
+  flex-direction: column; /* Stack image and text vertically */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+}
+
+.team-member img {
+  width: 100px; /* Set width for team member images */
+  height: 100px; /* Set height for team member images */
+  border-radius: 50%; /* Make images circular */
+  object-fit: cover; /* Ensure the entire image is visible within the circle */
+  margin-bottom: 10px; /* Add space between image and text */
+}
+
+/* Light Mode */
+body.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+body.light .about-container {
+  background-color: #fff;
+}
+
+body.light .h2 {
+  color: #007bff; /* Adjust heading color */
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: #333;
+  color: white;
+}
+
+body.dark .about-container {
+  background-color: #444;
+}
+
+body.dark .h2 {
+  color: #007bff; /* Adjust heading color */
+}
