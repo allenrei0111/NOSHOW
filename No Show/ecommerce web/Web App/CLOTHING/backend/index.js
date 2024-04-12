@@ -284,7 +284,7 @@ app.post("/removeproduct", async (req, res) => {
     console.log("Removed");
     res.json({ success: true, name: req.body.name })
 });
-const newsletterSchema = new mongoose.Schema({
+const NewsletterSubscription = mongoose.model("NewsletterSubscription", {
     email: {
         type: String,
         unique: true,
@@ -295,46 +295,25 @@ const newsletterSchema = new mongoose.Schema({
     },
 });
 
-const NewsletterSubscription = mongoose.model("NewsletterSubscription", newsletterSchema);
-
 // Endpoint to handle newsletter subscriptions
 app.post('/subscribe', async (req, res) => {
-    const { email } = req.body;
-
     try {
-        // Check if email is already subscribed
+        const { email } = req.body;
+        
+        // Check if the email is already subscribed
         const existingSubscription = await NewsletterSubscription.findOne({ email });
         if (existingSubscription) {
-            return res.status(400).json({ success: false, message: "Email already subscribed" });
+            return res.status(400).json({ success: false, message: "Email is already subscribed" });
         }
-
+        
         // Create a new subscription
-        const subscription = new NewsletterSubscription({ email });
-        await subscription.save();
-
-        // Create transporter using nodemailer
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'emiljs134@gmail.com',
-                pass: 'zffe mxvc uglm lzoz'
-            },
-            debug: true
+        const subscription = new NewsletterSubscription({
+            email,
         });
-
-        const mailOptions = {
-            from: 'emiljs134@gmail.com',
-            to: email,
-            subject: 'Subscription Confirmation',
-            text: 'Thank you for subscribing to our newsletter'
-        };
-
-        // Send email
-        await transporter.sendMail(mailOptions);
-
+        await subscription.save();
+        
         res.status(200).json({ success: true, message: "Subscription successful" });
     } catch (error) {
-        console.error(error);
         res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
     }
 });
