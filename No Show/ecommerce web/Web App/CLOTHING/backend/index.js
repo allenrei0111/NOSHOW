@@ -318,9 +318,9 @@ app.post('/subscribe', async (req, res) => {
                auth: {
                      user:'emiljs134@gmail.com',
                      pass: 'EmailJS0101'      
-               }    
+               } ,   
 
-            
+            debug: true
     });
 
 const mailOptions = {
