@@ -312,7 +312,18 @@ app.post('/subscribe', async (req, res) => {
             email,
         });
         await subscription.save();
-        
+        const transporter = nodemailer.createTransport(
+            {
+               service: 'gmail' ,
+               auth: {
+                     user:'emiljs13@gmail.com',
+                     pass: 'EmailJS0101'      
+               }    
+
+            
+    });
+
+
         res.status(200).json({ success: true, message: "Subscription successful" });
     } catch (error) {
         res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
