@@ -313,7 +313,7 @@ app.post('/subscribe', async (req, res) => {
                service: 'gmail' ,
                auth: {
                      user:'emiljs134@gmail.com',
-                     pass: 'EmailJS0101'      
+                     pass: 'zffe mxvc uglm lzoz'      
                } ,   
 
             debug: true
