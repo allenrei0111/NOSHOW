@@ -301,11 +301,7 @@ app.post('/subscribe', async (req, res) => {
     try {
         const { email } = req.body;
         
-        // Check if the email is already subscribed
-        const existingSubscription = await NewsletterSubscription.findOne({ email });
-        if (existingSubscription) {
-            return res.status(400).json({ success: false, message: "Email is already subscribed" });
-        }
+       
         
         // Create a new subscription
         const subscription = new NewsletterSubscription({
