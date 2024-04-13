@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
-import { useProfile } from './ProfileContext'; // Assuming you named your context file as ProfileContext.js
+import React, { useState, useEffect } from 'react';
 
 const Profile = () => {
-  const { profileData, saveProfileData } = useProfile();
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [bio, setBio] = useState('');
   const [profilePicture, setProfilePicture] = useState(null);
+  const [savedProfile, setSavedProfile] = useState(null);
+
+  useEffect(() => {
+    // Load saved profile from localStorage on component mount
+    const savedProfileData = localStorage.getItem('savedProfile');
+    if (savedProfileData) {
+      setSavedProfile(JSON.parse(savedProfileData));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save profile to localStorage whenever it changes
+    localStorage.setItem('savedProfile', JSON.stringify(savedProfile));
+  }, [savedProfile]);
 
   const handleSaveProfile = () => {
     const profile = {
@@ -15,7 +27,7 @@ const Profile = () => {
       bio: bio,
       profilePicture: profilePicture
     };
-    saveProfileData(profile);
+    setSavedProfile(profile);
   };
 
   const handleProfilePictureChange = (e) => {
@@ -29,7 +41,35 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      {/* Your profile form JSX */}
+      <div className="label">
+        <label>Name:</label>
+        <input className="input-field" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      </div>
+      <div className="label">
+        <label>Gender:</label>
+        <input className="input-field" type="text" value={gender} onChange={(e) => setGender(e.target.value)} />
+      </div>
+      <div className="label">
+        <label>Bio:</label>
+        <textarea className="textarea-field" value={bio} onChange={(e) => setBio(e.target.value)} />
+      </div>
+      <div className="label">
+        <label>Profile Picture:</label>
+        <input className="file-input" type="file" accept="image/*" onChange={handleProfilePictureChange} />
+      </div>
+      <button className="save-button" onClick={handleSaveProfile}>Save</button>
+
+      {savedProfile && (
+        <div className="profile-info">
+          <h2>Profile:</h2>
+          <p>Name: {savedProfile.name}</p>
+          <p>Gender: {savedProfile.gender}</p>
+          <p>Bio: {savedProfile.bio}</p>
+          {savedProfile.profilePicture && (
+            <img src={savedProfile.profilePicture} alt="Profile" />
+          )}
+        </div>
+      )}
     </div>
   );
 };
