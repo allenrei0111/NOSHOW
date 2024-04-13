@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Popup from './Popup'; // Path to your Popup component
 import './Profile.css';
 const Profile = () => {
   const [name, setName] = useState('');
@@ -7,8 +6,6 @@ const Profile = () => {
   const [bio, setBio] = useState('');
   const [profilePicture, setProfilePicture] = useState(null);
   const [savedProfile, setSavedProfile] = useState(null);
-  const [popupOpen, setPopupOpen] = useState(false);
-  const [popupType, setPopupType] = useState('');
 
   useEffect(() => {
     // Load saved profile from localStorage on component mount
@@ -33,22 +30,6 @@ const Profile = () => {
     setSavedProfile(profile);
   };
 
-  const handlePopupSave = (value) => {
-    switch (popupType) {
-      case 'name':
-        setName(value);
-        break;
-      case 'gender':
-        setGender(value);
-        break;
-      case 'bio':
-        setBio(value);
-        break;
-      default:
-        break;
-    }
-  };
-
   const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -58,31 +39,19 @@ const Profile = () => {
     };
   };
 
-  const openPopup = (type) => {
-    setPopupType(type);
-    setPopupOpen(true);
-  };
-
-  const closePopup = () => {
-    setPopupOpen(false);
-  };
-
   return (
     <div className="profile-container">
       <div className="label">
         <label>Name:</label>
-        <button className="popup-trigger" onClick={() => openPopup('name')}>Edit</button>
-        <span>{name}</span>
+        <input className="input-field" type="text" value={name} onChange={(e) => setName(e.target.value)} />
       </div>
       <div className="label">
         <label>Gender:</label>
-        <button className="popup-trigger" onClick={() => openPopup('gender')}>Edit</button>
-        <span>{gender}</span>
+        <input className="input-field" type="text" value={gender} onChange={(e) => setGender(e.target.value)} />
       </div>
       <div className="label">
         <label>Bio:</label>
-        <button className="popup-trigger" onClick={() => openPopup('bio')}>Edit</button>
-        <span>{bio}</span>
+        <textarea className="textarea-field" value={bio} onChange={(e) => setBio(e.target.value)} />
       </div>
       <div className="label">
         <label>Profile Picture:</label>
@@ -101,8 +70,6 @@ const Profile = () => {
           )}
         </div>
       )}
-
-      <Popup isOpen={popupOpen} onClose={closePopup} onSave={handlePopupSave} />
     </div>
   );
 };
