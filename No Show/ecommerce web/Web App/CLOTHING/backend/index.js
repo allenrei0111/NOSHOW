@@ -317,18 +317,45 @@ app.post('/subscribe', async (req, res) => {
         res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
     }
 });
-app.get('/user', fetchuser, async (req, res) => {
+
+
+// PUT update user profile data
+app.put('/api/profile', fetchuser, async (req, res) => {
     try {
-      const user = await Users.findById(req.user.id).select('-password');
-      if (!user) {
-        return res.status(404).json({ success: false, message: 'User not found' });
-      }
-      res.json({ success: true, user });
+        const { name, email } = req.body;
+        const user = await Users.findById(req.user.id);
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+        // Update user's name and email if provided
+        if (name) user.name = name;
+        if (email) user.email = email;
+        await user.save();
+        res.json({ success: true, message: "Profile updated successfully", user: { name: user.name, email: user.email } });
     } catch (error) {
-      console.error('Error fetching user data:', error);
-      res.status(500).json({ success: false, message: 'Failed to fetch user data' });
+        console.error("Error updating profile data:", error);
+        res.status(500).json({ success: false, message: "Failed to update profile" });
     }
-  });
+});
+
+// PUT update user profile data
+app.put('/api/profile', fetchuser, async (req, res) => {
+    try {
+        const { name, email } = req.body;
+        const user = await Users.findById(req.user.id);
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+        user.name = name || user.name;
+        user.email = email || user.email;
+        await user.save();
+        res.json({ success: true, message: "Profile updated successfully", user: { name: user.name, email: user.email } });
+    } catch (error) {
+        console.error("Error updating profile data:", error);
+        res.status(500).json({ success: false, message: "Failed to update profile" });
+    }
+});
+  
 const port = 4000;
 app.listen(port, (error) => {
     if (!error) console.log("Server Running on port " + port);
