@@ -1,4 +1,6 @@
 /* CartItems Component Styles */
+
+/* Main container styles */
 .cartitems {
   max-width: 1000px;
   margin: 0 auto;
@@ -8,18 +10,23 @@
   background-color: #fff; /* Change background color to white */
 }
 
-.cartitems-format-main, .cartitems-format {
+/* Grid layout for cart items */
+.cartitems-format-main,
+.cartitems-format {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
   padding: 10px 0;
 }
 
-.cartitems-format-main p, .cartitems-format p {
+/* Styling for product names and other text */
+.cartitems-format-main p,
+.cartitems-format p {
   text-align: center;
   margin: 0; /* Remove default margin */
 }
 
+/* Styling for product icons */
 .cartitems-product-icon {
   width: 50px;
   height: 50px;
@@ -27,12 +34,14 @@
   border-radius: 50%;
 }
 
+/* Styling for remove icon */
 .cartitems-remove-icon {
   width: 20px;
   height: 20px;
   cursor: pointer;
 }
 
+/* Styling for total section */
 .cartitems-down {
   display: flex;
   justify-content: space-between;
@@ -40,21 +49,13 @@
   margin-top: 20px;
 }
 
-.cartitems-total h1 {
-  margin: 0; /* Remove default margin */
-  font-size: 1.2rem;
-}
-
-.cartitems-total-item h3 {
-  margin: 0; /* Remove default margin */
-  font-size: 1.1rem;
-}
-
+.cartitems-total h1,
+.cartitems-total-item h3,
 .cartitems-promocode p {
   margin: 0; /* Remove default margin */
-  font-size: 0.9rem;
 }
 
+/* Styling for promo code box */
 .cartitems-promobox {
   display: flex;
   align-items: center; /* Align items vertically */
@@ -76,7 +77,6 @@
   border-radius: 10px;
   color: white;
   font-size: 15px;
- 
   cursor: pointer;
   background: linear-gradient(90deg, black, grey);
   transition: background-color 0.3s, transform 0.3s;
@@ -90,11 +90,7 @@
   transform: scale(1.20);
 }
 
-
-
-
-
-
+/* Styling for payment section */
 .cartitems-payment {
   margin-top: 20px;
 }
@@ -114,7 +110,7 @@
   cursor: not-allowed;
 }
 
-/* Popup container */
+/* Popup container styles */
 .payment-popup {
   position: fixed;
   top: 50%;
@@ -130,19 +126,19 @@
   align-items: center;
 }
 
-/* Success message */
+/* Success message styles */
 .payment-success {
   color: green;
   font-weight: bold;
 }
 
-/* Error message */
+/* Error message styles */
 .payment-error {
   color: red;
   font-weight: bold;
 }
 
-/* Close button */
+/* Close button styles */
 .payment-popup-close {
   position: absolute;
   top: 10px;
@@ -151,62 +147,7 @@
   font-size: 24px;
 }
 
-/* Light Mode */
-body.light {
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-body.light .cartitems {
-  background-color: #fff;
-  border: 1px solid #ccc;
-}
-
-body.light .cartitems-promobox input {
-  border-color: #ccc;
-}
-
-body.light .cartitems-promobox button {
-  background-color: #007bff;
-}
-
-body.light .cartitems-promobox button:hover {
-  background-color: #0056b3;
-}
-
-body.light .cartitems-payment button {
-  background-color: #4caf50;
-}
-
-/* Dark Mode */
-body.dark {
-  background-color: #333;
-  color: white;
-}
-
-body.dark .cartitems {
-  background-color: #444;
-  border: 1px solid #555;
-}
-
-body.dark .cartitems-promobox input {
-  border-color: #555;
-}
-
-body.dark .cartitems-promobox button {
-  background-color: #007bff;
-}
-
-body.dark .cartitems-promobox button:hover {
-  background-color: #0056b3;
-}
-
-body.dark .cartitems-payment button {
-  background-color: #4caf50;
-}
-
-
-/* Shipping Address Section */
+/* Shipping Address Section styles */
 .cartitems-shipping-info {
   margin-top: 20px;
   padding: 20px;
@@ -215,12 +156,15 @@ body.dark .cartitems-payment button {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
 }
 
+/* Input container styles */
 .cartitems-input-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
+  margin: 10px 0; /* Add margin for spacing */
 }
 
+/* Shipping input styles */
 .shipping-input {
   width: calc(100% - 20px); /* Adjust width to account for padding */
   height: 40px;
@@ -240,18 +184,23 @@ body.dark .cartitems-payment button {
   color: #999;
 }
 
-/* Add margin to input container */
-.cartitems-input-container {
-  margin: 10px 0; /* Add margin for spacing */
+/* Light Mode styles */
+body.light {
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-/* Light Mode */
 body.light .cartitems-shipping-info {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark Mode */
+/* Dark Mode styles */
+body.dark {
+  background-color: #333;
+  color: white;
+}
+
 body.dark .cartitems-shipping-info {
   background-color: #444;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -270,6 +219,7 @@ body.dark .cartitems-shipping-info {
   }
 }
 
+/* Button styles */
 button[type="submit"] {
   width: 250px; /* Adjusted width */
   height: 50px; /* Adjusted height */
@@ -302,4 +252,3 @@ button[type="submit"]:disabled {
 button[type="submit"]:disabled:hover {
   background-color: #ccc;
 }
-
