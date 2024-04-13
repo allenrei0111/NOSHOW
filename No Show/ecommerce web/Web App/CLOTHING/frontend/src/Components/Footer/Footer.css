@@ -80,3 +80,8 @@ body.dark .footer {
   background-color: #444;
   color: white;
 }
+
+.footer-links li a.active {
+  font-weight: bold; /*  bold font for active link */
+  color: blue; /* blue color for active link */
+}
