@@ -8,7 +8,7 @@ import SearchBar from '../../SearchButton/SearchBar';
 
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
-  const [theme, setTheme] = useState('light'); // State for theme mode
+  const [theme, setTheme] = useState('light'); 
   const { getTotalCartItems, products } = useContext(ShopContext);
   const handleSearch = searchResults => {};
 
@@ -17,9 +17,9 @@ const Navbar = () => {
   };
 
   const handleToggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light')); // Toggle theme mode
-    document.body.classList.toggle('light'); // Toggle light theme class on body
-    document.body.classList.toggle('dark'); // Toggle dark theme class on body
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light')); 
+    document.body.classList.toggle('light'); 
+    document.body.classList.toggle('dark'); 
   };
 
   const handleLogout = () => {
@@ -53,9 +53,14 @@ const Navbar = () => {
         <Link to="/cart" className="nav-cart-link">
           <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
           <div className="nav-cart-count">{getTotalCartItems()}</div>
+          
         </Link>
       </div>
-
+      {localStorage.getItem('auth-token') && (
+          <Link to="/profile" style={{ textDecoration: 'none' }}>
+            <button className='nav-profile'>Profile</button>
+          </Link>
+        )}
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>

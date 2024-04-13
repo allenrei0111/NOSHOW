@@ -317,6 +317,18 @@ app.post('/subscribe', async (req, res) => {
         res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
     }
 });
+app.get('/user', fetchuser, async (req, res) => {
+    try {
+      const user = await Users.findById(req.user.id).select('-password');
+      if (!user) {
+        return res.status(404).json({ success: false, message: 'User not found' });
+      }
+      res.json({ success: true, user });
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      res.status(500).json({ success: false, message: 'Failed to fetch user data' });
+    }
+  });
 const port = 4000;
 app.listen(port, (error) => {
     if (!error) console.log("Server Running on port " + port);

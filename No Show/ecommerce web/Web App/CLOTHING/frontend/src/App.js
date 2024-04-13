@@ -12,7 +12,7 @@ import LoginSignup from "./Pages/LoginSignup";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
 import Question from "./Pages/QuestionTab";
-import Profile from "./Profile/Profile.jsx";
+import Profile from "./Profile/Profile";
 
 
 const stripePromise = loadStripe("pk_test_51OvSq1HjQsfCN3ihPmxsbkss0yEvWXDK0JSx6w9okn38UmB5l0OdRUWopK2KhigoBqGWy7w94HXiybMj6ywC3GI300Cl3WNXk7");
@@ -37,7 +37,7 @@ function App() {
               </Elements>
             }
           />
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/about' element={<About />} />
