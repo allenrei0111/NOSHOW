@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Popup from './Popup'; // Path to your Popup component
-
+import './Profile.css';
 const Profile = () => {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
