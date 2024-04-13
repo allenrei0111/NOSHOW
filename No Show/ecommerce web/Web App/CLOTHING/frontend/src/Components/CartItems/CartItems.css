@@ -269,3 +269,37 @@ body.dark .cartitems-shipping-info {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+button[type="submit"] {
+  width: 250px; /* Adjusted width */
+  height: 50px; /* Adjusted height */
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px; /* Increased font size */
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(90deg, black, grey);
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 20px auto; /* Center the button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button[type="submit"]:hover {
+  background-color: #2a2a2a;
+  transform: scale(1.05);
+}
+
+button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Disable button styling */
+button[type="submit"]:disabled:hover {
+  background-color: #ccc;
+}
+
