@@ -1,5 +1,4 @@
-
-
+/* Footer */
 .footer {
   background-color: #f8f9fa; 
   color: #333; 
@@ -22,6 +21,16 @@
   margin: 0 10px;
 }
 
+.footer-links li a {
+  color: #333; /* Default link color */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.footer-links li a:hover {
+  color: #007bff; /* Change color on hover */
+}
+
 .footer-social-icon {
   margin-bottom: 20px;
 }
@@ -38,6 +47,16 @@
 
 .footer-copyright p {
   margin: 0;
+}
+
+/* Indicator for Current Location */
+.current-page {
+  color: #007bff; /* Change color for current page */
+}
+
+/* Animations on Hover */
+.footer-icons-container:hover img {
+  transform: scale(1.1); /* Scale up on hover */
 }
 
 /* Light Mode */
@@ -61,4 +80,3 @@ body.dark .footer {
   background-color: #444;
   color: white;
 }
-
