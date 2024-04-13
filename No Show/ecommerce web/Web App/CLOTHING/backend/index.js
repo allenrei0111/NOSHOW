@@ -317,24 +317,18 @@ app.post('/subscribe', async (req, res) => {
         res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
     }
 });
-
-
-// PUT update user profile data
-app.put('/api/profile', fetchuser, async (req, res) => {
+// GET user profile data
+app.get('/api/profile', fetchuser, async (req, res) => {
     try {
-        const { name, email } = req.body;
+        // Fetch user data based on user ID
         const user = await Users.findById(req.user.id);
         if (!user) {
             return res.status(404).json({ success: false, message: "User not found" });
         }
-        // Update user's name and email if provided
-        if (name) user.name = name;
-        if (email) user.email = email;
-        await user.save();
-        res.json({ success: true, message: "Profile updated successfully", user: { name: user.name, email: user.email } });
+        res.json(user);
     } catch (error) {
-        console.error("Error updating profile data:", error);
-        res.status(500).json({ success: false, message: "Failed to update profile" });
+        console.error("Error fetching profile data:", error);
+        res.status(500).json({ success: false, message: "Failed to fetch profile data" });
     }
 });
 
@@ -349,7 +343,7 @@ app.put('/api/profile', fetchuser, async (req, res) => {
         user.name = name || user.name;
         user.email = email || user.email;
         await user.save();
-        res.json({ success: true, message: "Profile updated successfully", user: { name: user.name, email: user.email } });
+        res.json({ success: true, message: "Profile updated successfully" });
     } catch (error) {
         console.error("Error updating profile data:", error);
         res.status(500).json({ success: false, message: "Failed to update profile" });
