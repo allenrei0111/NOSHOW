@@ -155,45 +155,51 @@ const CartItems = () => {
         </div>
       </div>
       <div className="cartitems-shipping-info">
-        <h2>Shipping Address</h2>
-        <div className="cartitems-input-container">
-          <input 
-            type="text" 
-            name="firstName" 
-            placeholder="First Name" 
-            value={shippingInfo.firstName}
-            onChange={handleShippingChange} 
-          />
-          <input 
-            type="text" 
-            name="lastName" 
-            placeholder="Last Name" 
-            value={shippingInfo.lastName}
-            onChange={handleShippingChange} 
-          />
-          <input 
-            type="text" 
-            name="country" 
-            placeholder="Country" 
-            value={shippingInfo.country}
-            onChange={handleShippingChange} 
-          />
-          <input 
-            type="text" 
-            name="address" 
-            placeholder="Address" 
-            value={shippingInfo.address}
-            onChange={handleShippingChange} 
-          />
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Email" 
-            value={shippingInfo.email}
-            onChange={handleShippingChange} 
-          />
-        </div>
-      </div>
+  <h2>Shipping Address</h2>
+  <div className="cartitems-input-container">
+    <input 
+      type="text" 
+      name="firstName" 
+      placeholder="First Name" 
+      value={shippingInfo.firstName}
+      onChange={handleShippingChange} 
+      className="shipping-input"
+    />
+    <input 
+      type="text" 
+      name="lastName" 
+      placeholder="Last Name" 
+      value={shippingInfo.lastName}
+      onChange={handleShippingChange} 
+      className="shipping-input"
+    />
+    <input 
+      type="text" 
+      name="country" 
+      placeholder="Country" 
+      value={shippingInfo.country}
+      onChange={handleShippingChange} 
+      className="shipping-input"
+    />
+    <input 
+      type="text" 
+      name="address" 
+      placeholder="Address" 
+      value={shippingInfo.address}
+      onChange={handleShippingChange} 
+      className="shipping-input"
+    />
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="Email" 
+      value={shippingInfo.email}
+      onChange={handleShippingChange} 
+      className="shipping-input"
+    />
+  </div>
+</div>
+
       <h2 className="payment-title">Payment</h2>
       <form onSubmit={handleSubmit}>
         <CardElement />
