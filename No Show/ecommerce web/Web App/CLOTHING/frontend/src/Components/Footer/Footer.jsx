@@ -5,7 +5,7 @@ import footer_logo from '../Images/logo_big.png';
 import instagram_icon from '../Images/instagram_icon.png';
 import twitter_icon from '../Images/twitter_icon.png';
 import facebook_icon from '../Images/facebook_icon.png';
- 
+
 const Footer = () => {
   return (
     <div className='footer'>
@@ -13,9 +13,12 @@ const Footer = () => {
         <img src={footer_logo} alt="" width={350} />
       </div>
       <ul className="footer-links">
-       <li><Link to="/Question">Questions</Link></li>
+        <li><Link to="/Question">FAQ</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/terms">Terms of Service</Link></li>
+        <li><Link to="/privacy">Privacy Policy</Link></li>
+        
       </ul>
       <div className="footer-social-icon">
         <div className="footer-icons-container">
@@ -28,12 +31,12 @@ const Footer = () => {
           <img src={facebook_icon} alt="" width={50} />
         </div>
       </div>
-      <div className="footer-copyright">
+      
         <hr />
-        <p>TEAM NO SHOW </p>
+        <p>&copy; {new Date().getFullYear()} TEAM NO SHOW. All rights reserved.</p>
       </div>
-    </div>
+    
   );
 };
- 
+
 export default Footer;
