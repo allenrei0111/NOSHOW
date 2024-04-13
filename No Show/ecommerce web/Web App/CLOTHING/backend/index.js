@@ -317,6 +317,7 @@ app.post('/subscribe', async (req, res) => {
         res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
     }
 });
+
 const port = 4000;
 app.listen(port, (error) => {
     if (!error) console.log("Server Running on port " + port);
