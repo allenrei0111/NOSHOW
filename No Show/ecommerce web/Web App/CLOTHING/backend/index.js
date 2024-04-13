@@ -7,8 +7,8 @@ const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-app.use(express.json()); //Middleware to parse JSON
-app.use(cors());//cors:security, Middleware for enabling CORS
+app.use(express.json());
+app.use(cors());
 
 // Database Connection With MongoDB
 mongoose.connect("mongodb+srv://dvinas:password0909123@cluster0.m9z4wgu.mongodb.net/");
@@ -16,7 +16,7 @@ mongoose.connect("mongodb+srv://dvinas:password0909123@cluster0.m9z4wgu.mongodb.
 // Middleware
 app.use(bodyParser.json());
 
-//Image Storage Engine setup using multer 
+//Image Storage Engine 
 const storage = multer.diskStorage({
     destination: './upload/images',
     filename: (req, file, cb) => {
@@ -24,9 +24,8 @@ const storage = multer.diskStorage({
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
 })
-//Creating an instance of Multer middleware configured with defined storage engine.
 const upload = multer({ storage: storage })
-app.post("/upload", upload.single('product'), (req, res) => { //Defining route to handle file uploads using Multer middleware
+app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
         image_url: `http://localhost:4000/images/${req.file.filename}`
@@ -79,6 +78,9 @@ const Product = mongoose.model("Product", {
     name: {
         type: String,
         required: true,
+    },
+    bio: {
+        type: String,
     },
     image: {
         type: String,
@@ -295,18 +297,16 @@ const NewsletterSubscription = mongoose.model("NewsletterSubscription", {
     },
 });
 
-// Endpoint to handle newsletter subscriptions
 app.post('/subscribe', async (req, res) => {
     try {
         const { email } = req.body;
         
-        // Check if the email is already subscribed
+        
         const existingSubscription = await NewsletterSubscription.findOne({ email });
         if (existingSubscription) {
             return res.status(400).json({ success: false, message: "Email is already subscribed" });
         }
         
-        // Create a new subscription
         const subscription = new NewsletterSubscription({
             email,
         });
@@ -317,6 +317,7 @@ app.post('/subscribe', async (req, res) => {
         res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
     }
 });
+
 const port = 4000;
 app.listen(port, (error) => {
     if (!error) console.log("Server Running on port " + port);
