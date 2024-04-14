@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
+
 const Profile = () => {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [bio, setBio] = useState('');
   const [profilePicture, setProfilePicture] = useState(null);
   const [savedProfile, setSavedProfile] = useState(null);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingGender, setIsEditingGender] = useState(false);
+  const [isEditingBio, setIsEditingBio] = useState(false);
 
   useEffect(() => {
     // Load saved profile from localStorage on component mount
@@ -43,15 +47,44 @@ const Profile = () => {
     <div className="profile-container">
       <div className="label">
         <label>Name:</label>
-        <input className="input-field" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        {isEditingName ? (
+          <input
+            className="input-field"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            onBlur={() => setIsEditingName(false)}
+          />
+        ) : (
+          <span onClick={() => setIsEditingName(true)}>{name || "Click to edit"}</span>
+        )}
       </div>
       <div className="label">
         <label>Gender:</label>
-        <input className="input-field" type="text" value={gender} onChange={(e) => setGender(e.target.value)} />
+        {isEditingGender ? (
+          <input
+            className="input-field"
+            type="text"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            onBlur={() => setIsEditingGender(false)}
+          />
+        ) : (
+          <span onClick={() => setIsEditingGender(true)}>{gender || "Click to edit"}</span>
+        )}
       </div>
       <div className="label">
         <label>Bio:</label>
-        <textarea className="textarea-field" value={bio} onChange={(e) => setBio(e.target.value)} />
+        {isEditingBio ? (
+          <textarea
+            className="textarea-field"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            onBlur={() => setIsEditingBio(false)}
+          />
+        ) : (
+          <span onClick={() => setIsEditingBio(true)}>{bio || "Click to edit"}</span>
+        )}
       </div>
       <div className="label">
         <label>Profile Picture:</label>
@@ -62,12 +95,12 @@ const Profile = () => {
       {savedProfile && (
         <div className="profile-info">
           <h2>Profile:</h2>
-          <p>Name: {savedProfile.name}</p>
-          <p>Gender: {savedProfile.gender}</p>
-          <p>Bio: {savedProfile.bio}</p>
           {savedProfile.profilePicture && (
             <img src={savedProfile.profilePicture} alt="Profile" />
           )}
+          <p>Name: {savedProfile.name}</p>
+          <p>Gender: {savedProfile.gender}</p>
+          <p>Bio: {savedProfile.bio}</p>
         </div>
       )}
     </div>

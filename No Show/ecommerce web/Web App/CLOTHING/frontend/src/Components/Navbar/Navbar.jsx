@@ -53,7 +53,6 @@ const Navbar = () => {
         <Link to="/cart" className="nav-cart-link">
           <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
           <div className="nav-cart-count">{getTotalCartItems()}</div>
-          
         </Link>
       </div>
       {localStorage.getItem('auth-token') && (
@@ -74,6 +73,16 @@ const Navbar = () => {
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/kids' style={{ textDecoration: 'none' }}>Kids</Link>
         </li>
+        {localStorage.getItem('auth-token') && (
+          <li onClick={() => setMenuVisible(false)}>
+            <Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link>
+          </li>
+        )}
+        {localStorage.getItem('auth-token') && (
+          <li onClick={() => setMenuVisible(false)}>
+            <Link to="/track" style={{ textDecoration: 'none' }}>Track</Link>
+          </li>
+        )}
       </ul>
     </div>
   );
