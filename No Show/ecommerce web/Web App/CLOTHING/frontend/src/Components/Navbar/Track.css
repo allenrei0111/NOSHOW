@@ -59,4 +59,24 @@
     transform: scale(1.05);
   }
   
+  .tracking-input {
+    width: 100%;
+    max-width: 300px; /* Limit the maximum width */
+    margin: 0 auto; /* Center horizontally */
+    text-align: center; /* Center text */
+  }
+  
+  .tracking-input input {
+    width: 90%;
+    height: 50px; /* Adjusted height to match buttons */
+    border-radius: 10px;
+    padding: 0 10px; /* Add padding for better appearance */
+    font-size: 18px; /* Adjusted font size */
+    margin-bottom: 10px; /* Add some space below the input */
+    transition: background-color 0.3s; /* Add transition effect */
+  }
+  
+  .tracking-input input:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+  }
   
