@@ -85,3 +85,7 @@ const Profile = () => {
           <span onClick={() => setIsEditingBio(true)}>{bio || "Click to edit"}</span>
         )}
       </div>
+      <div className="label">
+        <label>Profile Picture:</label>
+        <input className="file-input" type="file" accept="image/*" onChange={handleProfilePictureChange} />
+      </div>
