@@ -10,3 +10,11 @@ const Profile = () => {
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingGender, setIsEditingGender] = useState(false);
   const [isEditingBio, setIsEditingBio] = useState(false);
+
+  useEffect(() => {
+    // Load saved profile from localStorage on component mount
+    const savedProfileData = localStorage.getItem('savedProfile');
+    if (savedProfileData) {
+      setSavedProfile(JSON.parse(savedProfileData));
+    }
+  }, []);
