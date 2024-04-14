@@ -72,3 +72,16 @@ const Profile = () => {
           <span onClick={() => setIsEditingGender(true)}>{gender || "Click to edit"}</span>
         )}
       </div>
+      <div className="label">
+        <label>Bio:</label>
+        {isEditingBio ? (
+          <textarea
+            className="textarea-field"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            onBlur={() => setIsEditingBio(false)}
+          />
+        ) : (
+          <span onClick={() => setIsEditingBio(true)}>{bio || "Click to edit"}</span>
+        )}
+      </div>
