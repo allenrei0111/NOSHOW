@@ -14,6 +14,9 @@ import About from "./Pages/About";
 import Question from "./Pages/QuestionTab";
 import Profile from "./Profile/Profile";
 import ScrollToTopButton from "./Components/ScrollToTopButton/ScrollToTopButton";
+import Track from "./Components/Navbar/Track";
+import Hotlist from "./Components/HotList/Hotlist";
+
 
 
 const stripePromise = loadStripe("pk_test_51OvSq1HjQsfCN3ihPmxsbkss0yEvWXDK0JSx6w9okn38UmB5l0OdRUWopK2KhigoBqGWy7w94HXiybMj6ywC3GI300Cl3WNXk7");
