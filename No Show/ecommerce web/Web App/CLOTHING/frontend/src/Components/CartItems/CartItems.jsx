@@ -12,6 +12,7 @@ const CartItems = () => {
   const [processing, setProcessing] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentError, setPaymentError] = useState(false);
+  const [trackingCode, setTrackingCode] = useState(""); // State to store the tracking code
   const [shippingInfo, setShippingInfo] = useState({
     firstName: "",
     lastName: "",
@@ -45,27 +46,24 @@ const CartItems = () => {
         return;
       }
 
-      const response = await fetch("/api/payments", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ 
-          payment_method: paymentMethod.id,
-          shippingInfo
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Payment Successful! Thank you!");
-      }
-
       setPaymentSuccess(true);
     } catch (error) {
       setError(error.message);
       setProcessing(false);
       setPaymentError(true);
     }
+
+
+
+  // Function to generate a random tracking code
+  const generateTrackingCode = () => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const length = 10;
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
   };
 
   const handleShippingChange = (e) => {
@@ -214,6 +212,7 @@ const CartItems = () => {
         <div className="payment-popup">
           <span className="payment-popup-close" onClick={() => setPaymentSuccess(false)}>&times;</span>
           <div className="payment-success">Payment successful!</div>
+          <div>Tracking Code: {trackingCode}</div>
         </div>
       )}
 
@@ -222,6 +221,7 @@ const CartItems = () => {
         <div className="payment-popup">
           <span className="payment-popup-close" onClick={() => setPaymentError(false)}>&times;</span>
           <div className="payment-error">{error}</div>
+          <div>Tracking Code: {trackingCode}</div>
         </div>
       )}
     </div>
