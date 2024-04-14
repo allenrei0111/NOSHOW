@@ -5,6 +5,7 @@ import logo from '../Images/logo.png';
 import cart_icon from '../Images/cart_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
 import SearchBar from '../../SearchButton/SearchBar';
+import AddToFavourites from '../AddToFavorurites/AddToFavourites.jsx';
 
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -50,8 +51,13 @@ const Navbar = () => {
         {localStorage.getItem('auth-token')
           ? <button onClick={handleLogout} className='nav-logout'>Logout</button>
           : <Link to='/login' style={{ textDecoration: 'none' }}><button className='nav-login'>Login</button></Link>}
-          
+
         <Link to="/cart" className="nav-cart-link">
+          <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
+          <div className="nav-cart-count">{getTotalCartItems()}</div>
+        </Link>
+
+        <Link to="/addtocart" className="nav-cart-link">
           <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
           <div className="nav-cart-count">{getTotalCartItems()}</div>
         </Link>

@@ -1,26 +1,33 @@
-import React, { useContext } from 'react';
-import { ShopContext } from '../../Context/ShopContext';
-import './AddToFavorites.css';
+import React, { useContext, useState } from "react";
+import "./AddToFavourites.css";
+import { ShopContext } from "../../Context/ShopContext";
+import 'animate.css';
 
-const AddToFavorites = ({ productId }) => {
-  const { addToFavorites, removeFromFavorites, favorites, isFavorite } = useContext(ShopContext);
-
-  const handleToggleFavorite = () => {
-    if (isFavorite(productId)) {
-      removeFromFavorites(productId);
-    } else {
-      addToFavorites(productId);
-    }
-  };
-
+const AddToFavourite = () => {
+  const { products, cartItems} = useContext(ShopContext);
+  
   return (
-    <button
-      className={`add-to-favorites ${isFavorite(productId) ? 'favorited' : ''}`}
-      onClick={handleToggleFavorite}
-    >
-      {isFavorite(productId) ? 'Remove from Favorites' : 'Add to Favorites'}
-    </button>
+    <div>
+      <hr />
+      {products.map((e) => {
+        if (cartItems[e.id] > 0) {
+          return (
+            <div key={e.id}>
+              <div className="cartitems-format">
+                <img className="cartitems-product-icon" src={e.image} alt="" />
+                <p>{e.name}</p>
+              </div>
+              <hr />
+            </div>
+          );
+        }
+        return null;
+      })}
+ 
+</div>
+
   );
 };
 
-export default AddToFavorites;
+
+export default AddToFavourite;

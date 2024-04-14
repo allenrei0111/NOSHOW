@@ -3,6 +3,7 @@ import './ProductDisplay.css';
 import star_icon from '../Images/star_icon.png';
 import star_dull_icon from '../Images/star_dull_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
+import AddToFavourite from '../AddToFavorurites/AddToFavourites';
 
 const ProductDisplay = ({ product }) => {
   const { addToCart, selectedSize, setSelectedSize } = useContext(ShopContext);
@@ -116,6 +117,12 @@ const ProductDisplay = ({ product }) => {
           <p>ADDED TO CART</p>
         ) : (
           <button onClick={() => handleAddToCart(product.id)}>ADD TO CART</button>
+        )}
+
+{AddToFavourite ? (
+          <p>ADDED TO CART</p>
+        ) : (
+          <button onClick={() => handleAddToCart(product.id)}>ADD TO Favourite</button>
         )}
       </div>
     </div>
