@@ -36,20 +36,27 @@
     100% { transform: rotate(360deg); }
   }
   
-  .track-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #3498db;
-    color: white;
+  .search-button, .track-another-button {
+    width: 130px; /* Adjusted width */
+    height: 50px; /* Adjusted height */
+    outline: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px; /* Adjusted font size */
+    font-weight: 500;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    background: linear-gradient(90deg, black, grey);
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Center horizontally */
   }
   
-  .track-button:hover {
+  .search-button:hover, .track-another-button:hover {
     background-color: #2980b9;
+    transform: scale(1.05);
   }
+  
   
