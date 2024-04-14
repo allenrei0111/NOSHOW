@@ -53,24 +53,12 @@ const CartItems = () => {
       setPaymentError(true);
     }
 
-
-
-  // Function to generate a random tracking code
-  const generateTrackingCode = () => {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 10;
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
+    // Generate and set tracking code regardless of success or error
+    const generatedCode = generateTrackingCode();
+    setTrackingCode(generatedCode);
   };
 
-  const handleShippingChange = (e) => {
-    const { name, value } = e.target;
-    setShippingInfo({ ...shippingInfo, [name]: value });
-  };
-
+  
   // Function to handle submission of promo code
   const handlePromoCodeSubmit = async () => {
     // Simulate promo code application and calculate the total saved amount
