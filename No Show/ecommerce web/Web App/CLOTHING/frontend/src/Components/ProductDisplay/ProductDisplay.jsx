@@ -27,9 +27,12 @@ const ProductDisplay = ({ product }) => {
     { text: "Okay product, nothing extraordinary.", rating: 3, name: "William Davis" },
     { text: "Poor customer support, disappointed.", rating: 2, name: "Ava Garcia" },
     { text: "Horrible quality, waste of money.", rating: 1, name: "Matthew Wilson" },
-  
   ];
-  
+
+  // Check if the product object exists and has the image property before accessing it
+  if (!product || !product.image) {
+    return null; // Render nothing if product or image is not available
+  }
 
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
@@ -55,6 +58,7 @@ const ProductDisplay = ({ product }) => {
     addToFavorite(productId);
     setAddedToFavorite(true);
   };
+
   return (
     <div className='productdisplay'>
       <div className='productdisplay-left'>

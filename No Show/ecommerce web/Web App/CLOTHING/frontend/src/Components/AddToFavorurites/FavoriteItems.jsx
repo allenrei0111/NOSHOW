@@ -14,7 +14,7 @@ const FavoriteItems = ({ products, favoriteItems, removeFromFavorite, selectedSi
       </div>
       <hr />
       {products.map((e) => {
-        if (favoriteItems[e.id] > 0) {
+        if (favoriteItems && favoriteItems[e.id] > 0) {
           return (
             <div key={e.id}>
               <div className="favoriteitems-format">
@@ -22,7 +22,8 @@ const FavoriteItems = ({ products, favoriteItems, removeFromFavorite, selectedSi
                 <p>{e.name}</p>
                 <p>${e.new_price}</p>
                 <p>{selectedSize}</p>
-                <button className="favoriteitems-quantity">{favoriteItems[e.id]}</button>
+                {/* Render the quantity button only if selectedSize is defined */}
+                {selectedSize && <button className="favoriteitems-quantity">{favoriteItems[e.id]}</button>}
                 <p>${e.new_price * favoriteItems[e.id]}</p>
                 <button className="favoriteitems-remove" onClick={() => removeFromFavorite(e.id)}>X</button>
               </div>
