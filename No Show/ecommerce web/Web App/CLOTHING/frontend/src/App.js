@@ -16,6 +16,7 @@ import Profile from "./Profile/Profile";
 import ScrollToTopButton from "./Components/ScrollToTopButton/ScrollToTopButton";
 import Track from "./Components/Navbar/Track";
 import Hotlist from "./Components/HotList/Hotlist";
+import Favorite from "./Components/AddToFavorurites/AddToFavourites";
 
 
 
@@ -48,6 +49,7 @@ function App() {
             }
           />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/favorite" element={<Favorite />} />
           <Route path="/track" element={<Track />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path='/contact' element={<Contact />} />
