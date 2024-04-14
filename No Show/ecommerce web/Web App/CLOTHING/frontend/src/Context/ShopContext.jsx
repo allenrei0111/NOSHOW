@@ -77,7 +77,23 @@ const ShopContextProvider = (props) => {
       .then((data) => {console.log(data)});
     }
   };
-
+  const addToFavorite = (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    if(localStorage.getItem("auth-token"))
+    {
+      fetch('http://localhost:4000/addtofavorite', {
+      method: 'POST',
+      headers: {
+        Accept:'application/form-data',
+        'auth-token':`${localStorage.getItem("auth-token")}`,
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify({"itemId":itemId}),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {console.log(data)});
+    }
+  };
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if(localStorage.getItem("auth-token"))
@@ -96,7 +112,7 @@ const ShopContextProvider = (props) => {
     }
   };
 
-  const contextValue = {products, getTotalCartItems, cartItems, selectedSize, setSelectedSize, addToCart, removeFromCart, getTotalCartAmount };
+  const contextValue = {products, getTotalCartItems, cartItems, selectedSize, setSelectedSize, addToCart, removeFromCart, getTotalCartAmount, addToFavorite };
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}

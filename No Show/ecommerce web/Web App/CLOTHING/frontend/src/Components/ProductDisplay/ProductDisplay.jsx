@@ -5,8 +5,9 @@ import star_dull_icon from '../Images/star_dull_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
 
 const ProductDisplay = ({ product }) => {
-  const { addToCart, selectedSize, setSelectedSize } = useContext(ShopContext);
+  const { addToCart, selectedSize, setSelectedSize, addToFavorite } = useContext(ShopContext);
 
+  const [addedToFavorite, setAddedToFavorite] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
   const [selectedSizeMessage, setSelectedSizeMessage] = useState('');
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
@@ -50,7 +51,10 @@ const ProductDisplay = ({ product }) => {
   const handlePrevReview = () => {
     setCurrentReviewIndex((currentReviewIndex - 1 + reviews.length) % reviews.length);
   };
-
+  const handleAddToFavorite = (productId) => {
+    addToFavorite(productId);
+    setAddedToFavorite(true);
+  };
   return (
     <div className='productdisplay'>
       <div className='productdisplay-left'>
@@ -117,6 +121,11 @@ const ProductDisplay = ({ product }) => {
         ) : (
           <button onClick={() => handleAddToCart(product.id)}>ADD TO CART</button>
         )}
+         {addedToFavorite ? (
+        <p>ADDED TO FAVORITES</p>
+      ) : (
+        <button onClick={() => handleAddToFavorite(product.id)}>ADD TO FAVORITES</button>
+      )}
       </div>
     </div>
   );
