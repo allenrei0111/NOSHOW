@@ -1,30 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
+import Item from "../Item/Item";
+import data_product from "../Images/data";
 
 const HotList = () => {
   const [products, setProducts] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc"); 
 
   useEffect(() => {
-    fetchProducts();
+    setProducts(data_product);
   }, []);
 
-  const fetchProducts = () => {
-    fetch('http://localhost:4000/data') // Assuming your backend is running on localhost:4000
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.error('Error fetching products:', error));
+  const sortProductsByPrice = (order) => {
+    const sortedProducts = [...products].sort((a, b) => {
+      return order === "asc" ? a.new_price - b.new_price : b.new_price - a.new_price;
+    });
+    setProducts(sortedProducts);
+  };
+
+  const handleSortChange = (e) => {
+    const order = e.target.value;
+    setSortOrder(order);
+    sortProductsByPrice(order);
   };
 
   return (
-    <div>
-      <h2>Hot List</h2>
-      <div className="product-list">
-        {products.map((product) => (
-          <div key={product.id} className="product">
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>New Price: ${product.new_price}</p>
-            <p>Old Price: ${product.old_price}</p>
-          </div>
+    <div className="shopcategory">
+      
+      <div className="shopcategory-indexSort">
+        <div className="shopcategory-sort">
+          Sort by{" "}
+          <select value={sortOrder} onChange={handleSortChange} className="shopcategory-sort-list">
+            <option value="asc">Price: Lowest First</option>
+            <option value="desc">Price: Highest First</option>
+          </select>
+        </div>
+      </div>
+      <div className="shopcategory-products">
+        {products.map(item => (
+          <Item
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            image={item.image}
+            new_price={item.new_price}
+            old_price={item.old_price}
+          />
         ))}
       </div>
     </div>

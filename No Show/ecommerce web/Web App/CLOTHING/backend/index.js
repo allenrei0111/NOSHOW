@@ -211,7 +211,16 @@ app.get("/allproducts", async (req, res) => {
     console.log("All Products");
     res.send(products);
 });
-
+app.get("/data", (req, res) => {
+    try {
+      // Read the data from the data.js file
+      const data = require('./Image/data.js');
+      res.json(data);
+    } catch (error) {
+      console.error('Error reading products data:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
 app.get("/newcollections", async (req, res) => {
     let products = await Product.find({});
     let arr = products.slice(1).slice(-8);

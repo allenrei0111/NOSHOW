@@ -76,6 +76,9 @@ const Navbar = () => {
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/kids' style={{ textDecoration: 'none' }}>Kids</Link>
         </li>
+        <li onClick={() => setMenuVisible(false)}>
+          <Link to='/hotlist' style={{ textDecoration: 'none' }}>Best Seller</Link>
+        </li>
       </ul>
     </div>
   );
