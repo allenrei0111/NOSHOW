@@ -5,6 +5,7 @@ import logo from '../Images/logo.png';
 import cart_icon from '../Images/cart_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
 import SearchBar from '../../SearchButton/SearchBar';
+import Favorite from '../../Pages/Favorite';
 
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -61,6 +62,7 @@ const Navbar = () => {
             <button className='nav-profile'>Profile</button>
           </Link>
         )}
+        <Favorite products={products} />
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
