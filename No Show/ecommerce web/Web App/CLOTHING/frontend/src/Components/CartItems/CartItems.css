@@ -1,4 +1,6 @@
 /* CartItems Component Styles */
+
+/* Main container styles */
 .cartitems {
   max-width: 1000px;
   margin: 0 auto;
@@ -8,18 +10,23 @@
   background-color: #fff; /* Change background color to white */
 }
 
-.cartitems-format-main, .cartitems-format {
+/* Grid layout for cart items */
+.cartitems-format-main,
+.cartitems-format {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
   padding: 10px 0;
 }
 
-.cartitems-format-main p, .cartitems-format p {
+/* Styling for product names and other text */
+.cartitems-format-main p,
+.cartitems-format p {
   text-align: center;
   margin: 0; /* Remove default margin */
 }
 
+/* Styling for product icons */
 .cartitems-product-icon {
   width: 50px;
   height: 50px;
@@ -27,12 +34,14 @@
   border-radius: 50%;
 }
 
+/* Styling for remove icon */
 .cartitems-remove-icon {
   width: 20px;
   height: 20px;
   cursor: pointer;
 }
 
+/* Styling for total section */
 .cartitems-down {
   display: flex;
   justify-content: space-between;
@@ -40,21 +49,13 @@
   margin-top: 20px;
 }
 
-.cartitems-total h1 {
-  margin: 0; /* Remove default margin */
-  font-size: 1.2rem;
-}
-
-.cartitems-total-item h3 {
-  margin: 0; /* Remove default margin */
-  font-size: 1.1rem;
-}
-
+.cartitems-total h1,
+.cartitems-total-item h3,
 .cartitems-promocode p {
   margin: 0; /* Remove default margin */
-  font-size: 0.9rem;
 }
 
+/* Styling for promo code box */
 .cartitems-promobox {
   display: flex;
   align-items: center; /* Align items vertically */
@@ -69,19 +70,27 @@
 }
 
 .cartitems-promobox button {
-  padding: 8px 20px;
-  background-color: #007bff;
-  color: #fff;
+  width: 100px;
+  height: 35px;
+  outline: none;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  background: linear-gradient(90deg, black, grey);
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cartitems-promobox button:hover {
-  background-color: #0056b3; /* Darken hover color */
+  background-color: #2a2a2a;
+  transform: scale(1.20);
 }
 
+/* Styling for payment section */
 .cartitems-payment {
   margin-top: 20px;
 }
@@ -101,7 +110,7 @@
   cursor: not-allowed;
 }
 
-/* Popup container */
+/* Popup container styles */
 .payment-popup {
   position: fixed;
   top: 50%;
@@ -117,19 +126,19 @@
   align-items: center;
 }
 
-/* Success message */
+/* Success message styles */
 .payment-success {
   color: green;
   font-weight: bold;
 }
 
-/* Error message */
+/* Error message styles */
 .payment-error {
   color: red;
   font-weight: bold;
 }
 
-/* Close button */
+/* Close button styles */
 .payment-popup-close {
   position: absolute;
   top: 10px;
@@ -138,56 +147,109 @@
   font-size: 24px;
 }
 
-/* Light Mode */
+/* Shipping Address Section styles */
+.cartitems-shipping-info {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background color */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+}
+
+/* Input container styles */
+.cartitems-input-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 10px 0; /* Add margin for spacing */
+}
+
+/* Shipping input styles */
+.shipping-input {
+  width: calc(100% - 20px); /* Adjust width to account for padding */
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.shipping-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.shipping-input::placeholder {
+  color: #999;
+}
+
+/* Light Mode styles */
 body.light {
   background-color: #f9f9f9;
   color: #333;
 }
 
-body.light .cartitems {
+body.light .cartitems-shipping-info {
   background-color: #fff;
-  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-body.light .cartitems-promobox input {
-  border-color: #ccc;
-}
-
-body.light .cartitems-promobox button {
-  background-color: #007bff;
-}
-
-body.light .cartitems-promobox button:hover {
-  background-color: #0056b3;
-}
-
-body.light .cartitems-payment button {
-  background-color: #4caf50;
-}
-
-/* Dark Mode */
+/* Dark Mode styles */
 body.dark {
   background-color: #333;
   color: white;
 }
 
-body.dark .cartitems {
+body.dark .cartitems-shipping-info {
   background-color: #444;
-  border: 1px solid #555;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-body.dark .cartitems-promobox input {
-  border-color: #555;
+/* Responsive Layout */
+@media (min-width: 768px) {
+  .cartitems-input-container {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-body.dark .cartitems-promobox button {
-  background-color: #007bff;
+@media (min-width: 1024px) {
+  .cartitems-input-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
-body.dark .cartitems-promobox button:hover {
-  background-color: #0056b3;
+/* Button styles */
+button[type="submit"] {
+  width: 250px; /* Adjusted width */
+  height: 50px; /* Adjusted height */
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px; /* Increased font size */
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(90deg, black, grey);
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 20px auto; /* Center the button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-body.dark .cartitems-payment button {
-  background-color: #4caf50;
+button[type="submit"]:hover {
+  background-color: #2a2a2a;
+  transform: scale(1.10
+  );
+}
+
+button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Disable button styling */
+button[type="submit"]:disabled:hover {
+  background-color: #ccc;
 }
