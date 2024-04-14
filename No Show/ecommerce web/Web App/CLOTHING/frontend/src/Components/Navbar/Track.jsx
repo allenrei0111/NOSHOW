@@ -9,21 +9,21 @@ const Track = () => {
   const [searched, setSearched] = useState(false);
 
   const fetchTrackingInfo = () => {
-    // Simulate loading
+ 
     setIsLoading(true);
     setTimeout(() => {
-      // Simulated data - miles and estimated time
+   
       const milesResult = Math.floor(Math.random() * 1000);
       const hours = Math.floor(Math.random() * 24);
       const minutes = Math.floor(Math.random() * 60);
       const estimatedTimeResult = `${hours} hours ${minutes} minutes`;
 
-      // Update state with fetched data
+      
       setMiles(milesResult);
       setEstimatedTime(estimatedTimeResult);
       setIsLoading(false);
-      setSearched(true); // Update searched state after loading is complete
-    }, 3000); // Simulate loading for 3 seconds
+      setSearched(true); 
+    }, 3000);
   };
 
   const handleSearch = () => {
@@ -33,7 +33,7 @@ const Track = () => {
   };
 
   const handleTrackAnotherOrder = () => {
-    // Reset all states and enable search functionality
+    
     setTrackingNumber('');
     setIsLoading(false);
     setMiles(0);
