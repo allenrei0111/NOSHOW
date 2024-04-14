@@ -13,6 +13,7 @@ import Contact from "./Pages/Contact";
 import About from "./Pages/About";
 import Question from "./Pages/QuestionTab";
 import Profile from "./Profile/Profile";
+import ScrollToTopButton from "./Components/ScrollToTopButton/ScrollToTopButton";
 
 
 const stripePromise = loadStripe("pk_test_51OvSq1HjQsfCN3ihPmxsbkss0yEvWXDK0JSx6w9okn38UmB5l0OdRUWopK2KhigoBqGWy7w94HXiybMj6ywC3GI300Cl3WNXk7");
@@ -20,6 +21,11 @@ const stripePromise = loadStripe("pk_test_51OvSq1HjQsfCN3ihPmxsbkss0yEvWXDK0JSx6
 function App() {
   return (
     <div>
+  
+    <div className="App">
+      <ScrollToTopButton />
+    </div>
+
       <Router>
         <Navbar />
         <Routes>
