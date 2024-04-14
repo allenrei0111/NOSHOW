@@ -3,7 +3,7 @@ import './Home.css';
 import hero_image1 from '../Images/hero_image.png';
 import hero_image2 from '../Images/hero_image2.png';
 import hero_image3 from '../Images/hero_image3.png';
-
+import {Link} from 'react-router-dom';
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
