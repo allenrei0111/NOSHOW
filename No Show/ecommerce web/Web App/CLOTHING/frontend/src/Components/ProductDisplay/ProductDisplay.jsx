@@ -6,7 +6,7 @@ import { ShopContext } from '../../Context/ShopContext';
 import AddToFavourite from '../AddToFavorurites/AddToFavourites';
 
 const ProductDisplay = ({ product }) => {
-  const { addToCart, selectedSize, setSelectedSize } = useContext(ShopContext);
+  const { addToCart, addToFavorites, removeFromFavorites, isFavorite, setSelectedSize } = useContext(ShopContext);
 
   const [addedToCart, setAddedToCart] = useState(false);
   const [selectedSizeMessage, setSelectedSizeMessage] = useState('');
@@ -27,9 +27,15 @@ const ProductDisplay = ({ product }) => {
     { text: "Okay product, nothing extraordinary.", rating: 3, name: "William Davis" },
     { text: "Poor customer support, disappointed.", rating: 2, name: "Ava Garcia" },
     { text: "Horrible quality, waste of money.", rating: 1, name: "Matthew Wilson" },
-  
   ];
   
+  const handleAddToFavorites = (productId) => {
+    if (isFavorite(productId)) {
+      removeFromFavorites(productId);
+    } else {
+      addToFavorites(productId);
+    }
+  };
 
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
@@ -60,6 +66,16 @@ const ProductDisplay = ({ product }) => {
             <img key={index} src={product.image} alt='' />
           ))}
         </div>
+        
+        <div className='productdisplay'>
+          {/* Add to Favorites button */}
+          {isFavorite(product.id) ? (
+            <p>ADDED TO FAVORITES</p>
+          ) : (
+            <button onClick={() => handleAddToFavorites(product.id)}>ADD TO FAVORITES</button>
+          )}
+        </div>
+
         <div className='productdisplay-img'>
           <img className='productdisplay-main-img' src={product.image} alt='' />
         </div>
@@ -119,10 +135,10 @@ const ProductDisplay = ({ product }) => {
           <button onClick={() => handleAddToCart(product.id)}>ADD TO CART</button>
         )}
 
-{AddToFavourite ? (
-          <p>ADDED TO CART</p>
+        {AddToFavourite ? (
+          <p>ADDED TO FAVORITES</p>
         ) : (
-          <button onClick={() => handleAddToCart(product.id)}>ADD TO Favourite</button>
+          <button onClick={() => handleAddToFavorites(product.id)}>ADD TO FAVORITES</button>
         )}
       </div>
     </div>
