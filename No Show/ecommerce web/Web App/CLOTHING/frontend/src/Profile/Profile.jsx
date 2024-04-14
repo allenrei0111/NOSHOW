@@ -34,3 +34,11 @@ const Profile = () => {
     setSavedProfile(profile);
   };
   
+  const handleProfilePictureChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setProfilePicture(reader.result);
+    };
+  };
