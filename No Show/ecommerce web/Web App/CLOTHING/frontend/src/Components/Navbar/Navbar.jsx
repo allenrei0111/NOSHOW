@@ -58,11 +58,8 @@ const Navbar = () => {
         </Link>
 
       </div>
-      {localStorage.getItem('auth-token') && (
-          <Link to="/profile" style={{ textDecoration: 'none' }}>
-            <button className='nav-profile'>Profile</button>
-          </Link>
-        )}
+      
+       
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
