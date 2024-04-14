@@ -52,7 +52,7 @@ const Track = () => {
           onChange={(e) => setTrackingNumber(e.target.value)}
           disabled={searched}
         />
-        <button onClick={handleSearch} disabled={searched}>
+        <button className="search-button" onClick={handleSearch} disabled={searched}>
           {isLoading ? 'Searching...' : 'Search'}
         </button>
       </div>
@@ -65,7 +65,7 @@ const Track = () => {
         </div>
       )}
       {searched && (
-        <button onClick={handleTrackAnotherOrder}>Track Another Order</button>
+        <button className="track-another-button" onClick={handleTrackAnotherOrder}>Track Another Order</button>
       )}
     </div>
   );
