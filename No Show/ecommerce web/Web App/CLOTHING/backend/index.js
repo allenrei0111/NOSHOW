@@ -243,6 +243,13 @@ app.post('/addtocart', fetchuser, async (req, res) => {
     await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
     res.send("Added")
 })
+app.post('/addtofavorite', fetchuser, async (req, res) => {
+    console.log("Add Cart");
+    let userData = await Users.findOne({ _id: req.user.id });
+    userData.cartData[req.body.itemId] += 1;
+    await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
+    res.send("Added")
+})
 
 //Create an endpoint for saving the product in cart
 app.post('/removefromcart', fetchuser, async (req, res) => {
