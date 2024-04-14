@@ -12,3 +12,5 @@ const toggleFavorite = (productId) => {
 };
 
 } 
+
+export default Favorite;
