@@ -42,3 +42,19 @@ const Profile = () => {
       setProfilePicture(reader.result);
     };
   };
+  return (
+    <div className="profile-container">
+      <div className="label">
+        <label>Name:</label>
+        {isEditingName ? (
+          <input
+            className="input-field"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            onBlur={() => setIsEditingName(false)}
+          />
+        ) : (
+          <span onClick={() => setIsEditingName(true)}>{name || "Click to edit"}</span>
+        )}
+      </div>
