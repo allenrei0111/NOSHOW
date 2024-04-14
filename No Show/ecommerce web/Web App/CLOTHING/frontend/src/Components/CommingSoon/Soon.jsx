@@ -5,7 +5,7 @@ import './Soon.css';
 const Soon = () => {
   return (
     <div className="coming-soon">
-      <h2>Coming Soon</h2>
+      <h2>COMING SOON </h2>
       <div className="products">
         {soon_product.map(product => (
           <div key={product.id} className="product">
