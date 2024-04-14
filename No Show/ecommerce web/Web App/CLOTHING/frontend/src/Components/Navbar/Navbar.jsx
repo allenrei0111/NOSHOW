@@ -54,20 +54,8 @@ const Navbar = () => {
         <Link to="/cart" className="nav-cart-link">
           <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
           <div className="nav-cart-count">{getTotalCartItems()}</div>
-          
         </Link>
       </div>
-      {localStorage.getItem('auth-token') && (
-          <Link to="/profile" style={{ textDecoration: 'none' }}>
-            <button className='nav-profile'>Profile</button>
-          </Link>
-        )}
-         {localStorage.getItem('auth-token') && (
-          <Link to="/track" style={{ textDecoration: 'none' }}>
-            <button className='nav-profile'>Track</button>
-          </Link>
-        )}
-        <Favorite products={products} />
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
@@ -81,6 +69,16 @@ const Navbar = () => {
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/kids' style={{ textDecoration: 'none' }}>Kids</Link>
         </li>
+        {localStorage.getItem('auth-token') && (
+          <li onClick={() => setMenuVisible(false)}>
+            <Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link>
+          </li>
+        )}
+        {localStorage.getItem('auth-token') && (
+          <li onClick={() => setMenuVisible(false)}>
+            <Link to="/track" style={{ textDecoration: 'none' }}>Track</Link>
+          </li>
+        )}
       </ul>
     </div>
   );
