@@ -42,7 +42,7 @@ const Home = () => {
             <p>and save 30% off your next purchase.</p>
             <p>You might want to check out our Best Seller Clothes</p>
             <li onClick = {handleCLosePopup}>
-            <Link></Link>
+            <Link to='/hotlist' style ={{textDecoration:'none'}}></Link>
             </li>
             <button onClick={handleClosePopup}>Close</button>
           </div>
