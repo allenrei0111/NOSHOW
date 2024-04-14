@@ -57,10 +57,6 @@ const Navbar = () => {
           <div className="nav-cart-count">{getTotalCartItems()}</div>
         </Link>
 
-        <Link to="/addtocart" className="nav-cart-link">
-          <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
-          <div className="nav-cart-count">{getTotalCartItems()}</div>
-        </Link>
       </div>
       {localStorage.getItem('auth-token') && (
           <Link to="/profile" style={{ textDecoration: 'none' }}>

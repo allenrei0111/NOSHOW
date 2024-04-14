@@ -4,10 +4,9 @@ export const ShopContext = createContext(null);
 
 const ShopContextProvider = (props) => {
   const [selectedSize, setSelectedSize] = useState(null);
-  const [products, setProducts] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  const [cartItems, setCartItems] = useState({});
 
+  const [products,setProducts] = useState([]);
+  
   const getDefaultCart = () => {
     let cart = {};
     for (let i = 0; i < 300; i++) {
@@ -15,6 +14,8 @@ const ShopContextProvider = (props) => {
     }
     return cart;
   };
+
+  const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
     fetch('http://localhost:4000/allproducts') 
@@ -36,7 +37,7 @@ const ShopContextProvider = (props) => {
       .then((data) => {setCartItems(data)});
     }
 
-  }, []);
+}, [])
   
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -95,33 +96,7 @@ const ShopContextProvider = (props) => {
     }
   };
 
-  const addToFavorites = (productId) => {
-    setFavorites((prevFavorites) => [...prevFavorites, productId]);
-  };
-
-  const removeFromFavorites = (productId) => {
-    setFavorites((prevFavorites) => prevFavorites.filter((id) => id !== productId));
-  };
-
-  const isFavorite = (productId) => {
-    return favorites.includes(productId);
-  };
-
-  const contextValue = {
-    products,
-    cartItems,
-    selectedSize,
-    setSelectedSize,
-    getTotalCartItems,
-    addToCart,
-    removeFromCart,
-    addToFavorites,
-    removeFromFavorites,
-    isFavorite,
-    getTotalCartAmount,
-    favorites,
-  };
-
+  const contextValue = {products, getTotalCartItems, cartItems, selectedSize, setSelectedSize, addToCart, removeFromCart, getTotalCartAmount };
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}
