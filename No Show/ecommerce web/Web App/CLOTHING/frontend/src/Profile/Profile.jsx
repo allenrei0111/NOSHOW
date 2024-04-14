@@ -58,3 +58,17 @@ const Profile = () => {
           <span onClick={() => setIsEditingName(true)}>{name || "Click to edit"}</span>
         )}
       </div>
+      <div className="label">
+        <label>Gender:</label>
+        {isEditingGender ? (
+          <input
+            className="input-field"
+            type="text"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            onBlur={() => setIsEditingGender(false)}
+          />
+        ) : (
+          <span onClick={() => setIsEditingGender(true)}>{gender || "Click to edit"}</span>
+        )}
+      </div>
