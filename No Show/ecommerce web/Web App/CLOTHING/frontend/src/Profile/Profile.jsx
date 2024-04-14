@@ -18,3 +18,19 @@ const Profile = () => {
       setSavedProfile(JSON.parse(savedProfileData));
     }
   }, []);
+
+  useEffect(() => {
+    // Save profile to localStorage whenever it changes
+    localStorage.setItem('savedProfile', JSON.stringify(savedProfile));
+  }, [savedProfile]);
+
+  const handleSaveProfile = () => {
+    const profile = {
+      name: name,
+      gender: gender,
+      bio: bio,
+      profilePicture: profilePicture
+    };
+    setSavedProfile(profile);
+  };
+  
