@@ -89,3 +89,21 @@ const Profile = () => {
         <label>Profile Picture:</label>
         <input className="file-input" type="file" accept="image/*" onChange={handleProfilePictureChange} />
       </div>
+      <button className="save-button" onClick={handleSaveProfile}>Save</button>
+
+      {savedProfile && (
+        <div className="profile-info">
+          <h2>Profile:</h2>
+          {savedProfile.profilePicture && (
+            <img src={savedProfile.profilePicture} alt="Profile" />
+          )}
+          <p>Name: {savedProfile.name}</p>
+          <p>Gender: {savedProfile.gender}</p>
+          <p>Bio: {savedProfile.bio}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Profile;
