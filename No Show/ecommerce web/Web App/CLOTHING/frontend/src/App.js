@@ -18,19 +18,16 @@ import Track from "./Components/Navbar/Track";
 import Hotlist from "./Components/HotList/Hotlist";
 import Favorite from "./Components/AddToFavorurites/FavoriteItems";
 import Guide from "./Pages/SizeGuide";
-
-
-
+import TermsOfService from "./Pages/TermsOfService"; // Import the TermsOfService component
 
 const stripePromise = loadStripe("pk_test_51OvSq1HjQsfCN3ihPmxsbkss0yEvWXDK0JSx6w9okn38UmB5l0OdRUWopK2KhigoBqGWy7w94HXiybMj6ywC3GI300Cl3WNXk7");
 
 function App() {
   return (
     <div>
-  
-    <div className="App">
-      <ScrollToTopButton />
-    </div>
+      <div className="App">
+        <ScrollToTopButton />
+      </div>
 
       <Router>
         <Navbar />
@@ -41,7 +38,6 @@ function App() {
           <Route path="/kids" element={<ShopCategory category="kid" />} />
           <Route path="/hotlist" element={<Hotlist/>} />
           <Route path="/product/:productId" element={<Product />} />
-          {}
           <Route
             path="/cart"
             element={
@@ -50,15 +46,16 @@ function App() {
               </Elements>
             }
           />
-
           <Route path="/profile" element={<Profile />} />
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/track" element={<Track />} />
           <Route path="/login" element={<LoginSignup />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/question' element={<Question />} />
-          <Route path='/guide' element={<Guide />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/question" element={<Question />} />
+          <Route path="/guide" element={<Guide />} />
+          {/* Added the route for the TermsOfService component */}
+          <Route path="/terms-of-service" element={<TermsOfService />} />
         </Routes>
         <Footer />
       </Router>
@@ -67,4 +64,3 @@ function App() {
 }
 
 export default App;
-
