@@ -1,44 +1,10 @@
 /* TermsOfService.css */
-
-.terms-of-service {
+.terms-container {
+    font-family: Arial, sans-serif;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .terms-of-service h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .terms-of-service p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 15px;
-  }
-  
-  .terms-of-service ul {
-    margin-left: 20px;
-  }
-  
-  .terms-of-service li {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 5px;
-  }
-  
-  .terms-of-service a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .terms-of-service a:hover {
-    text-decoration: underline;
-  }
-  
+
+}
+
+
