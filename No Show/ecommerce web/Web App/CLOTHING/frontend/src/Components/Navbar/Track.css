@@ -1,82 +1,81 @@
 .track-container {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .track-container h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .tracking-info {
-    margin-bottom: 20px;
-  }
-  
-  .tracking-info p {
-    margin: 5px 0;
-  }
-  
-  .loading-animation {
-    width: 50px;
-    height: 50px;
-    border: 4px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 4px solid #3498db;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  .search-button, .track-another-button {
-    width: 130px; /* Adjusted width */
-    height: 50px; /* Adjusted height */
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 18px; /* Adjusted font size */
-    font-weight: 500;
-    cursor: pointer;
-    background: linear-gradient(90deg, black, grey);
-    transition: background-color 0.3s, transform 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto; /* Center horizontally */
-  }
-  
-  .search-button:hover, .track-another-button:hover {
-    background-color: #2980b9;
-    transform: scale(1.05);
-  }
-  
-  .tracking-input {
-    width: 100%;
-    max-width: 300px; /* Limit the maximum width */
-    margin: 0 auto; /* Center horizontally */
-    text-align: center; /* Center text */
-  }
-  
-  .tracking-input input {
-    width: 90%;
-    height: 50px; /* Adjusted height to match buttons */
-    border-radius: 10px;
-    padding: 0 10px; /* Add padding for better appearance */
-    font-size: 18px; /* Adjusted font size */
-    margin-bottom: 10px; /* Add some space below the input */
-    transition: background-color 0.3s; /* Add transition effect */
-  }
-  
-  .tracking-input input:hover {
-    background-color: #f0f0f0; /* Change background color on hover */
-  }
-  
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.track-container h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.tracking-info {
+  margin-bottom: 20px;
+}
+
+.tracking-info p {
+  margin: 5px 0;
+}
+
+.loading-animation {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.search-button, .track-another-button {
+  width: 130px; /* Adjusted width */
+  height: 50px; /* Adjusted height */
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px; /* Adjusted font size */
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(90deg, black, grey);
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Center horizontally */
+}
+
+.search-button:hover, .track-another-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.tracking-input {
+  width: 100%;
+  max-width: 300px; /* Limit the maximum width */
+  margin: 0 auto; /* Center horizontally */
+  text-align: center; /* Center text */
+}
+
+.tracking-input input {
+  width: 90%;
+  height: 50px; /* Adjusted height to match buttons */
+  border-radius: 10px;
+  padding: 0 10px; /* Add padding for better appearance */
+  font-size: 18px; /* Adjusted font size */
+  margin-bottom: 10px; /* Add some space below the input */
+  transition: background-color 0.3s; /* Add transition effect */
+}
+
+.tracking-input input:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
