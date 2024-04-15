@@ -26,7 +26,24 @@ const TermsOfService = () => {
         <p>However, we reserve the right to remove any comments that violate our community guidelines or are deemed inappropriate.</p>
       </section>
 
+      <section className="section">
+        <h3 className="subtitle">Hyperlinking to Our Content</h3>
+        <p>You may link to our website, provided that the link:</p>
+        <ul>
+          <li>Is not in any way deceptive</li>
+          <li>Does not falsely imply sponsorship, endorsement or approval of your site</li>
+          <li>Fits within the context of your site</li>
+        </ul>
+        <p>We reserve the right to request removal of any link to our website.</p>
+      </section>
+
+      <section className="section">
+        <h3 className="subtitle">Content Liability</h3>
+        <p>We shall not be held responsible for any content that appears on your website. You agree to protect and defend us against all claims arising on your website.</p>
+        <p>No link(s) should appear on any website that may be interpreted as libelous, obscene, or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
+      </section>
       
+
 
 
 
