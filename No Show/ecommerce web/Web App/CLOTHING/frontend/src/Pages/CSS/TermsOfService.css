@@ -6,5 +6,9 @@
     padding: 20px;
 
 }
-
+.title {
+    color: #333;
+    text-align: center; /* Center the title */
+  }
+  
 
