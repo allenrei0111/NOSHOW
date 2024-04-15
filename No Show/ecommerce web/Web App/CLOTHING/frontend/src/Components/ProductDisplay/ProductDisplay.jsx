@@ -125,7 +125,11 @@ const ProductDisplay = ({ product }) => {
         ) : (
           <button onClick={() => handleAddToCart(product.id)}>ADD TO CART</button>
         )}
-       
+         {addedToFavorite ? (
+        <p>ADDED TO FAVORITES</p>
+      ) : (
+        <button onClick={() => handleAddToFavorite(product.id)}>ADD TO FAVORITES</button>
+      )}
       </div>
     </div>
   );
