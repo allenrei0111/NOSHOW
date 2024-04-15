@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import "./CSS/SizeGuide.css";
 
 const SizeGuide = () => {
-  const [selectedCategory, setSelectedCategory] = useState('women');
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -33,7 +34,7 @@ const SizeGuide = () => {
 
       {selectedCategory === 'women' && (
         <>
-          <h3>Women's Denim Fit Guide</h3>
+          <h3>Women's Fit Guide</h3>
           <table>
             <thead>
               <tr>
@@ -45,18 +46,29 @@ const SizeGuide = () => {
             </thead>
             <tbody>
               <tr>
-                <td>XS</td>
-                <td>33.5 - 35"</td>
-                <td>25 - 26.5"</td>
-                <td>37.5 - 39"</td>
-              </tr>
-              <tr>
                 <td>S</td>
                 <td>35.5 - 37"</td>
                 <td>27 - 28.5"</td>
                 <td>39.5 - 42"</td>
               </tr>
-              {/* Add more rows for Women's Denim Fit Guide */}
+              <tr>
+                <td>M</td>
+                <td>37.5 - 39"</td>
+                <td>29 - 30.5"</td>
+                <td>42.5 - 44"</td>
+              </tr>
+              <tr>
+                <td>L</td>
+                <td>39.5 - 42"</td>
+                <td>31 - 33.5"</td>
+                <td>44.5 - 46.5"</td>
+              </tr>
+              <tr>
+                <td>XL</td>
+                <td>42.5 - 44.5"</td>
+                <td>34 - 35.5"</td>
+                <td>47"</td>
+              </tr>
             </tbody>
           </table>
         </>
@@ -64,7 +76,7 @@ const SizeGuide = () => {
 
       {selectedCategory === 'men' && (
         <>
-          <h3>Men's Denim Fit Guide</h3>
+          <h3>Men's Fit Guide</h3>
           <table>
             <thead>
               <tr>
@@ -76,18 +88,29 @@ const SizeGuide = () => {
             </thead>
             <tbody>
               <tr>
-                <td>0</td>
-                <td>33.5 - 34"</td>
-                <td>25 - 25.5"</td>
-                <td>35.5 - 36"</td>
+                <td>S</td>
+                <td>35.5 - 36.5"</td>
+                <td>27 - 28"</td>
+                <td>37.5 - 38.5"</td>
               </tr>
               <tr>
-                <td>2</td>
-                <td>34.5 - 35"</td>
-                <td>26 - 26.5"</td>
-                <td>36.5 - 37"</td>
+                <td>M</td>
+                <td>37.5 - 38.5"</td>
+                <td>29 - 30"</td>
+                <td>39.5 - 40.5"</td>
               </tr>
-              {/* Add more rows for Men's Denim Fit Guide */}
+              <tr>
+                <td>L</td>
+                <td>39.5 - 40.5"</td>
+                <td>31 - 32"</td>
+                <td>41.5 - 42.5"</td>
+              </tr>
+              <tr>
+                <td>XL</td>
+                <td>41.5 - 42.5"</td>
+                <td>33 - 34"</td>
+                <td>43.5 - 44.5"</td>
+              </tr>
             </tbody>
           </table>
         </>
@@ -109,22 +132,37 @@ const SizeGuide = () => {
             </thead>
             <tbody>
               <tr>
-                <td>2T</td>
-                <td>2 Years</td>
-                <td>33 - 36"</td>
-                <td>20.5 - 21"</td>
-                <td>20.5 - 21"</td>
-                <td>20.5 - 21"</td>
+                <td>S</td>
+                <td>4 Years</td>
+                <td>38 - 41"</td>
+                <td>22.5 - 23"</td>
+                <td>22 - 22.5"</td>
+                <td>22 - 22.5"</td>
               </tr>
               <tr>
-                <td>3T</td>
-                <td>3 Years</td>
-                <td>36 - 39"</td>
-                <td>21 - 21.5"</td>
-                <td>21 - 21.5"</td>
-                <td>21 - 21.5"</td>
+                <td>M</td>
+                <td>5 Years</td>
+                <td>41 - 44"</td>
+                <td>23 - 23.5"</td>
+                <td>22.5 - 23"</td>
+                <td>23 - 23.5"</td>
               </tr>
-              {/* Add more rows for Kid's Size Guide */}
+              <tr>
+                <td>L</td>
+                <td>6 Years</td>
+                <td>44 - 46.5"</td>
+                <td>23.5 - 24"</td>
+                <td>23 - 23.5"</td>
+                <td>24 - 24.5"</td>
+              </tr>
+              <tr>
+                <td>XL</td>
+                <td>7 Years</td>
+                <td>46.5 - 49.5"</td>
+                <td>24 - 24.5"</td>
+                <td>23.5 - 24"</td>
+                <td>24.5 - 25"</td>
+              </tr>
             </tbody>
           </table>
         </>
