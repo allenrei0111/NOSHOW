@@ -5,7 +5,7 @@ import logo from '../Images/logo.png';
 import cart_icon from '../Images/cart_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
 import SearchBar from '../../SearchButton/SearchBar';
-import AddToFavourites from '../AddToFavorurites/AddToFavourites.jsx';
+
 
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);

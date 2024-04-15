@@ -1,0 +1,49 @@
+.favorite-items {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .favorite-items-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .favorite-items-main p {
+    text-align: center;
+  }
+  
+  .favorite-items-format {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .favorite-items-format img {
+    max-width: 50px;
+  }
+  
+  .favorite-items-format p {
+    text-align: center;
+  }
+  
+  .favorite-items-format button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #ff6f61;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .favorite-items-format button:hover {
+    background-color: #ff4236;
+  }
+  
+  .favorite-items-format hr {
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+  }
+  
