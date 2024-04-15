@@ -17,6 +17,7 @@ import ScrollToTopButton from "./Components/ScrollToTopButton/ScrollToTopButton"
 import Track from "./Components/Navbar/Track";
 import Hotlist from "./Components/HotList/Hotlist";
 import Favorite from "./Components/AddToFavorurites/FavoriteItems";
+import Visitor from "./Pages/VisitorTracker";
 
 
 
@@ -48,6 +49,7 @@ function App() {
               </Elements>
             }
           />
+          <Route path="/visitor" element={<Visitor />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/track" element={<Track />} />
