@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com'; // Import the emailjs library
 import './NewsLetter.css';
 
 const NewsLetter = () => {
@@ -22,6 +23,20 @@ const NewsLetter = () => {
       });
   
       if (response.ok) {
+        // Send email using EmailJS
+        const templateParams = {
+          to_email: email,
+        };
+        
+        // Replace with your EmailJS service ID and template ID
+        emailjs.send('service_r9qs95o', 'template_e1dqmbs', templateParams, 'Jn69mmQROeuudPyZ5')
+          .then(() => {
+            console.log('Email sent successfully!');
+          })
+          .catch((err) => {
+            console.error('Failed to send email:', err);
+          });
+        
         setSubscribed(true);
         setError('');
       } else {
