@@ -290,3 +290,22 @@
     background-color: rgb(241, 0, 0);
     transform: scale(1.2);
   }
+  .favorite-icon {
+    width: 70px; 
+    height: 40px; 
+    cursor: pointer;
+    transition: transform 0.2s ease; 
+    margin-top: -60px;
+    margin-bottom: 60px;
+    margin-left: -150px;
+   
+  }
+  
+  .favorite-icon:hover {
+    transform: scale(2.0);
+  }
+  
+  .favorite-icon.added {
+    filter: grayscale(100%);
+  }
+  
