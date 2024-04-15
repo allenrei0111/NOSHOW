@@ -15,8 +15,16 @@
   .section {
     margin-bottom: 20px;
   }
-  
+
   .subtitle {
     color: #555;
+  }
+
+  .subtitle::after {
+    content: ":";
+    margin-right: 5px;
+  }
+  .section p {
+    line-height: 1.5;
   }
   
