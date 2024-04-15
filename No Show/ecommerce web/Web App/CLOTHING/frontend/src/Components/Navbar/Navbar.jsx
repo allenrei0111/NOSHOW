@@ -58,11 +58,8 @@ const Navbar = () => {
         </Link>
 
       </div>
-<<<<<<< HEAD
       
        
-=======
->>>>>>> e5b0f2022f4e45b2d7c7d092c8ba5810f4bd602b
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
