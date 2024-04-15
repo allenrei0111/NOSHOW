@@ -6,6 +6,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const emailjs = require('emailjs-com'); // Import EmailJS library
 
 app.use(express.json());
 app.use(cors());
@@ -23,14 +24,14 @@ const storage = multer.diskStorage({
         console.log(file);
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
-})
-const upload = multer({ storage: storage })
+});
+const upload = multer({ storage: storage });
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
         image_url: `http://localhost:4000/images/${req.file.filename}`
     })
-})
+});
 app.use('/images', express.static('upload/images'));
 
 // Middleware to fetch user from database
@@ -128,8 +129,6 @@ app.post('/applypromo', (req, res) => {
             message = "Invalid promo code";
         }
 
-
-
         // Send response
         res.status(200).json({ success: true, message, discount: discountPercentage });
     } catch (error) {
@@ -174,7 +173,7 @@ app.post('/login', async (req, res) => {
     else {
         return res.status(400).json({ success: success, errors: "please try with correct email/password" })
     }
-})
+});
 
 //Create an endpoint at ip/auth for regestring the user in data base & sending token
 app.post('/signup', async (req, res) => {
@@ -204,23 +203,25 @@ app.post('/signup', async (req, res) => {
     const token = jwt.sign(data, 'secret_ecom');
     success = true;
     res.json({ success, token })
-})
+});
 
 app.get("/allproducts", async (req, res) => {
     let products = await Product.find({});
     console.log("All Products");
     res.send(products);
 });
+
 app.get("/data", (req, res) => {
     try {
-      // Read the data from the data.js file
-      const data = require('./Image/data.js');
-      res.json(data);
+        // Read the data from the data.js file
+        const data = require('./Image/data.js');
+        res.json(data);
     } catch (error) {
-      console.error('Error reading products data:', error);
-      res.status(500).json({ error: 'Internal server error' });
+        console.error('Error reading products data:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
-  });
+});
+
 app.get("/newcollections", async (req, res) => {
     let products = await Product.find({});
     let arr = products.slice(1).slice(-8);
@@ -241,15 +242,16 @@ app.post('/addtocart', fetchuser, async (req, res) => {
     let userData = await Users.findOne({ _id: req.user.id });
     userData.cartData[req.body.itemId] += 1;
     await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
-    res.send("Added")
-})
+    res.send("Added");
+});
+
 app.post('/addtofavorite', fetchuser, async (req, res) => {
     console.log("Add Cart");
     let userData = await Users.findOne({ _id: req.user.id });
     userData.cartData[req.body.itemId] += 1;
     await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
-    res.send("Added")
-})
+    res.send("Added");
+});
 
 //Create an endpoint for saving the product in cart
 app.post('/removefromcart', fetchuser, async (req, res) => {
@@ -260,18 +262,16 @@ app.post('/removefromcart', fetchuser, async (req, res) => {
     }
     await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
     res.send("Removed");
-})
+});
 
-
-//Create an endpoint for saving the product in cart
+//Create an endpoint for getting the cart data
 app.post('/getcart', fetchuser, async (req, res) => {
     console.log("Get Cart");
     let userData = await Users.findOne({ _id: req.user.id });
     res.json(userData.cartData);
+});
 
-})
-
-
+// Endpoint to add a product
 app.post("/addproduct", async (req, res) => {
     let products = await Product.find({});
     let id;
@@ -294,40 +294,53 @@ app.post("/addproduct", async (req, res) => {
     console.log(product);
     await product.save();
     console.log("Saved");
-    res.json({ success: true, name: req.body.name })
+    res.json({ success: true, name: req.body.name });
 });
 
+// Endpoint to remove a product
 app.post("/removeproduct", async (req, res) => {
     const product = await Product.findOneAndDelete({ id: req.body.id });
     console.log("Removed");
-    res.json({ success: true, name: req.body.name })
+    res.json({ success: true, name: req.body.name });
 });
+
+// Schema for newsletter subscriptions
 const NewsletterSubscription = mongoose.model("NewsletterSubscription", {
     email: {
         type: String,
-        unique: true,
+        // Remove uniqueness constraint to allow multiple subscriptions
+        // unique: true,
     },
     date: {
         type: Date,
         default: Date.now,
     },
 });
-
 app.post('/subscribe', async (req, res) => {
     try {
         const { email } = req.body;
-        
-        
-        const existingSubscription = await NewsletterSubscription.findOne({ email });
-        if (existingSubscription) {
-            return res.status(400).json({ success: false, message: "Email is already subscribed" });
-        }
-        
+
+        // Create a new subscription
         const subscription = new NewsletterSubscription({
             email,
         });
         await subscription.save();
-        
+
+        // Send email using EmailJS
+        const templateParams = {
+            to_email: email,
+            // Add any other parameters you need for your email template
+        };
+
+        // Send the email
+        emailjs.send('service_r9qs95o', 'template_e1dqmbs', templateParams, 'Jn69mmQROeuudPyZ5')
+            .then(() => {
+                console.log('Email sent successfully!');
+            })
+            .catch((error) => {
+                console.error('Failed to send email:', error);
+            });
+
         res.status(200).json({ success: true, message: "Subscription successful" });
     } catch (error) {
         res.status(500).json({ success: false, message: "Failed to subscribe to newsletter" });
