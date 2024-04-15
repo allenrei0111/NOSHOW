@@ -17,6 +17,7 @@ import ScrollToTopButton from "./Components/ScrollToTopButton/ScrollToTopButton"
 import Track from "./Components/Navbar/Track";
 import Hotlist from "./Components/HotList/Hotlist";
 import Favorite from "./Components/AddToFavorurites/FavoriteItems";
+import Guide from "./Pages/SizeGuide";
 
 
 
@@ -57,6 +58,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/about' element={<About />} />
           <Route path='/question' element={<Question />} />
+          <Route path='/guide' element={<Guide />} />
         </Routes>
         <Footer />
       </Router>

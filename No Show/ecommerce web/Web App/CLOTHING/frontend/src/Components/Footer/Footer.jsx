@@ -1,39 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
-import logoBig from '../Images/logo_big.png';
-import instagramIcon from '../Images/instagram_icon.png';
-import twitterIcon from '../Images/twitter_icon.png';
-import facebookIcon from '../Images/facebook_icon.png';
-
+import footer_logo from '../Images/logo_big.png';
+import instagram_icon from '../Images/instagram_icon.png';
+import twitter_icon from '../Images/twitter_icon.png';
+import facebook_icon from '../Images/facebook_icon.png';
+ 
 const Footer = () => {
-  const [activeLink, setActiveLink] = useState(null);
-
-  const handleLinkClick = (index) => {
-    setActiveLink(index);
-  };
-
   return (
-    <footer className='footer'>
+    <div className='footer'>
       <div className="footer-logo">
-        <img src={logoBig} alt="Logo" width={350} />
+        <img src={footer_logo} alt="" width={350} />
       </div>
       <ul className="footer-links">
-        <li><Link to="/question" className={activeLink === 0 ? 'active' : ''} onClick={() => handleLinkClick(0)}>FAQ</Link></li>
-        <li><Link to="/about" className={activeLink === 1 ? 'active' : ''} onClick={() => handleLinkClick(1)}>About</Link></li>
-        <li><Link to="/contact" className={activeLink === 2 ? 'active' : ''} onClick={() => handleLinkClick(2)}>Contact</Link></li>
-        <li><Link to="/terms" className={activeLink === 3 ? 'active' : ''} onClick={() => handleLinkClick(3)}>Terms</Link></li>
-        <li><Link to="/privacy" className={activeLink === 4 ? 'active' : ''} onClick={() => handleLinkClick(4)}>Privacy</Link></li>
+       <li><Link to="/Question">Questions</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/guide">Guide</Link></li>
       </ul>
       <div className="footer-social-icon">
-        <img src={instagramIcon} alt="Instagram" width={50} />
-        <img src={twitterIcon} alt="Twitter" width={40} />
-        <img src={facebookIcon} alt="Facebook" width={50} />
+        <div className="footer-icons-container">
+          <img src={instagram_icon} alt="" width={50} />
+        </div>
+        <div className="footer-icons-container">
+          <img src={twitter_icon} alt="" width={40} />
+          
+        </div>
+        <div className="footer-icons-container">
+          <img src={facebook_icon} alt="" width={50} />
+        </div>
       </div>
-      <hr />
-      <p>&copy; {new Date().getFullYear()} TEAM NO SHOW. All rights reserved.</p>
-    </footer>
+      <div className="footer-copyright">
+        <hr />
+        <p>Students From SAIT</p>
+      </div>
+    </div>
   );
 };
-
+ 
 export default Footer;
