@@ -42,23 +42,12 @@ const TermsOfService = () => {
         <p>We shall not be held responsible for any content that appears on your website. You agree to protect and defend us against all claims arising on your website.</p>
         <p>No link(s) should appear on any website that may be interpreted as libelous, obscene, or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
       </section>
-      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <section className="section">
+        <h3 className="subtitle">Disclaimer</h3>
+        <p>We do not ensure that the information on this website is correct, nor do we warrant its completeness or accuracy. We do not promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
+        <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties, and conditions relating to our website and the use of this website.</p>
+      </section>
 
     </div>
   );
