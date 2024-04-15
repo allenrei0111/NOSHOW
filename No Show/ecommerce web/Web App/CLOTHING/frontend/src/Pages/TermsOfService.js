@@ -9,7 +9,12 @@ const TermsOfService = () => {
         <p>Welcome to LanderStylez! By accessing this website, you agree to our terms and conditions. Do not continue if you do not agree.</p>
       </section>
 
+      <section className="section">
+        <h3 className="subtitle">Cookies</h3>
+        <p>We use cookies in accordance with our Privacy Policy. By using our website, you consent to the use of cookies.</p>
+      </section>
 
+      
 
 
 
