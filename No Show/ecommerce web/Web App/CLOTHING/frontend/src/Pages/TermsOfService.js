@@ -20,6 +20,15 @@ const TermsOfService = () => {
         <p>You may not use our materials for any commercial purpose without obtaining a license.</p>
       </section>
 
+      <section className="section">
+        <h3 className="subtitle">User Comments</h3>
+        <p>User comments reflect the opinions of the individuals. We do not endorse or filter comments.</p>
+        <p>However, we reserve the right to remove any comments that violate our community guidelines or are deemed inappropriate.</p>
+      </section>
+
+      
+
+
 
 
 
