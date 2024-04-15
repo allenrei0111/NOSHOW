@@ -16,7 +16,7 @@ import Profile from "./Profile/Profile";
 import ScrollToTopButton from "./Components/ScrollToTopButton/ScrollToTopButton";
 import Track from "./Components/Navbar/Track";
 import Hotlist from "./Components/HotList/Hotlist";
-import Favorite from "./Components/AddToFavorurites/AddToFavourites";
+import Favorite from "./Components/AddToFavorurites/FavoriteItems";
 
 
 
