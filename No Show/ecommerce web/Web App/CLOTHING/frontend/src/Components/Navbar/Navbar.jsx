@@ -33,10 +33,13 @@ const Navbar = () => {
   return (
     <div className='nav'>
       <div className="nav-left">
-        {/* Light mode button */}
-        <button className="theme-toggle" onClick={handleToggleTheme}>
-          {theme === 'light' ? '☀︎' : '☾'}
-        </button>
+        {/* Light mode checkbox */}
+        <input
+          type="checkbox"
+          className="theme-checkbox"
+          checked={theme === 'dark'}
+          onChange={handleToggleTheme}
+        />
         <button class="btn" onClick={handleToggleMenu}>
     <span class="icon">
         <svg viewBox="0 0 175 80" width="40" height="40">
