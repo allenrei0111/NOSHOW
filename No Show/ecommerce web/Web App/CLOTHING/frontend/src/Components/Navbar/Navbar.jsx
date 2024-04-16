@@ -68,8 +68,6 @@ const Navbar = () => {
         </Link>
 
       </div>
-      
-        ``
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
