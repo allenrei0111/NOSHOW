@@ -37,9 +37,16 @@ const Navbar = () => {
         <button className="theme-toggle" onClick={handleToggleTheme}>
           {theme === 'light' ? '☀︎' : '☾'}
         </button>
-        <button className="hamburger-icon" onClick={handleToggleMenu}>
-          ☰
-        </button>
+        <button class="btn" onClick={handleToggleMenu}>
+    <span class="icon">
+        <svg viewBox="0 0 175 80" width="40" height="40">
+            <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+            <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+            <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+        </svg>
+    </span>
+    <span class="text">MENU</span>
+</button>
         <Link to='/' style={{ textDecoration: 'none' }} className="nav-logo">
           <img src={logo} alt="logo" width={300} />
         </Link>
