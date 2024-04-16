@@ -3,7 +3,6 @@ import './ProductDisplay.css';
 import star_icon from '../Images/star_icon.png';
 import star_dull_icon from '../Images/star_dull_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
-import heart_icon from '../Images/heart_icon.png'
 
 const ProductDisplay = ({ product }) => {
   const { addToCart, selectedSize, setSelectedSize, addToFavorite } = useContext(ShopContext);
@@ -12,6 +11,8 @@ const ProductDisplay = ({ product }) => {
   const [addedToCart, setAddedToCart] = useState(false);
   const [selectedSizeMessage, setSelectedSizeMessage] = useState('');
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const [favoriteIndicatorVisible, setFavoriteIndicatorVisible] = useState(false); // Add state for favorite indicator
+
   const reviews = [
     { text: "Great product, loved it!", rating: 5, name: "John Doe" },
     { text: "Nice quality, fast delivery.", rating: 4, name: "Jane Smith" },
@@ -55,9 +56,12 @@ const ProductDisplay = ({ product }) => {
   const handlePrevReview = () => {
     setCurrentReviewIndex((currentReviewIndex - 1 + reviews.length) % reviews.length);
   };
+
   const handleAddToFavorite = (productId) => {
     addToFavorite(productId);
     setAddedToFavorite(true);
+    setFavoriteIndicatorVisible(true); // Show the favorite indicator when the favorite button is clicked
+    setTimeout(() => setFavoriteIndicatorVisible(false), 2000); // Hide the indicator after 2 seconds
   };
 
   return (
@@ -70,6 +74,7 @@ const ProductDisplay = ({ product }) => {
         </div>
         <div className='productdisplay-img'>
           <img className='productdisplay-main-img' src={product.image} alt='' />
+          {favoriteIndicatorVisible && <div className="favorite-indicator visible">Favorite</div>} {/* Add favorite indicator */}
         </div>
       </div>
       <div className='productdisplay-right'>
@@ -126,12 +131,17 @@ const ProductDisplay = ({ product }) => {
         ) : (
           <button onClick={() => handleAddToCart(product.id)}>ADD TO CART</button>
         )}
-        <img
-  src={heart_icon}
-  alt="Favorite"
-  className={`favorite-icon ${addedToFavorite ? 'added' : ''}`}
-  onClick={() => handleAddToFavorite(product.id)}
-/>
+        <button className="favorite-button" onClick={() => handleAddToFavorite(product.id)}>
+          <svg className={`empty ${addedToFavorite ? 'hidden' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+            <path fill="none" d="M0 0H24V24H0z"></path>
+            <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604c.881-.556 1.676-1.109 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5 5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903.745.592 1.54 1.145 2.421 1.7.299.189.595.37.934.572.339-.202.635-.383.934-.571z"></path>
+          </svg>
+          <svg className={`filled ${addedToFavorite ? '' : 'hidden'}`} height="32" width="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0H24V24H0z" fill="none"></path>
+            <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
+          </svg>
+          Add To Favorite 
+        </button>
 
       </div>
     </div>

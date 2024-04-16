@@ -283,29 +283,87 @@
         font-size: 16px;
     }
 }
-.add-to-favorites:hover {
-    width: 50px;
-    height: 50px;
-    margin-top: -20px;
-    background-color: rgb(241, 0, 0);
-    transform: scale(1.2);
-  }
-  .favorite-icon {
-    width: 70px; 
-    height: 40px; 
-    cursor: pointer;
-    transition: transform 0.2s ease; 
-    margin-top: -60px;
-    margin-bottom: 60px;
-    margin-left: -150px;
-   
-  }
+
   
-  .favorite-icon:hover {
-    transform: scale(2.0);
-  }
+.favorite-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 25px 20px 22px;
+    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: #e8e8e8;
+    border-color: #ffe2e2;
+    border-style: solid;
+    border-width: 9px;
+    border-radius: 35px;
+    font-size: 25px;
+    font-weight: 900;
+    color: rgb(134, 124, 124);
+    font-family: monospace;
+    transition: transform 400ms cubic-bezier(.68,-0.55,.27,2.5), 
+    border-color 400ms ease-in-out,
+    background-color 400ms ease-in-out;
+    word-spacing: -2px;
+    position: left;
+    bottom: 10px;
+    right: 10px;
+}
+
+.favorite-button:hover {
+    background-color: #eee;
+    transform: scale(105%);
+    animation: movingBorders 3s infinite;
+}
+
+.favorite-button svg {
+    margin-right: 11px;
+    fill: rgb(255, 110, 110);
+    transition: opacity 100ms ease-in-out;
+}
+
+.filled {
+    position: absolute;
+    opacity: 0;
+    top: 20px;
+    left: 22px;
+}
+
+@keyframes movingBorders {
+    0% {
+        border-color: #fce4e4;
+    }
   
-  .favorite-icon.added {
-    filter: grayscale(100%);
-  }
+    50% {
+        border-color: #ffd8d8;
+    }
   
+    90% {
+        border-color: #fce4e4;
+    }
+}
+
+.favorite-button:hover .empty {
+    opacity: 0;
+}
+
+.favorite-button:hover .filled {
+    opacity: 1;
+    animation: beatingHeart 1.2s infinite;
+}
+
+.favorite-indicator {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    background-color: #ff5050;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.favorite-indicator.visible {
+    opacity: 1;
+}
