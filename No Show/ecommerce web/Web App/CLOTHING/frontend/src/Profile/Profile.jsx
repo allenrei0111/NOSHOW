@@ -93,7 +93,6 @@ const Profile = () => {
           )}
           {!editMode ? (
             <>
-              <h2>Profile:</h2>
               <p>Name: {savedProfile && savedProfile.name}</p>
               <p>Gender: {savedProfile && savedProfile.gender}</p>
               <p>Address: {savedProfile && savedProfile.address}</p>
