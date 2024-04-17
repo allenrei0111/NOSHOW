@@ -12,7 +12,7 @@ const CartItems = () => {
   const [processing, setProcessing] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentError, setPaymentError] = useState(false);
-  const [trackingCode, setTrackingCode] = useState(""); // State to store the tracking code
+  
   const [shippingInfo, setShippingInfo] = useState({
     firstName: "",
     lastName: "",
@@ -34,7 +34,7 @@ const CartItems = () => {
     }
 
     try {
-      const { error, paymentMethod } = await stripe.createPaymentMethod({
+      const { error } = await stripe.createPaymentMethod({
         type: "card",
         card: elements.getElement(CardElement),
       });
@@ -53,21 +53,11 @@ const CartItems = () => {
       setPaymentError(true);
     }
 
-    // Generate and set tracking code regardless of success or error
-    const generatedCode = generateTrackingCode();
-    setTrackingCode(generatedCode);
+
   };
 
-  // Function to generate a random tracking code
-  const generateTrackingCode = () => {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 10;
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-  };
+
+ 
 
   const handleShippingChange = (e) => {
     const { name, value } = e.target;
@@ -210,21 +200,21 @@ const CartItems = () => {
       </form>
       {error && <div>{error}</div>}
       
-      {/* Payment Success Popup */}
+      
       {paymentSuccess && (
         <div className="payment-popup">
-          <span className="payment-popup-close" onClick={() => setPaymentSuccess(false)}>&times;</span>
+          <span className="payment-popup-close" onClick={() => setPaymentSuccess(true)}>&times;</span>
           <div className="payment-success">Payment successful!</div>
-          <div>Tracking Code: {trackingCode}</div>
+    
         </div>
       )}
 
-      {/* Payment Error Popup */}
+      
       {paymentError && (
         <div className="payment-popup">
           <span className="payment-popup-close" onClick={() => setPaymentError(false)}>&times;</span>
           <div className="payment-error">{error}</div>
-          <div>Tracking Code: {trackingCode}</div>
+         
         </div>
       )}
     </div>
