@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 30px;
   background-color: #f9f9f9;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow:  0 30px 30px 20px rgba(0, 0, 0, 0.1);
 }
 
 .profile-info {
@@ -12,6 +12,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  font-size: 30px;
+  margin-bottom: 90px;
 }
 
 .profile-info h2 {
@@ -39,12 +41,14 @@
 
 .profile-picture {
   position: absolute;
-  left: 50%;
+  left: 33%;
   transform: translateX(-50%);
   bottom: 10px; 
   border-radius: 50%;
   border: 4px solid #fff;  
   width: 250px;
+  
+  animation: float 6s ease-in-out infinite;
 }
 
 .label {
@@ -87,4 +91,15 @@
 .save-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
