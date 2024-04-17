@@ -1,45 +1,43 @@
 .hero {
   height: 100vh;
   display: flex;
-  background-image: url('../Images/gif.gif');
-  background-size: cover;
-  background-position: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* White background */
+  background-image: url('C:\Users\diako\Desktop\NOSHOW\No Show\ecommerce web\Web App\CLOTHING\frontend\src\Components\Images\cool-background (1).png'), linear-gradient(to right, #000, #fff, #333); /* Add your image path here */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the background image */
   margin-bottom: 0;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .hero-top {
-  position: absolute;
-  top: 25%;
-  left: 53%;
-  transform: translate(-50%, -50%);
   color: whitesmoke;
   text-align: center;
   text-shadow: 5px 5px 20px #000000;
-  font-size:300%;
+  font-size: 300%;
   font-family: 'Times New Roman', Times, serif;
 }
 
-
 .hero-right {
-  align-items: center;
+  display: flex;
   justify-content: center;
-  margin-top: 10%;
-  margin-left: 24%;
- 
+  align-items: center;
 }
 
 .hero-right img {
-  width: 1100px;
+  width: 850px; /* Adjust the width as needed */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
-  margin-left: 160px;
   margin-top: 100px;
 }
 
 .hero-right img:hover {
   transform: scale(1.05);
 }
+
 
 .overlay {
   position: fixed;
