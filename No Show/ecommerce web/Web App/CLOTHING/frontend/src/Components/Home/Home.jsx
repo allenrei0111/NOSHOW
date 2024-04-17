@@ -41,9 +41,9 @@ const Home = () => {
             <p class="promo-code animate__animated animate__heartBeat">'NOSHOW30'</p>
             <p>and save 30% off your next purchase.</p>
             <p>You might want to check out our Best Seller Clothes</p>
-            <li onClick = {handleClosePopup}>
+            <button className= "bestseller"onClick = {handleClosePopup}>
             <Link to='/hotlist' style ={{textDecoration:'none'}}>Best Seller</Link>
-            </li>
+            </button>
             <button onClick={handleClosePopup}>Close</button>
           </div>
         </>
