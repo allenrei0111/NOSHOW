@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Profile.css';
+import FavoriteItems from '../Components/AddToFavorurites/FavoriteItems'; // Assuming FavoriteItems.jsx is in the same directory
 
 const Profile = () => {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
-  const [bio, setBio] = useState('');
-  const [profilePicture, setProfilePicture] = useState(null);
-  const [school, setSchool] = useState('');
   const [address, setAddress] = useState('');
+  const [profilePicture, setProfilePicture] = useState(null);
   const [savedProfile, setSavedProfile] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+  const [editMode, setEditMode] = useState(false); // State variable for edit mode
 
   useEffect(() => {
     // Load saved profile from localStorage on component mount
@@ -28,13 +27,11 @@ const Profile = () => {
     const profile = {
       name: name,
       gender: gender,
-      bio: bio,
+      address: address,
       profilePicture: profilePicture,
-      school: school,
-      address: address
     };
     setSavedProfile(profile);
-    setIsEditing(false); // Hide the editing fields after saving
+    setEditMode(false); // After saving, switch off edit mode
   };
 
   const handleProfilePictureChange = (e) => {
@@ -46,75 +43,68 @@ const Profile = () => {
     };
   };
 
+  const handleEditField = (field, currentValue) => {
+    const newValue = prompt(`Enter new ${field}:`, currentValue);
+    if (newValue !== null) {
+      switch (field) {
+        case 'name':
+          setName(newValue);
+          break;
+        case 'gender':
+          setGender(newValue);
+          break;
+        case 'address':
+          setAddress(newValue);
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
   return (
     <div className="profile-container">
-      {isEditing ? (
+      {!editMode && ( // Render edit button only if not in edit mode
+        <button className="edit-button" onClick={() => setEditMode(true)}>
+          Edit
+        </button>
+      )}
+
+      {!editMode ? ( // Render profile display if not in edit mode
         <>
-          <div className="label">
+          {savedProfile && (
+            <div className="profile-info">
+              <h2>Profile:</h2>
+              {savedProfile.profilePicture && (
+                <img src={savedProfile.profilePicture} alt="Profile" />
+              )}
+              <p>Name: {savedProfile.name}</p>
+              <p>Gender: {savedProfile.gender}</p>
+              <p>Address: {savedProfile.address}</p>
+            </div>
+          )}
+          <FavoriteItems /> {/* Render FavoriteItems component */}
+        </>
+      ) : (
+        // Render edit fields if in edit mode
+        <div>
+          <div className="label" onClick={() => handleEditField('name', name)}>
             <label>Name:</label>
-            <input
-              className="input-field"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
-          <div className="label">
+          <div className="label" onClick={() => handleEditField('gender', gender)}>
             <label>Gender:</label>
-            <input
-              className="input-field"
-              type="text"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-            />
+            <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} />
           </div>
-          <div className="label">
-            <label>Bio:</label>
-            <textarea
-              className="textarea-field"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-            />
-          </div>
-          <div className="label">
-            <label>School:</label>
-            <input
-              className="input-field"
-              type="text"
-              value={school}
-              onChange={(e) => setSchool(e.target.value)}
-            />
-          </div>
-          <div className="label">
+          <div className="label" onClick={() => handleEditField('address', address)}>
             <label>Address:</label>
-            <input
-              className="input-field"
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
+            <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
           </div>
           <div className="label">
             <label>Profile Picture:</label>
             <input className="file-input" type="file" accept="image/*" onChange={handleProfilePictureChange} />
           </div>
           <button className="save-button" onClick={handleSaveProfile}>Save</button>
-        </>
-      ) : (
-        <button className="edit-button" onClick={() => setIsEditing(true)}>Edit</button>
-      )}
-
-      {savedProfile && !isEditing && (
-        <div className="profile-info">
-          <h2>Profile:</h2>
-          {savedProfile.profilePicture && (
-            <img src={savedProfile.profilePicture} alt="Profile" />
-          )}
-          <p>Name: {savedProfile.name}</p>
-          <p>Gender: {savedProfile.gender}</p>
-          <p>Bio: {savedProfile.bio}</p>
-          <p>School: {savedProfile.school}</p>
-          <p>Address: {savedProfile.address}</p>
         </div>
       )}
     </div>
