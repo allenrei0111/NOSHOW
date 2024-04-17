@@ -86,11 +86,6 @@ const Navbar = () => {
             <Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link>
           </li>
         )}
-        {localStorage.getItem('auth-token') && (
-          <li onClick={() => setMenuVisible(false)}>
-            <Link to="/track" style={{ textDecoration: 'none' }}>Track</Link>
-          </li>
-        )}
          {localStorage.getItem('auth-token') && (
           <li onClick={() => setMenuVisible(false)}>
             <Link to="/favorite" style={{ textDecoration: 'none' }}>Favorite</Link>

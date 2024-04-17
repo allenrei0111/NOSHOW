@@ -14,11 +14,10 @@ import About from "./Pages/About";
 import Question from "./Pages/QuestionTab";
 import Profile from "./Profile/Profile";
 import ScrollToTopButton from "./Components/ScrollToTopButton/ScrollToTopButton";
-import Track from "./Components/Navbar/Track";
 import Hotlist from "./Components/HotList/Hotlist";
 import Favorite from "./Components/AddToFavorurites/FavoriteItems";
 import Guide from "./Pages/SizeGuide";
-import TermsOfService from "./Pages/TermsOfService"; // Import the TermsOfService component
+import TermsOfService from "./Pages/TermsOfService";
 
 const stripePromise = loadStripe("pk_test_51OvSq1HjQsfCN3ihPmxsbkss0yEvWXDK0JSx6w9okn38UmB5l0OdRUWopK2KhigoBqGWy7w94HXiybMj6ywC3GI300Cl3WNXk7");
 
@@ -48,13 +47,11 @@ function App() {
           />
           <Route path="/profile" element={<Profile />} />
           <Route path="/favorite" element={<Favorite />} />
-          <Route path="/track" element={<Track />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/question" element={<Question />} />
           <Route path="/guide" element={<Guide />} />
-          {/* Added the route for the TermsOfService component */}
           <Route path="/terms-of-service" element={<TermsOfService />} />
         </Routes>
         <Footer />

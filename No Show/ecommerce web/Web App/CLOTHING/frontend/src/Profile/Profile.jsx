@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Profile.css';
-import FavoriteItems from '../Components/AddToFavorurites/FavoriteItems'; // Assuming FavoriteItems.jsx is in the same directory
+import FavoriteItems from '../Components/AddToFavorurites/FavoriteItems';
 
 const Profile = () => {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [address, setAddress] = useState('');
   const [profilePicture, setProfilePicture] = useState(null);
+  const [coverPhoto, setCoverPhoto] = useState(null); // New state variable for cover photo
   const [savedProfile, setSavedProfile] = useState(null);
-  const [editMode, setEditMode] = useState(false); // State variable for edit mode
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    // Load saved profile from localStorage on component mount
     const savedProfileData = localStorage.getItem('savedProfile');
     if (savedProfileData) {
       setSavedProfile(JSON.parse(savedProfileData));
@@ -19,7 +19,6 @@ const Profile = () => {
   }, []);
 
   useEffect(() => {
-    // Save profile to localStorage whenever it changes
     localStorage.setItem('savedProfile', JSON.stringify(savedProfile));
   }, [savedProfile]);
 
@@ -29,9 +28,11 @@ const Profile = () => {
       gender: gender,
       address: address,
       profilePicture: profilePicture,
+      coverPhoto: coverPhoto, 
     };
     setSavedProfile(profile);
-    setEditMode(false); // After saving, switch off edit mode
+    setEditMode(false);
+    alert("Profile is updated!");
   };
 
   const handleProfilePictureChange = (e) => {
@@ -40,6 +41,15 @@ const Profile = () => {
     reader.readAsDataURL(file);
     reader.onload = () => {
       setProfilePicture(reader.result);
+    };
+  };
+
+  const handleCoverPhotoChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setCoverPhoto(reader.result);
     };
   };
 
@@ -64,49 +74,61 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      {!editMode && ( // Render edit button only if not in edit mode
-        <button className="edit-button" onClick={() => setEditMode(true)}>
-          Edit
-        </button>
-      )}
-
-      {!editMode ? ( // Render profile display if not in edit mode
-        <>
-          {savedProfile && (
-            <div className="profile-info">
+  <div className="profile-info">
+    {savedProfile && (
+      <div className="profile-photo-container">
+        {savedProfile.coverPhoto && (
+          <img className="cover-photo" src={savedProfile.coverPhoto} alt="Cover" />
+        )}
+        {savedProfile.profilePicture && (
+          <img className="profile-picture" src={savedProfile.profilePicture} alt="Profile" />
+        )}
+      </div>
+    )}
+        <div className="profile-right">
+          {!editMode && (
+            <button className="edit-button" onClick={() => setEditMode(true)}>
+              Edit
+            </button>
+          )}
+          {!editMode ? (
+            <>
               <h2>Profile:</h2>
-              {savedProfile.profilePicture && (
-                <img src={savedProfile.profilePicture} alt="Profile" />
-              )}
-              <p>Name: {savedProfile.name}</p>
-              <p>Gender: {savedProfile.gender}</p>
-              <p>Address: {savedProfile.address}</p>
+              <p>Name: {savedProfile && savedProfile.name}</p>
+              <p>Gender: {savedProfile && savedProfile.gender}</p>
+              <p>Address: {savedProfile && savedProfile.address}</p>
+            </>
+          ) : (
+            <div>
+              <div className="label" onClick={() => handleEditField('name', name)}>
+                <label>Name:</label>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+              </div>
+              <div className="label" onClick={() => handleEditField('gender', gender)}>
+                <label>Gender:</label>
+                <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} />
+              </div>
+              <div className="label" onClick={() => handleEditField('address', address)}>
+                <label>Address:</label>
+                <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+              </div>
+              <div className="label">
+                <label>Profile Picture:</label>
+                <input className="file-input" type="file" accept="image/*" onChange={handleProfilePictureChange} />
+              </div>
+              <div className="label">
+                <label>Cover Photo:</label>
+                <input className="file-input" type="file" accept="image/*" onChange={handleCoverPhotoChange} />
+              </div>
+              <button className="save-button" onClick={handleSaveProfile}>Save</button>
             </div>
           )}
-          <FavoriteItems /> {/* Render FavoriteItems component */}
-        </>
-      ) : (
-        // Render edit fields if in edit mode
-        <div>
-          <div className="label" onClick={() => handleEditField('name', name)}>
-            <label>Name:</label>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-          </div>
-          <div className="label" onClick={() => handleEditField('gender', gender)}>
-            <label>Gender:</label>
-            <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} />
-          </div>
-          <div className="label" onClick={() => handleEditField('address', address)}>
-            <label>Address:</label>
-            <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-          </div>
-          <div className="label">
-            <label>Profile Picture:</label>
-            <input className="file-input" type="file" accept="image/*" onChange={handleProfilePictureChange} />
-          </div>
-          <button className="save-button" onClick={handleSaveProfile}>Save</button>
         </div>
-      )}
+      </div>
+      <div className="favorite-section">
+        <h2>Favorite Items</h2>
+        <FavoriteItems />
+      </div>
     </div>
   );
 };
