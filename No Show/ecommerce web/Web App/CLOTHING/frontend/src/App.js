@@ -53,6 +53,7 @@ function App() {
           <Route path="/question" element={<Question />} />
           <Route path="/guide" element={<Guide />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="login-signup" element={<LoginSignup/>}/>
         </Routes>
         <Footer />
       </Router>

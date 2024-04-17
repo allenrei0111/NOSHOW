@@ -35,9 +35,9 @@
 }
 
 .nav-search {
+
   display: flex;
   align-items: center;
-  margin-right: auto; /* Move the search bar to the left */
 }
 
 .nav-search input[type="text"] {
