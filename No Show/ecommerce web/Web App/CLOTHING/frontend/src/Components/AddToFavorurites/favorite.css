@@ -31,11 +31,13 @@
   }
   
   .favorite-items-format button {
-    padding: 5px 10px;
+    padding: 2px;
+    width: 25px;
     border: none;
     background-color: #ff6f61;
     color: #fff;
     cursor: pointer;
+    margin-left: 110px;
   }
   
   .favorite-items-format button:hover {
