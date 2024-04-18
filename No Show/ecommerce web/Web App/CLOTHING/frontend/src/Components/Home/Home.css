@@ -57,7 +57,7 @@
 .popup button.bestseller {
   background-color: #007bff;
   margin-right: 500px;
-  margin-left: 130px;
+  margin-left: 66px;
   padding: 20px;
   width: 250px;
   font-size: 20px;
@@ -223,6 +223,6 @@ body.dark .hero-left p {
   }
 
   .popup {
-    max-width: 80%; /* Increase maximum width of popup */
+    max-width: 100%; /*    */
   }
 }
