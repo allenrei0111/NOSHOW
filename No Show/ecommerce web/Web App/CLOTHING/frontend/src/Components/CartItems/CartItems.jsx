@@ -13,7 +13,7 @@ const CartItems = () => {
   const [processing, setProcessing] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentError, setPaymentError] = useState(false);
-  
+  const [receiptOpen, setReceiptOpen] = useState(false); // State to manage receipt popup
   
   const [shippingInfo, setShippingInfo] = useState({
     firstName: "",
