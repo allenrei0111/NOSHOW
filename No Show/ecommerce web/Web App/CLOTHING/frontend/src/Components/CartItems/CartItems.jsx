@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import "./CartItems.css";
+import { Link } from 'react-router-dom';
 import { ShopContext } from "../../Context/ShopContext";
 import 'animate.css';
 
@@ -12,7 +13,8 @@ const CartItems = () => {
   const [processing, setProcessing] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentError, setPaymentError] = useState(false);
-  const [trackingCode, setTrackingCode] = useState(""); // State to store the tracking code
+  const [receiptOpen, setReceiptOpen] = useState(false); // State to manage receipt popup
+  
   const [shippingInfo, setShippingInfo] = useState({
     firstName: "",
     lastName: "",
@@ -20,9 +22,9 @@ const CartItems = () => {
     address: "",
     email: ""
   });
-  const [promoCode, setPromoCode] = useState(""); // State to store the promo code value
-  const [promoCodeApplied, setPromoCodeApplied] = useState(false); // State to track if a promo code is applied
-  const [totalSaved, setTotalSaved] = useState(0); // State to store the total saved amount
+  const [promoCode, setPromoCode] = useState("");
+  const [promoCodeApplied, setPromoCodeApplied] = useState(false);
+  const [totalSaved, setTotalSaved] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,7 +36,7 @@ const CartItems = () => {
     }
 
     try {
-      const { error, paymentMethod } = await stripe.createPaymentMethod({
+      const { error } = await stripe.createPaymentMethod({
         type: "card",
         card: elements.getElement(CardElement),
       });
@@ -52,21 +54,6 @@ const CartItems = () => {
       setProcessing(false);
       setPaymentError(true);
     }
-
-    // Generate and set tracking code regardless of success or error
-    const generatedCode = generateTrackingCode();
-    setTrackingCode(generatedCode);
-  };
-
-  // Function to generate a random tracking code
-  const generateTrackingCode = () => {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 10;
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
   };
 
   const handleShippingChange = (e) => {
@@ -74,24 +61,29 @@ const CartItems = () => {
     setShippingInfo({ ...shippingInfo, [name]: value });
   };
 
-  // Function to handle submission of promo code
   const handlePromoCodeSubmit = async () => {
-    // Simulate promo code application and calculate the total saved amount
     if (promoCode === "NOSHOW30") {
-      setTotalSaved(getTotalCartAmount() * 0.3); // 30% off discount
+      setTotalSaved(getTotalCartAmount() * 0.3);
     } else if (promoCode === "LANDERSTYLEZ") {
-      setTotalSaved(getTotalCartAmount() * 0.5); // 50% off discount
+      setTotalSaved(getTotalCartAmount() * 0.5);
     } else if (promoCode === "SAVE10") {
-      setTotalSaved(getTotalCartAmount() * 0.1); // 10% off discount
+      setTotalSaved(getTotalCartAmount() * 0.1);
     } else {
       setError("Invalid promo code");
     }
     setPromoCodeApplied(true);
   };
 
-  // Function to handle change in promo code input
   const handlePromoCodeChange = (e) => {
     setPromoCode(e.target.value);
+  };
+
+  const handleReceiptClose = () => {
+    setReceiptOpen(false);
+  };
+
+  const handleReceiptOpen = () => {
+    setReceiptOpen(true);
   };
 
   return (
@@ -127,7 +119,7 @@ const CartItems = () => {
       })}
       <div className="cartitems-down">
         <div className="cartitems-total">
-        <h1> Cart Totals </h1>
+          <h1> Cart Totals </h1>
           <div>
             <div className="cartitems-total-item">
               <p>Subtotal</p>
@@ -147,7 +139,7 @@ const CartItems = () => {
           </div>
         </div>
         <div className="cartitems-promocode">
-          <p class="animate__animated animate__shakeY">ENTER PROMO CODE BELOW:</p>
+          <p className="animate__animated animate__shakeY">ENTER PROMO CODE BELOW:</p>
           <div className="cartitems-promobox">
             <input type="text" placeholder="Enter promo code" value={promoCode} onChange={handlePromoCodeChange} />
             <button onClick={handlePromoCodeSubmit}>Apply</button>
@@ -156,51 +148,50 @@ const CartItems = () => {
         </div>
       </div>
       <div className="cartitems-shipping-info">
-  <h2>Shipping Address</h2>
-  <div className="cartitems-input-container">
-    <input 
-      type="text" 
-      name="firstName" 
-      placeholder="First Name" 
-      value={shippingInfo.firstName}
-      onChange={handleShippingChange} 
-      className="shipping-input"
-    />
-    <input 
-      type="text" 
-      name="lastName" 
-      placeholder="Last Name" 
-      value={shippingInfo.lastName}
-      onChange={handleShippingChange} 
-      className="shipping-input"
-    />
-    <input 
-      type="text" 
-      name="country" 
-      placeholder="Country" 
-      value={shippingInfo.country}
-      onChange={handleShippingChange} 
-      className="shipping-input"
-    />
-    <input 
-      type="text" 
-      name="address" 
-      placeholder="Address" 
-      value={shippingInfo.address}
-      onChange={handleShippingChange} 
-      className="shipping-input"
-    />
-    <input 
-      type="email" 
-      name="email" 
-      placeholder="Email" 
-      value={shippingInfo.email}
-      onChange={handleShippingChange} 
-      className="shipping-input"
-    />
-  </div>
-</div>
-
+        <h2>Shipping Address</h2>
+        <div className="cartitems-input-container">
+          <input 
+            type="text" 
+            name="firstName" 
+            placeholder="First Name" 
+            value={shippingInfo.firstName}
+            onChange={handleShippingChange} 
+            className="shipping-input"
+          />
+          <input 
+            type="text" 
+            name="lastName" 
+            placeholder="Last Name" 
+            value={shippingInfo.lastName}
+            onChange={handleShippingChange} 
+            className="shipping-input"
+          />
+          <input 
+            type="text" 
+            name="country" 
+            placeholder="Country" 
+            value={shippingInfo.country}
+            onChange={handleShippingChange} 
+            className="shipping-input"
+          />
+          <input 
+            type="text" 
+            name="address" 
+            placeholder="Address" 
+            value={shippingInfo.address}
+            onChange={handleShippingChange} 
+            className="shipping-input"
+          />
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Email" 
+            value={shippingInfo.email}
+            onChange={handleShippingChange} 
+            className="shipping-input"
+          />
+        </div>
+      </div>
       <h2 className="payment-title">Payment</h2>
       <form onSubmit={handleSubmit}>
         <CardElement />
@@ -209,22 +200,21 @@ const CartItems = () => {
         </button>
       </form>
       {error && <div>{error}</div>}
-      
-      {/* Payment Success Popup */}
-      {paymentSuccess && (
-        <div className="payment-popup">
-          <span className="payment-popup-close" onClick={() => setPaymentSuccess(false)}>&times;</span>
-          <div className="payment-success">Payment successful!</div>
-          <div>Tracking Code: {trackingCode}</div>
-        </div>
-      )}
-
-      {/* Payment Error Popup */}
       {paymentError && (
         <div className="payment-popup">
           <span className="payment-popup-close" onClick={() => setPaymentError(false)}>&times;</span>
           <div className="payment-error">{error}</div>
-          <div>Tracking Code: {trackingCode}</div>
+        </div>
+      )}
+      {paymentSuccess && (
+        <div className="payment-popup">
+          <span className="payment-popup-close" onClick={handleReceiptClose}>&times;</span>
+          <div className="payment-success">Payment successful!</div>
+          <div className="receipt-content">
+            
+            <button><Link to='/receipt' style={{ textDecoration: 'none' }}>Reciept</Link></button>
+         
+          </div>
         </div>
       )}
     </div>
