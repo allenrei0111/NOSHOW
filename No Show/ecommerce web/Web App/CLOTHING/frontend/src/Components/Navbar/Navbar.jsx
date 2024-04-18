@@ -53,15 +53,16 @@ const Navbar = () => {
       <div className="nav-search">
         <SearchBar products={products} />
       </div>
+      <div className="nav-profile-container">
+          <img src={ppf} alt="ppf" width={50} onClick={() => setOpenProfile(prev => !prev)} />
+          {openProfile && <Profiles />}
+        </div>
       <div>
         <Link to="/cart" className="nav-cart-link">
           <img src={cart_icon} alt="cart" width={50} className='nav-cart' />
           <div className="nav-cart-count">{getTotalCartItems()}</div>
         </Link>
-        <div className="nav-profile-container">
-          <img src={ppf} alt="ppf" width={50} onClick={() => setOpenProfile(prev => !prev)} />
-          {openProfile && <Profiles />}
-        </div>
+      
        
       </div>
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
