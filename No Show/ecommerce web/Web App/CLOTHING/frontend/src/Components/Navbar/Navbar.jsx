@@ -24,15 +24,7 @@ const Navbar = () => {
     document.body.classList.toggle('dark');
   };
 
-  // Check if user is logged in
-  const isLoggedIn = localStorage.getItem('auth-token') !== null;
-
-  const handleLogout = () => {
-    localStorage.removeItem('auth-token');
-    alert('Successfully logged out');
-    // Redirect to homepage
-    window.location.replace("/");
-  };
+ 
 
   return (
     <div className='nav'>
@@ -70,11 +62,7 @@ const Navbar = () => {
           <img src={ppf} alt="ppf" width={50} onClick={() => setOpenProfile(prev => !prev)} />
           {openProfile && <Profiles />}
         </div>
-        {isLoggedIn ? (
-          <button className="nav-logout-btn" onClick={handleLogout}>Logout</button>
-        ) : (
-          <Link to="/login" className="nav-login-link">Login</Link>
-        )}
+       
       </div>
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
         <li onClick={() => setMenuVisible(false)}>

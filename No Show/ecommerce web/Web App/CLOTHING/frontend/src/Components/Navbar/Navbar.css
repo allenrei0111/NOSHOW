@@ -60,12 +60,10 @@
   margin-left: 10px; /* Add margin to separate from input field */
 }
 
-
 .nav-login-cart {
   display: flex;
   align-items: right;
   margin-right: 20px;
-  
 }
 
 .nav-login-cart button {
@@ -90,7 +88,6 @@
   background-color: rgb(252, 186, 243); /* Background color on hover */
   transform: scale(1.2); /* Scale effect on hover */
 }
-
 
 .nav-cart-link {
   position: relative; /* To make the position of the indicator relative to the cart */
@@ -151,7 +148,6 @@
   transform: scale(1.1); /* Scale the link on hover */
 }
 
-
 body.light {
   background-color: #f9f9f9;
   color: #333;
@@ -181,7 +177,6 @@ body.dark .nav-login-cart button {
   color: white;
 }
 
-
 .theme-toggle {
   font-size: 24px; /* Same font size as the hamburger icon */
   cursor: pointer;
@@ -192,7 +187,6 @@ body.dark .nav-login-cart button {
 .theme-toggle:hover {
   transform: scale(1.2); /* Scale effect on hover */
 }
-
 
 .btn {
   width: 150px;
@@ -243,7 +237,6 @@ body.dark .nav-login-cart button {
 .btn:active .icon {
   transform: scale(0.85);
 }
-
 
 .theme-checkbox {
   --toggle-size: 16px;
