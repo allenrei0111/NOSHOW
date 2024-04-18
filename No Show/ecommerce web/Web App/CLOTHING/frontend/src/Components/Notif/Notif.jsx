@@ -1,6 +1,6 @@
 import React from "react";
 
-const Notif = ({ showNotification, handleClose, cartItemCount }) => {
+const Notif = ({ showNotification, handleClose, cartItemCount, paymentNotification, notificationCount }) => {
   return (
     <div className={`notification ${showNotification ? "show" : ""}`}>
       <button onClick={handleClose}>
@@ -18,6 +18,16 @@ const Notif = ({ showNotification, handleClose, cartItemCount }) => {
         </svg>
       </button>
       <span className="cart-item-count">{cartItemCount}</span> {/* Display cart item count */}
+      {paymentNotification && ( // Display payment notification if available
+        <div className="payment-notification">
+          Payment of ${paymentNotification.amount} successful!
+        </div>
+      )}
+      {notificationCount > 0 && ( // Display general notification count if available
+        <div className="general-notification">
+          You have {notificationCount} new notifications
+        </div>
+      )}
     </div>
   );
 };
