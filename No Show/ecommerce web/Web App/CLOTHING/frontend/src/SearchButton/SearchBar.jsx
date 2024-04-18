@@ -1,5 +1,3 @@
-//Reference https://www.youtube.com/watch?v=sWVgMcz8Q44
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import './SearchBar.css';
@@ -18,7 +16,10 @@ const SearchBar = ({ products, handleSearch }) => {
         product.name.toLowerCase().includes(query.toLowerCase())
       );
       setSearchResults(results);
-      handleSearch(results);
+      // Check if handleSearch is a function before calling it
+      if (typeof handleSearch === 'function') {
+        handleSearch(results);
+      }
       setErrorMessage('');
     } else {
       resetSearch();
