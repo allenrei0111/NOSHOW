@@ -20,7 +20,6 @@ const Profiles = () => {
                     <Link to="/profile" className="link-style">
                         <span className="icon">
                             <svg viewBox="0 0 24 24" width="20" height="20">
-                                {/* Add your profile icon SVG here */}
                             </svg>
                         </span>
                         <span className="text">Profile</span>
@@ -30,7 +29,6 @@ const Profiles = () => {
                     <Link to="/favorite" className="link-style">
                         <span className="icon">
                             <svg viewBox="0 0 24 24" width="20" height="20">
-                                {/* Add your favorites icon SVG here */}
                             </svg>
                         </span>
                         <span className="text">Favorites</span>
@@ -38,19 +36,19 @@ const Profiles = () => {
                 </li>
                 <li>
                     {isLoggedIn ? (
-                        <button onClick={handleLogout} className="logout-button link-style">
+                        <li onClick={handleLogout} className="link-style">
                             <span className="icon">
                                 <svg viewBox="0 0 24 24" width="20" height="20">
-                                    {/* Add your logout icon SVG here */}
+
                                 </svg>
                             </span>
                             <span className="text">Logout</span>
-                        </button>
+                        </li>
                     ) : (
                         <Link to="/login" className="link-style">
                             <span className="icon">
                                 <svg viewBox="0 0 24 24" width="20" height="20">
-                                    {/* Add your login icon SVG here */}
+
                                 </svg>
                             </span>
                             <span className="text">Login</span>
