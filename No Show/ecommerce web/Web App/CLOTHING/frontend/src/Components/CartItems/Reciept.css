@@ -1,0 +1,46 @@
+.receipt-container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    margin: auto; /* Center the receipt horizontally */
+    margin-top: 100px;
+    margin-bottom: 100px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+  }
+  
+  .receipt-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .receipt-title {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .receipt-code, .receipt-date {
+    margin: 5px 0;
+    font-size: 0.8rem;
+  }
+  
+  .receipt-items {
+    margin-bottom: 20px;
+  }
+  
+  .receipt-item, .receipt-amount {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+  
+  .thank-you-message {
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #555;
+  }
+  

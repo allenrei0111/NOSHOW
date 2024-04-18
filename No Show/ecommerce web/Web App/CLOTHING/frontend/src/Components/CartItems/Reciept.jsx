@@ -28,12 +28,16 @@ function Receipt() {
 
   return (
     <div className="receipt-container">
-      <p className="thank-you-message">Thank you for purchasing!</p>
-      <p className="receipt-details">Receipt: {generatedCode}</p>
-      <p className="receipt-details">Purchased Date: {todaysDate}</p>
-      
-      <p className="receipt-details">Item Purchased: {getTotalCartItems()}</p>
-      <p className="receipt-details">Total Amount: ${getTotalCartAmount()}</p>
+      <div className="receipt-header">
+        <h2 className="receipt-title">Receipt</h2>
+        <p className="receipt-code">Code: {generatedCode}</p>
+        <p className="receipt-date">Date: {todaysDate}</p>
+      </div>
+      <div className="receipt-items">
+        <p className="receipt-item">Items Purchased: {getTotalCartItems()}</p>
+        <p className="receipt-amount">Total Amount: ${getTotalCartAmount()}</p>
+      </div>
+      <p className="thank-you-message">Thank you for your purchase!</p>
     </div>
   );
 }
