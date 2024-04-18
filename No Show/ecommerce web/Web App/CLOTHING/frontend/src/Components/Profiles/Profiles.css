@@ -1,69 +1,44 @@
-\.profiles {
+.profiles {
   position: absolute;
-  top: 5rem;
+  top: 6rem;
   right: -0.5rem;
-  width: 150px;
-  padding: 0;
-  border-radius: 5px;
-  background: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  display: none; /* Hide the profiles by default */
+  padding: 15px;
+  border-radius: 15px;
+  background-color: white;
+  border: 1px solid gray;
+  margin-right: 80px;
 }
 
-.profiles.visible {
-  display: flex;
-  flex-direction: column;
+.profiles::before {
+  position: absolute;
+  top: -0.7rem;
+  right: 1rem;
+  width: 25px;
+  height: 25px;
+  content: '';
+  background-color: white;
+  transform: rotate(45deg);
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+}
+
+.list-none {
+  list-style: none; 
 }
 
 .profile-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.profile-list li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.profile-list li:last-child {
-  border-bottom: none;
+  margin: 0; 
+  padding: 0; 
 }
 
 .link-style {
   text-decoration: none;
-  color: #333;
-  font-size: 18px;
-  transition: transform 0.3s; /* Add transition for scaling effect */
-  display: flex;
-  align-items: center;
+  color: inherit; 
+  cursor: default; 
+  transition: transform 0.3s ease; 
 }
 
 .link-style:hover {
-  transform: scale(1.1); /* Scale the link on hover */
-}
-
-.link-style .icon {
-  margin-right: 5px;
-}
-
-.logout-button {
-  border: none;
-  background: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.logout-button:hover .icon {
-  transform: scale(1.1); /* Scale the icon on hover */
-}
-
-.logout-button .icon {
-  margin-right: 5px;
-}
-
-.logout-button .text {
-  font-size: 18px;
+  color: inherit; 
+  transform: scale(1.2); 
 }
