@@ -24,6 +24,16 @@ const Navbar = () => {
     document.body.classList.toggle('dark');
   };
 
+  // Check if user is logged in
+  const isLoggedIn = localStorage.getItem('auth-token') !== null;
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth-token');
+    alert('Successfully logged out');
+    // Redirect to homepage
+    window.location.replace("/");
+  };
+
   return (
     <div className='nav'>
       <div className="nav-left">
@@ -34,15 +44,15 @@ const Navbar = () => {
           checked={theme === 'dark'}
           onChange={handleToggleTheme}
         />
-        <button class="btn" onClick={handleToggleMenu}>
-          <span class="icon">
+        <button className="btn" onClick={handleToggleMenu}>
+          <span className="icon">
             <svg viewBox="0 0 175 80" width="40" height="40">
               <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
               <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
               <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
             </svg>
           </span>
-          <span class="text">MENU</span>
+          <span className="text">MENU</span>
         </button>
         <Link to='/' style={{ textDecoration: 'none' }} className="nav-logo">
           <img src={logo} alt="logo" width={300} />
@@ -60,7 +70,11 @@ const Navbar = () => {
           <img src={ppf} alt="ppf" width={50} onClick={() => setOpenProfile(prev => !prev)} />
           {openProfile && <Profiles />}
         </div>
-        <Link to="/login" className="nav-login-link">Login</Link>
+        {isLoggedIn ? (
+          <button className="nav-logout-btn" onClick={handleLogout}>Logout</button>
+        ) : (
+          <Link to="/login" className="nav-login-link">Login</Link>
+        )}
       </div>
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
         <li onClick={() => setMenuVisible(false)}>
