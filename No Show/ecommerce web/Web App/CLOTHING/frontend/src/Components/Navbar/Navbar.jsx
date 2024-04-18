@@ -7,7 +7,7 @@ import { ShopContext } from '../../Context/ShopContext';
 import SearchBar from '../../SearchButton/SearchBar';
 import Profiles from "../Profiles/Profiles";
 import ppf from "../Images/ppf.png"; //https://www.istockphoto.com/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-gm1495088043-518213332
-
+import Notif from "../Notif/Notif.jsx"
 
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -15,6 +15,11 @@ const Navbar = () => {
   const { getTotalCartItems, products } = useContext(ShopContext);
   const handleSearch = searchResults => {};
   const [openProfile, setOpenProfile] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleNotificationClose = () => {
+    setShowNotification(false);
+  };
 
   const handleToggleMenu = () => {
     setMenuVisible(prevMenuVisible => !prevMenuVisible);
@@ -61,6 +66,12 @@ const Navbar = () => {
         <SearchBar products={products} handleSearch={handleSearch}/>
       </div>
 
+      <div className='nav'>
+      <div>
+        <Notif showNotification={showNotification} handleClose={handleNotificationClose} />
+      </div>
+
+    </div>
         <div>
         <Link to="/cart" className="nav-cart-link">
           <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
