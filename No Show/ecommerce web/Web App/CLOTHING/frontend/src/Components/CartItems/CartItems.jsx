@@ -4,6 +4,7 @@ import "./CartItems.css";
 import { Link } from 'react-router-dom';
 import { ShopContext } from "../../Context/ShopContext";
 import 'animate.css';
+import  Notif  from "../Notif/Notif";
 
 const CartItems = () => {
   const { products, cartItems, removeFromCart, getTotalCartAmount, selectedSize } = useContext(ShopContext);
@@ -14,6 +15,8 @@ const CartItems = () => {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentError, setPaymentError] = useState(false);
   const [receiptOpen, setReceiptOpen] = useState(false); // State to manage receipt popup
+  
+
   
   const [shippingInfo, setShippingInfo] = useState({
     firstName: "",
@@ -213,10 +216,12 @@ const CartItems = () => {
           <div className="receipt-content">
             
             <button><Link to='/receipt' style={{ textDecoration: 'none' }}>Reciept</Link></button>
-         
+
+            
           </div>
         </div>
       )}
+      <Notif showNotification={paymentSuccess} handleClose={handleReceiptClose} />
     </div>
   );
 };

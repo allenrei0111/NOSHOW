@@ -1,6 +1,6 @@
 import React from "react";
 
-const Notif = ({ showNotification, handleClose }) => {
+const Notif = ({ showNotification, handleClose, cartItemCount }) => {
   return (
     <div className={`notification ${showNotification ? "show" : ""}`}>
       <button onClick={handleClose}>
@@ -17,6 +17,7 @@ const Notif = ({ showNotification, handleClose }) => {
           ></path>
         </svg>
       </button>
+      <span className="cart-item-count">{cartItemCount}</span> {/* Display cart item count */}
     </div>
   );
 };
