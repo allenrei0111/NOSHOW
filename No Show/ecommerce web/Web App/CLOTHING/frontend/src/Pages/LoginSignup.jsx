@@ -3,7 +3,7 @@ import "./CSS/LoginSignup.css";
 
 const LoginSignup = () => {
   const [state, setState] = useState("Login");
-  const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+  const [formData, setFormData] = useState({email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
 
@@ -67,7 +67,6 @@ const LoginSignup = () => {
       <div className="loginsignup-container">
         <h1>{state}</h1>
         <div className="loginsignup-fields">
-          {state === "Sign Up" && <input type="text" placeholder="Your name" name="username" value={formData.username} onChange={changeHandler} />}
           <input type="email" placeholder="Email address" name="email" value={formData.email} onChange={changeHandler} />
           <input type="password" placeholder="Password" name="password" value={formData.password} onChange={changeHandler} />
         </div>

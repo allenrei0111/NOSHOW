@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   background-color: #fff; /* White background */
-  background-image: url('C:\Users\diako\Desktop\NOSHOW\No Show\ecommerce web\Web App\CLOTHING\frontend\src\Components\Images\cool-background (1).png'), linear-gradient(to right, #000, #fff, #333); /* Add your image path here */
+  background-image: url('C:\Users\Danny\Desktop\NOSHOW\No Show\ecommerce web\Web App\CLOTHING\frontend\src\Components\Images\cool-background (1).png'), linear-gradient(to right, #000, #fff, #333);
   background-size: cover; /* Ensure the image covers the entire background */
   background-position: center; /* Center the background image */
   margin-bottom: 0;
