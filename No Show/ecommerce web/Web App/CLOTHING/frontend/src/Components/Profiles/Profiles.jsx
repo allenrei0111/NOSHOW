@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 const Profiles = () => {
     return (
-        <div className="flex flex-col profiles"> 
-            <ul className="flex-col gap-4">
-                <li>Profile</li>
-                <li>Favourites</li>
-                <li><Link to="login-signup">Login</Link></li>
+        <div className="profiles"> 
+            <ul className="list-none profile-list">
+                <li><Link to="/profile" className="link-style">Profile</Link></li>
+                <li><Link to="/favorite" className="link-style">Favourites</Link></li>
+                <li><Link to="login-signup" className="link-style">Login</Link></li>
             </ul>
         </div>
     )
