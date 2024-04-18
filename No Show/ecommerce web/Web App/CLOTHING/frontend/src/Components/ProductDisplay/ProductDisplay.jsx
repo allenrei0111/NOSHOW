@@ -83,7 +83,7 @@ const ProductDisplay = ({ product }) => {
           {[...Array(5)].map((_, index) => (
             <img key={index} src={index < product.rating ? star_icon : star_dull_icon} alt='' />
           ))}
-          <p>({product.reviews})</p>
+          <p>({product.reviews}122)</p>
         </div>
         <div className='productdisplay-right-prices'>
           <div className='productdisplay-right-price-old'>${product.old_price}</div>
@@ -126,11 +126,10 @@ const ProductDisplay = ({ product }) => {
           </div>
         </div>
 
-        {addedToCart ? (
-          <p>ADDED TO CART</p>
-        ) : (
-          <button onClick={() => handleAddToCart(product.id)}>ADD TO CART</button>
-        )}
+       
+        <button className="add-to-cart-button" onClick={() => handleAddToCart(product.id)}>ADD TO CART</button>
+
+       
         <button className="favorite-button" onClick={() => handleAddToFavorite(product.id)}>
           <svg className={`empty ${addedToFavorite ? 'hidden' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
             <path fill="none" d="M0 0H24V24H0z"></path>

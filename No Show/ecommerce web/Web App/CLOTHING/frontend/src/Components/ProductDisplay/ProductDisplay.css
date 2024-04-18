@@ -367,3 +367,32 @@
 .favorite-indicator.visible {
     opacity: 1;
 }
+
+.add-to-cart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 25px 20px 22px;
+    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: #e8e8e8;
+    border: 9px solid #ffe2e2;
+    border-radius: 35px;
+    font-size: 25px;
+    font-weight: 900;
+    color: rgb(134, 124, 124);
+    font-family: monospace;
+    transition: transform 400ms cubic-bezier(.68,-0.55,.27,2.5), 
+                border-color 400ms ease-in-out,
+                background-color 400ms ease-in-out;
+    word-spacing: -2px;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #eee;
+    transform: scale(105%);
+  }
+  
+  .add-to-cart-button:active {
+    transform: scale(0.95);
+  }
+  
