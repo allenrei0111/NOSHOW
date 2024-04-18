@@ -88,11 +88,7 @@ const Navbar = () => {
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/kids' style={{ textDecoration: 'none' }}>Kids</Link>
         </li>
-        {localStorage.getItem('auth-token') && (
-          <li onClick={() => setMenuVisible(false)}>
-            <Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link>
-          </li>
-        )}  
+      
       </ul>
     </div>
   );
