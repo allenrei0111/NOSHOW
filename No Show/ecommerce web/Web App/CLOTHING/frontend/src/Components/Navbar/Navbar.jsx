@@ -8,12 +8,10 @@ import SearchBar from '../../SearchButton/SearchBar';
 import Profiles from "../Profiles/Profiles";
 import ppf from "../Images/ppf.png"; //https://www.istockphoto.com/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-gm1495088043-518213332
 
-
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
-  const [theme, setTheme] = useState('light'); 
+  const [theme, setTheme] = useState('light');
   const { getTotalCartItems, products } = useContext(ShopContext);
-  const handleSearch = searchResults => {};
   const [openProfile, setOpenProfile] = useState(false);
 
   const handleToggleMenu = () => {
@@ -21,16 +19,9 @@ const Navbar = () => {
   };
 
   const handleToggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light')); 
-    document.body.classList.toggle('light'); 
-    document.body.classList.toggle('dark'); 
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('auth-token');
-    alert('Successfully logged out');
-    // Redirect to homepage
-    window.location.replace("/");
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+    document.body.classList.toggle('light');
+    document.body.classList.toggle('dark');
   };
 
   return (
@@ -44,36 +35,32 @@ const Navbar = () => {
           onChange={handleToggleTheme}
         />
         <button class="btn" onClick={handleToggleMenu}>
-    <span class="icon">
-        <svg viewBox="0 0 175 80" width="40" height="40">
-            <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
-            <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
-            <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
-        </svg>
-    </span>
-    <span class="text">MENU</span>
-</button>
+          <span class="icon">
+            <svg viewBox="0 0 175 80" width="40" height="40">
+              <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+              <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+              <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+            </svg>
+          </span>
+          <span class="text">MENU</span>
+        </button>
         <Link to='/' style={{ textDecoration: 'none' }} className="nav-logo">
           <img src={logo} alt="logo" width={300} />
         </Link>
       </div>
       <div className="nav-search">
-        <SearchBar products={products} handleSearch={handleSearch}/>
+        <SearchBar products={products} />
       </div>
-
-        <div>
+      <div>
         <Link to="/cart" className="nav-cart-link">
-          <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
+          <img src={cart_icon} alt="cart" width={50} className='nav-cart' />
           <div className="nav-cart-count">{getTotalCartItems()}</div>
         </Link>
-
         <div className="nav-profile-container">
-  <img src={ppf} alt="ppf" width={50} onClick={() => setOpenProfile(prev => !prev)}/>
-  {openProfile && <Profiles/>}
-</div>
-
-
-
+          <img src={ppf} alt="ppf" width={50} onClick={() => setOpenProfile(prev => !prev)} />
+          {openProfile && <Profiles />}
+        </div>
+        <Link to="/login" className="nav-login-link">Login</Link>
       </div>
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
         <li onClick={() => setMenuVisible(false)}>
@@ -88,7 +75,6 @@ const Navbar = () => {
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/kids' style={{ textDecoration: 'none' }}>Kids</Link>
         </li>
-      
       </ul>
     </div>
   );
