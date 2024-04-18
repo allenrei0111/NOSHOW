@@ -34,10 +34,10 @@
   font-weight: 600;
 }
 
-.nav-search {
+.nav-search { 
   display: flex;
   align-items: center;
-  margin-right: auto; /* Move the search bar to the left */
+  margin-right: 200px;
 }
 
 .nav-search input[type="text"] {
@@ -63,8 +63,9 @@
 
 .nav-login-cart {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: right;
+  margin-right: 20px;
+  
 }
 
 .nav-login-cart button {
@@ -278,4 +279,12 @@ body.dark .nav-login-cart button {
 
 .theme-checkbox:checked {
   background-position: 100%;
+}
+
+.nav-profile-container {
+  position: relative;
+}
+
+.nav-profile-container img {
+  cursor: pointer;
 }
