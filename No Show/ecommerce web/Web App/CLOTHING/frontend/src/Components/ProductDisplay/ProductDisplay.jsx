@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './ProductDisplay.css';
 import star_icon from '../Images/star_icon.png';
 import star_dull_icon from '../Images/star_dull_icon.png';
@@ -30,6 +30,14 @@ const ProductDisplay = ({ product }) => {
     { text: "Poor customer support, disappointed.", rating: 2, name: "Ava Garcia" },
     { text: "Horrible quality, waste of money.", rating: 1, name: "Matthew Wilson" },
   ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+    }, 3000); // Change review every 3 seconds (adjust as needed)
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Check if the product object exists and has the image property before accessing it
   if (!product || !product.image) {
@@ -121,15 +129,14 @@ const ProductDisplay = ({ product }) => {
             <p className="customer-name">- {reviews[currentReviewIndex].name}</p>
           </div>
           <div className='review-navigation'>
-            <button onClick={handlePrevReview}>&lt;</button>
-            <button onClick={handleNextReview}>&gt;</button>
-          </div>
+  <button className="review-nav-button" onClick={handlePrevReview}>&lt; Previous</button>
+  <button className="review-nav-button" onClick={handleNextReview}>Next &gt;</button>
+</div>
+
         </div>
 
-       
         <button className="add-to-cart-button" onClick={() => handleAddToCart(product.id)}>ADD TO CART</button>
 
-       
         <button className="favorite-button" onClick={() => handleAddToFavorite(product.id)}>
           <svg className={`empty ${addedToFavorite ? 'hidden' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
             <path fill="none" d="M0 0H24V24H0z"></path>
@@ -139,9 +146,8 @@ const ProductDisplay = ({ product }) => {
             <path d="M0 0H24V24H0z" fill="none"></path>
             <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
           </svg>
-          Add To Favorite 
+          Add To Favorite
         </button>
-
       </div>
     </div>
   );
