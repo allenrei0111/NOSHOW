@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../../Context/ShopContext';
-import "./Receipt.css";
+import './Reciept.css'; 
+
 function Receipt() {
   const { getTotalCartItems, getTotalCartAmount } = useContext(ShopContext);
   const [generatedCode, setGeneratedCode] = useState('');
@@ -17,26 +18,22 @@ function Receipt() {
     return code;
   };
 
-  const handleGenerateCode = () => {
+  useEffect(() => {
     const code = generateRandomCode();
     const today = new Date().toLocaleDateString();
     // Save the generated code and today's date
     setGeneratedCode(code);
     setTodaysDate(today);
-  };
-
-  useEffect(() => {
-    handleGenerateCode(); // Automatically generate code and date when component mounts
   }, []);
 
   return (
-    <div>
-      <button onClick={handleGenerateCode}>Generate Receipt</button>
-      <p>Generated Code: {generatedCode}</p>
-      <p>Today's Date: {todaysDate}</p>
+    <div className="receipt-container">
+      <p className="thank-you-message">Thank you for purchasing!</p>
+      <p className="receipt-details">Receipt: {generatedCode}</p>
+      <p className="receipt-details">Purchased Date: {todaysDate}</p>
       
-      <p>Item Purchased: {getTotalCartItems()}</p>
-      <p>Total Amount: ${getTotalCartAmount()}</p>
+      <p className="receipt-details">Item Purchased: {getTotalCartItems()}</p>
+      <p className="receipt-details">Total Amount: ${getTotalCartAmount()}</p>
     </div>
   );
 }
