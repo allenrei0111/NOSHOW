@@ -213,7 +213,8 @@ const CartItems = () => {
           <div className="receipt-content">
             
             <button><Link to='/receipt' style={{ textDecoration: 'none' }}>Reciept</Link></button>
-         
+
+            
           </div>
         </div>
       )}
