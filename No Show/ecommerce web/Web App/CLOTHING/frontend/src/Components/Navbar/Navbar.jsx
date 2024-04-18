@@ -5,6 +5,8 @@ import logo from '../Images/logo.png';
 import cart_icon from '../Images/cart_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
 import SearchBar from '../../SearchButton/SearchBar';
+import Profiles from "../Profiles/Profiles";
+import ppf from "../Images/ppf.png"; //https://www.istockphoto.com/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-gm1495088043-518213332
 
 
 const Navbar = () => {
@@ -12,6 +14,7 @@ const Navbar = () => {
   const [theme, setTheme] = useState('light'); 
   const { getTotalCartItems, products } = useContext(ShopContext);
   const handleSearch = searchResults => {};
+  const [openProfile, setOpenProfile] = useState(false);
 
   const handleToggleMenu = () => {
     setMenuVisible(prevMenuVisible => !prevMenuVisible);
@@ -57,15 +60,19 @@ const Navbar = () => {
       <div className="nav-search">
         <SearchBar products={products} handleSearch={handleSearch}/>
       </div>
-      <div className="nav-login-cart">
-        {localStorage.getItem('auth-token')
-          ? <button onClick={handleLogout} className='nav-logout'>Logout</button>
-          : <Link to='/login' style={{ textDecoration: 'none' }}><button className='nav-login'>Login</button></Link>}
 
+        <div>
         <Link to="/cart" className="nav-cart-link">
           <img src={cart_icon} alt="cart" width={50} className='nav-cart'/>
           <div className="nav-cart-count">{getTotalCartItems()}</div>
         </Link>
+
+        <div className="nav-profile-container">
+  <img src={ppf} alt="ppf" width={50} onClick={() => setOpenProfile(prev => !prev)}/>
+  {openProfile && <Profiles/>}
+</div>
+
+
 
       </div>
       <ul className={`nav-menu ${menuVisible ? 'visible' : ''}`}>
@@ -81,11 +88,7 @@ const Navbar = () => {
         <li onClick={() => setMenuVisible(false)}>
           <Link to='/kids' style={{ textDecoration: 'none' }}>Kids</Link>
         </li>
-        {localStorage.getItem('auth-token') && (
-          <li onClick={() => setMenuVisible(false)}>
-            <Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link>
-          </li>
-        )}  
+      
       </ul>
     </div>
   );
